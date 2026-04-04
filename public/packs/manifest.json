@@ -1,4 +1,83 @@
 {
   "manifestVersion": "1.0.0",
-  "packs": []
+  "packs": [
+    {
+      "packId": "kpop",
+      "familyId": "kpop",
+      "familyName": "K-pop",
+      "path": "packs/kpop.pack.json",
+      "version": "1.0.0",
+      "substyleIds": [
+        "kpop_bright_easy",
+        "kpop_dark_synth",
+        "kpop_ballad_emotional"
+      ],
+      "tags": [
+        "producer_first",
+        "section_aware",
+        "kpop"
+      ]
+    },
+    {
+      "packId": "trap",
+      "familyId": "trap",
+      "familyName": "Trap",
+      "path": "packs/trap.pack.json",
+      "version": "1.0.0",
+      "substyleIds": [
+        "melodic_trap",
+        "trap_soul_rnb_rap"
+      ],
+      "tags": [
+        "producer_first",
+        "loop_first",
+        "trap"
+      ]
+    },
+    {
+      "packId": "rnb",
+      "familyId": "rnb",
+      "familyName": "R&B",
+      "path": "packs/rnb.pack.json",
+      "version": "1.0.0",
+      "substyleIds": [
+        "modern_rnb"
+      ],
+      "tags": [
+        "producer_first",
+        "smooth",
+        "rnb"
+      ]
+    },
+    {
+      "packId": "pop",
+      "familyId": "pop",
+      "familyName": "Pop",
+      "path": "packs/pop.pack.json",
+      "version": "1.0.0",
+      "substyleIds": [
+        "future_pop"
+      ],
+      "tags": [
+        "producer_first",
+        "glossy",
+        "pop"
+      ]
+    },
+    {
+      "packId": "dance",
+      "familyId": "dance",
+      "familyName": "Dance",
+      "path": "packs/dance.pack.json",
+      "version": "1.0.0",
+      "substyleIds": [
+        "house_disco"
+      ],
+      "tags": [
+        "producer_first",
+        "groove_first",
+        "dance"
+      ]
+    }
+  ]
 }

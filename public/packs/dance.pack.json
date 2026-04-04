@@ -1,0 +1,1924 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "dance",
+  "family": {
+    "id": "dance",
+    "name": "Dance",
+    "description": "Groove-first dance harmony with stable club loops, filter-driven lift, and floor-focused payoff.",
+    "tags": [
+      "producer_first",
+      "groove_first",
+      "dance"
+    ],
+    "defaultModeBias": "loop_first",
+    "substyleIds": [
+      "house_disco"
+    ]
+  },
+  "substyles": [
+    {
+      "id": "house_disco",
+      "familyId": "dance",
+      "name": "House / Disco",
+      "description": "Groove-first house/disco with piano-led lift, repetitive floor loops, and filter-driven section changes.",
+      "tags": [
+        "house",
+        "disco",
+        "groove_first",
+        "bright"
+      ],
+      "modeBias": "loop_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus"
+      ],
+      "archetypeIds": [
+        "house_disco_piano_lift",
+        "house_disco_mirror_bounce",
+        "house_disco_filter_drive",
+        "house_disco_disco_glide",
+        "house_disco_pump_loop",
+        "house_disco_night_floor",
+        "house_disco_bright_chase",
+        "house_disco_octave_lock",
+        "house_disco_hands_up",
+        "house_disco_bassline_turn",
+        "house_disco_classy_step",
+        "house_disco_roller_loop",
+        "house_disco_soulful_house",
+        "house_disco_drop_hold",
+        "house_disco_tension_release"
+      ],
+      "cadenceProfileIds": [
+        "house_disco_groove_loop",
+        "house_disco_hands_up_release",
+        "house_disco_filter_lift"
+      ],
+      "harmonicRhythmProfileIds": [
+        "house_disco_club_grid",
+        "house_disco_pump_drive",
+        "house_disco_filter_hold"
+      ],
+      "sectionBehaviorId": "house_disco_sections",
+      "spicinessTransformIds": [
+        "house_disco_clean_shine",
+        "house_disco_disco_color",
+        "house_disco_club_edge"
+      ],
+      "variationRuleIds": [
+        "house_disco_safer_loop",
+        "house_disco_brighter_lift",
+        "house_disco_richer_step",
+        "house_disco_pre_lift_rule",
+        "house_disco_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "house_disco_groove_lock",
+        "house_disco_drop_simplify",
+        "house_disco_last_bar_tilt"
+      ],
+      "explanationTemplateIds": [
+        "house_disco_why",
+        "house_disco_section",
+        "house_disco_learn"
+      ],
+      "midiPresetIds": [
+        "house_disco_comp",
+        "house_disco_block"
+      ],
+      "mustIncludeTags": [
+        "house",
+        "groove_core"
+      ],
+      "mustAvoidTags": [
+        "blunt_ballad"
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "house_disco_piano_lift",
+      "substyleId": "house_disco",
+      "name": "Piano Lift",
+      "romanNumerals": [
+        "I",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.96,
+      "tensionCurve": [
+        "stable",
+        "open"
+      ],
+      "tags": [
+        "house",
+        "groove_core",
+        "bright"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_mirror_bounce",
+      "substyleId": "house_disco",
+      "name": "Mirror Bounce",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.85,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "disco",
+        "hands_up",
+        "groove_core"
+      ],
+      "weight": 0.94,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_filter_drive",
+      "substyleId": "house_disco",
+      "name": "Filter Drive",
+      "romanNumerals": [
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.91,
+      "tensionCurve": [
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "filter_ready",
+        "groove_core",
+        "house"
+      ],
+      "weight": 0.92,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_disco_glide",
+      "substyleId": "house_disco",
+      "name": "Disco Glide",
+      "romanNumerals": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.83,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "soft_drop",
+        "open"
+      ],
+      "tags": [
+        "disco",
+        "bright",
+        "glide"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_pump_loop",
+      "substyleId": "house_disco",
+      "name": "Pump Loop",
+      "romanNumerals": [
+        "I",
+        "I",
+        "IV",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic",
+        "predominant",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.95,
+      "tensionCurve": [
+        "stable",
+        "anchor",
+        "open",
+        "open"
+      ],
+      "tags": [
+        "groove_core",
+        "pedal",
+        "house"
+      ],
+      "weight": 0.88,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_night_floor",
+      "substyleId": "house_disco",
+      "name": "Night Floor",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "V",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "dominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "push",
+        "release"
+      ],
+      "tags": [
+        "night",
+        "disco",
+        "chorus_ready"
+      ],
+      "weight": 0.76,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_bright_chase",
+      "substyleId": "house_disco",
+      "name": "Bright Chase",
+      "romanNumerals": [
+        "IV",
+        "I",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.78,
+      "tensionCurve": [
+        "open",
+        "stable",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "bright",
+        "groove_core",
+        "chase"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_octave_lock",
+      "substyleId": "house_disco",
+      "name": "Octave Lock",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.87,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "expand",
+        "open"
+      ],
+      "tags": [
+        "nu_disco",
+        "groove_core",
+        "dark"
+      ],
+      "weight": 0.71,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_hands_up",
+      "substyleId": "house_disco",
+      "name": "Hands Up",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "V",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.74,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "push",
+        "open"
+      ],
+      "tags": [
+        "hands_up",
+        "chorus_ready",
+        "house"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_bassline_turn",
+      "substyleId": "house_disco",
+      "name": "Bassline Turn",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.7,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "filter_ready",
+        "bassline",
+        "house"
+      ],
+      "weight": 0.73,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_classy_step",
+      "substyleId": "house_disco",
+      "name": "Classy Step",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.84,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "open",
+        "push"
+      ],
+      "tags": [
+        "classy",
+        "disco",
+        "groove_core"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_roller_loop",
+      "substyleId": "house_disco",
+      "name": "Roller Loop",
+      "romanNumerals": [
+        "ii",
+        "ii",
+        "V",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "predominant",
+        "dominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.89,
+      "tensionCurve": [
+        "lift",
+        "lift",
+        "push",
+        "push"
+      ],
+      "tags": [
+        "filter_ready",
+        "roller",
+        "house"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_soulful_house",
+      "substyleId": "house_disco",
+      "name": "Soulful House",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "ii"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_club_grid",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.73,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "open",
+        "lift"
+      ],
+      "tags": [
+        "soulful",
+        "bright",
+        "groove_core"
+      ],
+      "weight": 0.7,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "house_disco_drop_hold",
+      "substyleId": "house_disco",
+      "name": "Drop Hold",
+      "romanNumerals": [
+        "I",
+        "I",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_filter_hold",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.9,
+      "tensionCurve": [
+        "stable",
+        "anchor",
+        "anchor",
+        "push"
+      ],
+      "tags": [
+        "drop_ready",
+        "pedal",
+        "house"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "house_disco_tension_release",
+      "substyleId": "house_disco",
+      "name": "Tension Release",
+      "romanNumerals": [
+        "vi",
+        "V",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "dominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "house_disco_pump_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.71,
+      "tensionCurve": [
+        "soft_drop",
+        "push",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "chorus_ready",
+        "filter_ready",
+        "house"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "house_disco_groove_loop",
+      "name": "Groove Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "predominant",
+        "dominant"
+      ],
+      "strength": 0.4,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "house_disco_hands_up_release",
+      "name": "Hands-Up Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.64,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "house_disco_filter_lift",
+      "name": "Filter Lift",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.62,
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "weight": 0.84
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "house_disco_club_grid",
+      "name": "Club Grid",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ]
+    },
+    {
+      "id": "house_disco_pump_drive",
+      "name": "Pump Drive",
+      "density": "active",
+      "beatsPerChangePattern": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "commonUseCases": [
+        "chorus",
+        "pre_chorus"
+      ]
+    },
+    {
+      "id": "house_disco_filter_hold",
+      "name": "Filter Hold",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "bridge",
+        "full_loop"
+      ]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "house_disco_sections",
+      "substyleId": "house_disco",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium",
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "groove_core",
+          "house"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "house_disco_groove_lock",
+          "house_disco_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_ballad"
+        ],
+        "energyShape": "rolling"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "groove_core",
+          "bright"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter"
+        ],
+        "allowedSpecialMoveIds": [
+          "house_disco_groove_lock",
+          "house_disco_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_ballad"
+        ],
+        "energyShape": "steady"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "filter_ready",
+          "bassline"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "house_disco_last_bar_tilt",
+          "house_disco_drop_simplify"
+        ],
+        "forbiddenTags": [
+          "pedal"
+        ],
+        "energyShape": "filter_rise"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve",
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "active",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "hands_up",
+          "chorus_ready"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "brighter",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "house_disco_groove_lock",
+          "house_disco_drop_simplify"
+        ],
+        "forbiddenTags": [
+          "blunt_ballad"
+        ],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival",
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "drop_ready",
+          "night"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "house_disco_drop_simplify",
+          "house_disco_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "groove_core"
+        ],
+        "energyShape": "breakdown"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "house_disco_clean_shine",
+      "name": "Clean Shine",
+      "level": 1,
+      "styleScope": [
+        "dance",
+        "house_disco"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "6"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "house_disco_disco_color",
+      "name": "Disco Color",
+      "level": 2,
+      "styleScope": [
+        "dance",
+        "house_disco"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "9",
+        "maj7"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "house_disco_club_edge",
+      "name": "Club Edge",
+      "level": 3,
+      "styleScope": [
+        "dance",
+        "house_disco"
+      ],
+      "allowedDecorations": [
+        "9",
+        "13",
+        "sus4"
+      ],
+      "allowedFunctions": [
+        "dominant",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 0.84
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "house_disco_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "groove_identity",
+        "kick_space"
+      ],
+      "targets": [
+        "surface_simplify",
+        "cleaner_turnback"
+      ],
+      "requiredTags": [
+        "groove_core"
+      ],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "house_disco_brighter_lift",
+      "name": "Brighter Lift",
+      "type": "brighter",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "preserve": [
+        "groove_identity"
+      ],
+      "targets": [
+        "tonic_shine",
+        "upper_color"
+      ],
+      "requiredTags": [
+        "bright"
+      ],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "house_disco_richer_step",
+      "name": "Richer Step",
+      "type": "richer",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "preserve": [
+        "groove_identity"
+      ],
+      "targets": [
+        "upper_extensions",
+        "predominant_color"
+      ],
+      "requiredTags": [
+        "soulful"
+      ],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 0.76
+    },
+    {
+      "id": "house_disco_pre_lift_rule",
+      "name": "Filter Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "groove_identity",
+        "kick_space"
+      ],
+      "targets": [
+        "last_bar_motion",
+        "filter_pressure"
+      ],
+      "requiredTags": [
+        "filter_ready"
+      ],
+      "forbiddenTags": [
+        "pedal"
+      ],
+      "weight": 0.88
+    },
+    {
+      "id": "house_disco_chorus_payoff_rule",
+      "name": "Floor Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "groove_identity"
+      ],
+      "targets": [
+        "release_width",
+        "hook_brightness"
+      ],
+      "requiredTags": [
+        "hands_up"
+      ],
+      "forbiddenTags": [
+        "blunt_ballad"
+      ],
+      "weight": 0.86
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "house_disco_groove_lock",
+      "name": "Groove Lock",
+      "category": "groove",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "triggerTags": [
+        "groove_core",
+        "pedal"
+      ],
+      "operation": "groove_lock",
+      "weight": 1
+    },
+    {
+      "id": "house_disco_drop_simplify",
+      "name": "Drop Simplify",
+      "category": "drop",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "drop_ready",
+        "filter_ready"
+      ],
+      "operation": "drop_simplify",
+      "weight": 0.92
+    },
+    {
+      "id": "house_disco_last_bar_tilt",
+      "name": "Last Bar Tilt",
+      "category": "turnback",
+      "styleScope": [
+        "house_disco"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "pre_chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "bassline",
+        "filter_ready"
+      ],
+      "operation": "last_bar_tilt",
+      "weight": 0.84
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "house_disco_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "house_disco"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} works because the groove stays more important than the cadence. The harmony should support motion on the floor, not narrate over it.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "house_disco_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "house_disco"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, house/disco usually builds by changing density, filter energy, or last-bar direction. The harmonic job is to keep the groove intact while the section opens.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "house_disco_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "house_disco"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "If {rhythmName} feels stable enough to loop for a long time, the progression is probably in bounds. If the harmony keeps asking for attention, simplify it.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "house_disco_comp",
+      "name": "House Comp",
+      "mode": "comp",
+      "styleTags": [
+        "house",
+        "groove_core"
+      ],
+      "voicingStyle": "mid_piano_stabs",
+      "registerRange": [
+        50,
+        82
+      ],
+      "rhythmPattern": "four_on_floor_stabs",
+      "velocityProfile": "steady_accent",
+      "sustainBehavior": "short_release",
+      "weight": 1
+    },
+    {
+      "id": "house_disco_block",
+      "name": "Disco Block",
+      "mode": "block",
+      "styleTags": [
+        "disco",
+        "hands_up"
+      ],
+      "voicingStyle": "bright_stack_hits",
+      "registerRange": [
+        52,
+        84
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "bright_even",
+      "sustainBehavior": "medium_sustain",
+      "weight": 0.72
+    }
+  ]
+}

@@ -1,0 +1,2028 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "rnb",
+  "family": {
+    "id": "rnb",
+    "name": "R&B",
+    "description": "Modern R&B harmony with richer chord color, smooth cadence, and voice-leading-aware motion.",
+    "tags": [
+      "producer_first",
+      "smooth",
+      "rnb"
+    ],
+    "defaultModeBias": "section_first",
+    "substyleIds": [
+      "modern_rnb"
+    ]
+  },
+  "substyles": [
+    {
+      "id": "modern_rnb",
+      "familyId": "rnb",
+      "name": "Modern R&B",
+      "description": "Rich-color modern R&B with smoother cadence, borrowed turns, and voice-leading-friendly progression shapes.",
+      "tags": [
+        "rnb",
+        "smooth",
+        "rich_color",
+        "section_aware"
+      ],
+      "modeBias": "section_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus",
+        "bridge"
+      ],
+      "archetypeIds": [
+        "modern_rnb_silk_cycle",
+        "modern_rnb_moody_window",
+        "modern_rnb_major_luxury",
+        "modern_rnb_tonic_family_glow",
+        "modern_rnb_afterhours_pull",
+        "modern_rnb_borrowed_soften",
+        "modern_rnb_suspended_desire",
+        "modern_rnb_slow_heat",
+        "modern_rnb_halo_return",
+        "modern_rnb_open_color",
+        "modern_rnb_velvet_resolve",
+        "modern_rnb_gospel_tilt",
+        "modern_rnb_neo_soul_turn",
+        "modern_rnb_downlit_minor",
+        "modern_rnb_bridge_smoke"
+      ],
+      "cadenceProfileIds": [
+        "modern_rnb_soft_return",
+        "modern_rnb_soul_pull",
+        "modern_rnb_bridge_reframe"
+      ],
+      "harmonicRhythmProfileIds": [
+        "modern_rnb_slow_sway",
+        "modern_rnb_mid_flow",
+        "modern_rnb_turn_push"
+      ],
+      "sectionBehaviorId": "modern_rnb_sections",
+      "spicinessTransformIds": [
+        "modern_rnb_soft_color",
+        "modern_rnb_rich_color",
+        "modern_rnb_dominant_edge"
+      ],
+      "variationRuleIds": [
+        "modern_rnb_safer_loop",
+        "modern_rnb_richer_color",
+        "modern_rnb_darker_turn",
+        "modern_rnb_pre_lift_rule",
+        "modern_rnb_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "modern_rnb_borrowed_iv",
+        "modern_rnb_dominant_pressure",
+        "modern_rnb_trap_soul_enrich",
+        "modern_rnb_last_bar_tilt"
+      ],
+      "explanationTemplateIds": [
+        "modern_rnb_why",
+        "modern_rnb_section",
+        "modern_rnb_learn"
+      ],
+      "midiPresetIds": [
+        "modern_rnb_block",
+        "modern_rnb_comp",
+        "modern_rnb_arp"
+      ],
+      "mustIncludeTags": [
+        "rnb",
+        "rich_color"
+      ],
+      "mustAvoidTags": [
+        "blunt_major"
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "modern_rnb_silk_cycle",
+      "substyleId": "modern_rnb",
+      "name": "Silk Cycle",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "vi",
+        "ii"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_mid_flow",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.82,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "soft_drop",
+        "lift"
+      ],
+      "tags": [
+        "rnb",
+        "smooth",
+        "rich_color"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_moody_window",
+      "substyleId": "modern_rnb",
+      "name": "Moody Window",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VII",
+        "III"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_mid_flow",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.8,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "push",
+        "glow"
+      ],
+      "tags": [
+        "rnb",
+        "late_night",
+        "rich_color"
+      ],
+      "weight": 0.94,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_major_luxury",
+      "substyleId": "modern_rnb",
+      "name": "Major Luxury",
+      "romanNumerals": [
+        "IV",
+        "iii",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.71,
+      "tensionCurve": [
+        "open",
+        "lean",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "luxury",
+        "rnb",
+        "chorus_ready"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_tonic_family_glow",
+      "substyleId": "modern_rnb",
+      "name": "Tonic Family Glow",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "iii",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_mid_flow",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.76,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "lean",
+        "release"
+      ],
+      "tags": [
+        "smooth",
+        "glow",
+        "rnb"
+      ],
+      "weight": 0.84,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_afterhours_pull",
+      "substyleId": "modern_rnb",
+      "name": "Afterhours Pull",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "V",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "dominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.68,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "push",
+        "release"
+      ],
+      "tags": [
+        "afterhours",
+        "chorus_ready",
+        "rnb"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_borrowed_soften",
+      "substyleId": "modern_rnb",
+      "name": "Borrowed Soften",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "iv",
+        "I"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "contrast",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_slow_sway",
+      "allowedSectionIntents": [
+        "verse",
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.62,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "darken",
+        "release"
+      ],
+      "tags": [
+        "borrowed_color",
+        "smooth",
+        "rnb"
+      ],
+      "weight": 0.86,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_suspended_desire",
+      "substyleId": "modern_rnb",
+      "name": "Suspended Desire",
+      "romanNumerals": [
+        "ii",
+        "V",
+        "iii",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.64,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "hover",
+        "soft_drop"
+      ],
+      "tags": [
+        "desire",
+        "pre_lift",
+        "rnb"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_slow_heat",
+      "substyleId": "modern_rnb",
+      "name": "Slow Heat",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "VI",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_slow_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.77,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "expand",
+        "open"
+      ],
+      "tags": [
+        "late_night",
+        "slow_heat",
+        "rnb"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_halo_return",
+      "substyleId": "modern_rnb",
+      "name": "Halo Return",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "iii",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.67,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "lean",
+        "soft_drop"
+      ],
+      "tags": [
+        "chorus_ready",
+        "halo",
+        "rnb"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_open_color",
+      "substyleId": "modern_rnb",
+      "name": "Open Color",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "ii"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_mid_flow",
+      "allowedSectionIntents": [
+        "verse",
+        "full_loop"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.73,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "lift",
+        "open"
+      ],
+      "tags": [
+        "rich_color",
+        "open",
+        "rnb"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_velvet_resolve",
+      "substyleId": "modern_rnb",
+      "name": "Velvet Resolve",
+      "romanNumerals": [
+        "iii",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.61,
+      "tensionCurve": [
+        "lean",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "velvet",
+        "chorus_ready",
+        "rnb"
+      ],
+      "weight": 0.69,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_gospel_tilt",
+      "substyleId": "modern_rnb",
+      "name": "Gospel Tilt",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_mid_flow",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "stable",
+        "open",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "gospel_tint",
+        "rich_color",
+        "rnb"
+      ],
+      "weight": 0.7,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_neo_soul_turn",
+      "substyleId": "modern_rnb",
+      "name": "Neo-Soul Turn",
+      "romanNumerals": [
+        "iv",
+        "I",
+        "iii",
+        "VI"
+      ],
+      "functionPath": [
+        "contrast",
+        "tonic",
+        "tonic_family",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_turn_push",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.57,
+      "tensionCurve": [
+        "darken",
+        "release",
+        "lean",
+        "expand"
+      ],
+      "tags": [
+        "borrowed_color",
+        "bridge_contrast",
+        "rnb"
+      ],
+      "weight": 0.68,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_downlit_minor",
+      "substyleId": "modern_rnb",
+      "name": "Downlit Minor",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "v",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_slow_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.74,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "push",
+        "expand"
+      ],
+      "tags": [
+        "late_night",
+        "minor",
+        "rnb"
+      ],
+      "weight": 0.71,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "13",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "modern_rnb_bridge_smoke",
+      "substyleId": "modern_rnb",
+      "name": "Bridge Smoke",
+      "romanNumerals": [
+        "ii",
+        "III",
+        "I",
+        "VI"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic_family",
+        "tonic",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "modern_rnb_slow_sway",
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.52,
+      "tensionCurve": [
+        "lift",
+        "glow",
+        "release",
+        "expand"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "smoke",
+        "rnb"
+      ],
+      "weight": 0.66,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "modern_rnb_soft_return",
+      "name": "Soft Return",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.7,
+      "commonUseCases": [
+        "verse",
+        "chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_soul_pull",
+      "name": "Soul Pull",
+      "type": "strong_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "dominant"
+      ],
+      "strength": 0.78,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "modern_rnb_bridge_reframe",
+      "name": "Bridge Reframe",
+      "type": "contrastive",
+      "allowedEndFunctions": [
+        "contrast",
+        "predominant"
+      ],
+      "strength": 0.64,
+      "commonUseCases": [
+        "bridge",
+        "pre_chorus"
+      ],
+      "weight": 0.84
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "modern_rnb_slow_sway",
+      "name": "Slow Sway",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "verse",
+        "bridge"
+      ]
+    },
+    {
+      "id": "modern_rnb_mid_flow",
+      "name": "Mid Flow",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "chorus"
+      ]
+    },
+    {
+      "id": "modern_rnb_turn_push",
+      "name": "Turn Push",
+      "density": "variable",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        2,
+        2,
+        4
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "chorus"
+      ]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "modern_rnb_sections",
+      "substyleId": "modern_rnb",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve",
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "rich_color",
+          "smooth"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "modern_rnb_last_bar_tilt",
+          "modern_rnb_trap_soul_enrich"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "floating"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "smooth",
+          "late_night"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "modern_rnb_last_bar_tilt",
+          "modern_rnb_borrowed_iv"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "intimate"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "pre_lift",
+          "chorus_ready"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "modern_rnb_dominant_pressure",
+          "modern_rnb_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "smooth"
+        ],
+        "energyShape": "leaning_forward"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "strong_resolve",
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "chorus_ready",
+          "rich_color"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "richer",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "modern_rnb_dominant_pressure",
+          "modern_rnb_trap_soul_enrich"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "borrowed_color"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "modern_rnb_borrowed_iv",
+          "modern_rnb_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "smooth"
+        ],
+        "energyShape": "reframe"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "modern_rnb_soft_color",
+      "name": "Soft Color",
+      "level": 1,
+      "styleScope": [
+        "rnb",
+        "modern_rnb"
+      ],
+      "allowedDecorations": [
+        "maj7",
+        "add9",
+        "6"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_rich_color",
+      "name": "Rich Color",
+      "level": 2,
+      "styleScope": [
+        "rnb",
+        "modern_rnb"
+      ],
+      "allowedDecorations": [
+        "9",
+        "11",
+        "13"
+      ],
+      "allowedFunctions": [
+        "tonic_family",
+        "predominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_dominant_edge",
+      "name": "Dominant Edge",
+      "level": 3,
+      "styleScope": [
+        "rnb",
+        "modern_rnb"
+      ],
+      "allowedDecorations": [
+        "9",
+        "13",
+        "b9"
+      ],
+      "allowedFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.86
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "modern_rnb_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "topline_space",
+        "smooth_identity"
+      ],
+      "targets": [
+        "surface_simplify",
+        "cleaner_turnback"
+      ],
+      "requiredTags": [
+        "smooth"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_richer_color",
+      "name": "Richer Color",
+      "type": "richer",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "preserve": [
+        "roman_root_path",
+        "rnb_identity"
+      ],
+      "targets": [
+        "upper_extensions",
+        "voice_leading_detail"
+      ],
+      "requiredTags": [
+        "rich_color"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_darker_turn",
+      "name": "Darker Turn",
+      "type": "darker",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "bridge",
+        "chorus"
+      ],
+      "preserve": [
+        "smooth_identity"
+      ],
+      "targets": [
+        "borrowed_shadow",
+        "minor_weight"
+      ],
+      "requiredTags": [
+        "late_night"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "modern_rnb_pre_lift_rule",
+      "name": "Soul Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "vocal_pocket",
+        "rnb_identity"
+      ],
+      "targets": [
+        "dominant_pressure",
+        "phrase_direction"
+      ],
+      "requiredTags": [
+        "pre_lift"
+      ],
+      "forbiddenTags": [
+        "smooth"
+      ],
+      "weight": 0.82
+    },
+    {
+      "id": "modern_rnb_chorus_payoff_rule",
+      "name": "R&B Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "hook_identity",
+        "rnb_identity"
+      ],
+      "targets": [
+        "resolution_weight",
+        "upper_spread"
+      ],
+      "requiredTags": [
+        "chorus_ready"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.84
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "modern_rnb_borrowed_iv",
+      "name": "Borrowed iv Darken",
+      "category": "color_shift",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "borrowed_color",
+        "late_night"
+      ],
+      "operation": "borrowed_iv_darken",
+      "weight": 0.96
+    },
+    {
+      "id": "modern_rnb_dominant_pressure",
+      "name": "Dominant Pressure",
+      "category": "tension",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "pre_lift",
+        "chorus_ready"
+      ],
+      "operation": "dominant_pressure",
+      "weight": 0.9
+    },
+    {
+      "id": "modern_rnb_trap_soul_enrich",
+      "name": "Trap-Soul Enrich",
+      "category": "color",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "rich_color",
+        "smooth"
+      ],
+      "operation": "trap_soul_enrich",
+      "weight": 0.86
+    },
+    {
+      "id": "modern_rnb_last_bar_tilt",
+      "name": "Last Bar Tilt",
+      "category": "turnback",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "bridge"
+      ],
+      "triggerTags": [
+        "bridge_contrast",
+        "smooth"
+      ],
+      "operation": "last_bar_tilt",
+      "weight": 0.82
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "modern_rnb_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "sectionIntentScope": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} sounds modern R&B because the progression lets color chords breathe instead of treating every bar like a hook punch.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "modern_rnb_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, modern R&B usually moves through richer voice-leading and borrowed color, not through maximum chord count.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "modern_rnb_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "modern_rnb"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "If {rhythmName} still feels smooth after you add 9ths, 11ths, or borrowed color, the progression is doing its job. If it starts sounding stiff, simplify.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "modern_rnb_block",
+      "name": "Modern R&B Block",
+      "mode": "block",
+      "styleTags": [
+        "rnb",
+        "smooth"
+      ],
+      "voicingStyle": "wide_soft_stack",
+      "registerRange": [
+        46,
+        80
+      ],
+      "rhythmPattern": "half_note_support",
+      "velocityProfile": "soft_swell",
+      "sustainBehavior": "phrase_sustain",
+      "weight": 1
+    },
+    {
+      "id": "modern_rnb_comp",
+      "name": "Modern R&B Comp",
+      "mode": "comp",
+      "styleTags": [
+        "rich_color",
+        "rnb"
+      ],
+      "voicingStyle": "offbeat_chord_swells",
+      "registerRange": [
+        50,
+        82
+      ],
+      "rhythmPattern": "lazy_syncopation",
+      "velocityProfile": "warm_pulse",
+      "sustainBehavior": "short_to_medium",
+      "weight": 0.82
+    },
+    {
+      "id": "modern_rnb_arp",
+      "name": "Modern R&B Arp",
+      "mode": "arp",
+      "styleTags": [
+        "late_night",
+        "smooth"
+      ],
+      "voicingStyle": "rolled_upper_spread",
+      "registerRange": [
+        52,
+        86
+      ],
+      "rhythmPattern": "broken_chord_wave",
+      "velocityProfile": "gentle_wave",
+      "sustainBehavior": "pedal_like",
+      "weight": 0.7
+    }
+  ]
+}

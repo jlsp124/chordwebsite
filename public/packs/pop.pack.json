@@ -1,0 +1,1992 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "pop",
+  "family": {
+    "id": "pop",
+    "name": "Pop",
+    "description": "Glossy pop harmony built around polished loops, controlled lift, and bright chorus release.",
+    "tags": [
+      "producer_first",
+      "glossy",
+      "pop"
+    ],
+    "defaultModeBias": "section_first",
+    "substyleIds": [
+      "future_pop"
+    ]
+  },
+  "substyles": [
+    {
+      "id": "future_pop",
+      "familyId": "pop",
+      "name": "Future Pop",
+      "description": "Glossy future pop with bright loop shapes, pre-drop lift, and polished chorus release.",
+      "tags": [
+        "future_pop",
+        "glossy",
+        "bright",
+        "section_aware"
+      ],
+      "modeBias": "section_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus",
+        "bridge"
+      ],
+      "archetypeIds": [
+        "future_pop_glide_loop",
+        "future_pop_release_loop",
+        "future_pop_shimmer_rise",
+        "future_pop_airlock",
+        "future_pop_bright_launch",
+        "future_pop_held_lift",
+        "future_pop_daybreak",
+        "future_pop_afterglow",
+        "future_pop_open_frame",
+        "future_pop_skyline_push",
+        "future_pop_chorus_sweep",
+        "future_pop_pre_drop",
+        "future_pop_glass_arch",
+        "future_pop_neon_open",
+        "future_pop_bridge_flight"
+      ],
+      "cadenceProfileIds": [
+        "future_pop_open_loop",
+        "future_pop_soft_release",
+        "future_pop_lift_setup"
+      ],
+      "harmonicRhythmProfileIds": [
+        "future_pop_mid_glide",
+        "future_pop_active_push",
+        "future_pop_wide_air"
+      ],
+      "sectionBehaviorId": "future_pop_sections",
+      "spicinessTransformIds": [
+        "future_pop_clean_sheen",
+        "future_pop_gloss_color",
+        "future_pop_edge_bright"
+      ],
+      "variationRuleIds": [
+        "future_pop_safer_loop",
+        "future_pop_brighter_hook",
+        "future_pop_more_open_loop",
+        "future_pop_pre_lift_rule",
+        "future_pop_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "future_pop_delay_arrival",
+        "future_pop_chorus_widen",
+        "future_pop_bass_climb",
+        "future_pop_bridge_reframe"
+      ],
+      "explanationTemplateIds": [
+        "future_pop_why",
+        "future_pop_section",
+        "future_pop_learn"
+      ],
+      "midiPresetIds": [
+        "future_pop_block",
+        "future_pop_arp"
+      ],
+      "mustIncludeTags": [
+        "future_pop",
+        "glossy"
+      ],
+      "mustAvoidTags": [
+        "heavy_dissonance"
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "future_pop_glide_loop",
+      "substyleId": "future_pop",
+      "name": "Glide Loop",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.92,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "lift",
+        "open"
+      ],
+      "tags": [
+        "future_pop",
+        "glossy",
+        "loop_core"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_release_loop",
+      "substyleId": "future_pop",
+      "name": "Release Loop",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.86,
+      "tensionCurve": [
+        "held_tension",
+        "lift",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "future_pop",
+        "chorus_payoff",
+        "glossy"
+      ],
+      "weight": 0.98,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_shimmer_rise",
+      "substyleId": "future_pop",
+      "name": "Shimmer Rise",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "vi",
+        "I"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.73,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "held_tension",
+        "release"
+      ],
+      "tags": [
+        "future_pop",
+        "lift_ready",
+        "glossy"
+      ],
+      "weight": 0.87,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_airlock",
+      "substyleId": "future_pop",
+      "name": "Airlock",
+      "romanNumerals": [
+        "I",
+        "V",
+        "vi",
+        "iii"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.76,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "soft_drop",
+        "lean"
+      ],
+      "tags": [
+        "glossy",
+        "hook_forward",
+        "future_pop"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_bright_launch",
+      "substyleId": "future_pop",
+      "name": "Bright Launch",
+      "romanNumerals": [
+        "ii",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "lift",
+        "rise",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "bright",
+        "chorus_ready",
+        "future_pop"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_held_lift",
+      "substyleId": "future_pop",
+      "name": "Held Lift",
+      "romanNumerals": [
+        "vi",
+        "V",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "dominant",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.69,
+      "tensionCurve": [
+        "soft_drop",
+        "push",
+        "lift",
+        "release"
+      ],
+      "tags": [
+        "airy",
+        "future_pop",
+        "chorus_ready"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_daybreak",
+      "substyleId": "future_pop",
+      "name": "Daybreak",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.75,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "lift",
+        "open"
+      ],
+      "tags": [
+        "bright",
+        "daylight",
+        "future_pop"
+      ],
+      "weight": 0.77,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_afterglow",
+      "substyleId": "future_pop",
+      "name": "Afterglow",
+      "romanNumerals": [
+        "IV",
+        "I",
+        "vi",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic",
+        "tonic_family",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.83,
+      "tensionCurve": [
+        "open",
+        "stable",
+        "soft_drop",
+        "open"
+      ],
+      "tags": [
+        "afterglow",
+        "glossy",
+        "loop_core"
+      ],
+      "weight": 0.76,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_open_frame",
+      "substyleId": "future_pop",
+      "name": "Open Frame",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "vi",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "tonic_family",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.87,
+      "tensionCurve": [
+        "stable",
+        "open",
+        "soft_drop",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "airy",
+        "future_pop"
+      ],
+      "weight": 0.81,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_skyline_push",
+      "substyleId": "future_pop",
+      "name": "Skyline Push",
+      "romanNumerals": [
+        "ii",
+        "V",
+        "vi",
+        "IV"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.7,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "held_tension",
+        "release"
+      ],
+      "tags": [
+        "lift_ready",
+        "chorus_ready",
+        "future_pop"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_chorus_sweep",
+      "substyleId": "future_pop",
+      "name": "Chorus Sweep",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_wide_air",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.65,
+      "tensionCurve": [
+        "held_tension",
+        "lift",
+        "release",
+        "settle"
+      ],
+      "tags": [
+        "chorus_payoff",
+        "airy",
+        "future_pop"
+      ],
+      "weight": 0.73,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_pre_drop",
+      "substyleId": "future_pop",
+      "name": "Pre-Drop",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.68,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "tease",
+        "held_tension"
+      ],
+      "tags": [
+        "lift_ready",
+        "drop_ready",
+        "future_pop"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_glass_arch",
+      "substyleId": "future_pop",
+      "name": "Glass Arch",
+      "romanNumerals": [
+        "I",
+        "ii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "glossy",
+        "bright",
+        "future_pop"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_neon_open",
+      "substyleId": "future_pop",
+      "name": "Neon Open",
+      "romanNumerals": [
+        "iii",
+        "vi",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_wide_air",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.58,
+      "tensionCurve": [
+        "lean",
+        "soft_drop",
+        "lift",
+        "release"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "neon",
+        "future_pop"
+      ],
+      "weight": 0.67,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "future_pop_bridge_flight",
+      "substyleId": "future_pop",
+      "name": "Bridge Flight",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_wide_air",
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.56,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "rise",
+        "release"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "flight",
+        "future_pop"
+      ],
+      "weight": 0.66,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "add9",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "future_pop_open_loop",
+      "name": "Open Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "predominant",
+        "dominant"
+      ],
+      "strength": 0.44,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_soft_release",
+      "name": "Soft Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.74,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_lift_setup",
+      "name": "Lift Setup",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.68,
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "weight": 0.92
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "future_pop_mid_glide",
+      "name": "Mid Glide",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ]
+    },
+    {
+      "id": "future_pop_active_push",
+      "name": "Active Push",
+      "density": "active",
+      "beatsPerChangePattern": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "chorus"
+      ]
+    },
+    {
+      "id": "future_pop_wide_air",
+      "name": "Wide Air",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "bridge",
+        "chorus"
+      ]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "future_pop_sections",
+      "substyleId": "future_pop",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "glossy"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "future_pop_delay_arrival"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "floating"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "glossy",
+          "hook_forward"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter"
+        ],
+        "allowedSpecialMoveIds": [
+          "future_pop_delay_arrival"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "gliding"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "lift_ready",
+          "drop_ready"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "future_pop_delay_arrival",
+          "future_pop_bass_climb"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "rising"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "active",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "chorus_payoff",
+          "chorus_ready"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "brighter",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "future_pop_chorus_widen"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "flight"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "future_pop_bridge_reframe"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "lifted_reframe"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "future_pop_clean_sheen",
+      "name": "Clean Sheen",
+      "level": 1,
+      "styleScope": [
+        "pop",
+        "future_pop"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "6",
+        "sus2"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_gloss_color",
+      "name": "Gloss Color",
+      "level": 2,
+      "styleScope": [
+        "pop",
+        "future_pop"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "maj7",
+        "9"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_edge_bright",
+      "name": "Edge Bright",
+      "level": 3,
+      "styleScope": [
+        "pop",
+        "future_pop"
+      ],
+      "allowedDecorations": [
+        "9",
+        "#11",
+        "sus4"
+      ],
+      "allowedFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.84
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "future_pop_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "hook_identity",
+        "topline_space"
+      ],
+      "targets": [
+        "surface_simplify",
+        "cleaner_end"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_brighter_hook",
+      "name": "Brighter Hook",
+      "type": "brighter",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "preserve": [
+        "hook_identity"
+      ],
+      "targets": [
+        "tonic_shine",
+        "upper_color"
+      ],
+      "requiredTags": [
+        "bright"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.92
+    },
+    {
+      "id": "future_pop_more_open_loop",
+      "name": "More Open Loop",
+      "type": "more_open",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "glossy_identity"
+      ],
+      "targets": [
+        "last_slot_openness",
+        "cadence_softening"
+      ],
+      "requiredTags": [
+        "glossy"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.86
+    },
+    {
+      "id": "future_pop_pre_lift_rule",
+      "name": "Lift Setup",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "hook_identity",
+        "drop_space"
+      ],
+      "targets": [
+        "dominant_pull",
+        "bass_motion"
+      ],
+      "requiredTags": [
+        "lift_ready"
+      ],
+      "forbiddenTags": [
+        "loop_core"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "future_pop_chorus_payoff_rule",
+      "name": "Gloss Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "hook_identity"
+      ],
+      "targets": [
+        "release_width",
+        "tonic_arrival"
+      ],
+      "requiredTags": [
+        "chorus_payoff"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "future_pop_delay_arrival",
+      "name": "Delay Arrival",
+      "category": "section_lift",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "pre_chorus"
+      ],
+      "triggerTags": [
+        "lift_ready",
+        "glossy"
+      ],
+      "operation": "delay_tonic_arrival",
+      "weight": 0.92
+    },
+    {
+      "id": "future_pop_chorus_widen",
+      "name": "Chorus Widen",
+      "category": "payoff",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "triggerTags": [
+        "chorus_payoff",
+        "chorus_ready"
+      ],
+      "operation": "chorus_payoff_widen",
+      "weight": 0.94
+    },
+    {
+      "id": "future_pop_bass_climb",
+      "name": "Bass Climb Lead-In",
+      "category": "lead_in",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "triggerTags": [
+        "lift_ready",
+        "drop_ready"
+      ],
+      "operation": "bass_climb_lead_in",
+      "weight": 0.88
+    },
+    {
+      "id": "future_pop_bridge_reframe",
+      "name": "Bridge Reframe",
+      "category": "bridge",
+      "styleScope": [
+        "future_pop"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "triggerTags": [
+        "bridge_contrast",
+        "flight"
+      ],
+      "operation": "bridge_reframe",
+      "weight": 0.82
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "future_pop_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "future_pop"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} works because future pop keeps the loop polished and readable, then spends its bigger release only where the payoff needs it.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "future_pop_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "future_pop"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, future pop usually lifts through timing and brightness first. The progression should feel like it is opening up before it feels harmonically crowded.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "future_pop_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "future_pop"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "When {rhythmName} keeps repeating cleanly, you can add sheen without losing focus. If the chord movement starts feeling busier than the production, pull it back.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "future_pop_block",
+      "name": "Future Pop Block",
+      "mode": "block",
+      "styleTags": [
+        "future_pop",
+        "glossy"
+      ],
+      "voicingStyle": "wide_pop_stack",
+      "registerRange": [
+        50,
+        82
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "bright_even",
+      "sustainBehavior": "clean_phrase_sustain",
+      "weight": 1
+    },
+    {
+      "id": "future_pop_arp",
+      "name": "Future Pop Arp",
+      "mode": "arp",
+      "styleTags": [
+        "future_pop",
+        "airy"
+      ],
+      "voicingStyle": "polished_upper_motion",
+      "registerRange": [
+        55,
+        88
+      ],
+      "rhythmPattern": "eighth_note_glide",
+      "velocityProfile": "lifted_wave",
+      "sustainBehavior": "phrase_sustain",
+      "weight": 0.94
+    }
+  ]
+}

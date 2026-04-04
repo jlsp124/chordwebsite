@@ -74,6 +74,7 @@ These files are source material for scripts and human editing only.
 Current repo scaffolding also includes:
 - starter schema mirrors in `src/data/templates/`
 - validator sample fixtures in `src/data/packs/samples/`
+- hand-authored pack sources in `data-src/authoring/*.mjs`
 
 Those are implementation scaffolding only. They do not replace `data-src/`.
 
@@ -236,8 +237,10 @@ Expected script responsibilities:
 The scripts should compile and validate.
 They should not act as hidden music generators.
 
-Current repo implementation includes `scripts/validate-packs.mjs`, which validates the in-repo sample fixtures
-without treating them as shipped runtime packs.
+Current repo implementation includes:
+- `scripts/build-packs.mjs` to compile authored source modules into `public/packs/*.json`
+- `scripts/validate-packs.mjs` to validate the shipped runtime pack surface
+- `scripts/validate-packs.mjs --samples` to keep validating the smaller sample fixtures
 
 ---
 

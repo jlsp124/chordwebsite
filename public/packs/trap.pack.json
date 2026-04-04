@@ -1,0 +1,3838 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "trap",
+  "family": {
+    "id": "trap",
+    "name": "Trap",
+    "description": "Loop-first trap harmony with dark melodic cycles and restrained section changes.",
+    "tags": [
+      "producer_first",
+      "loop_first",
+      "trap"
+    ],
+    "defaultModeBias": "loop_first",
+    "substyleIds": [
+      "melodic_trap",
+      "trap_soul_rnb_rap"
+    ]
+  },
+  "substyles": [
+    {
+      "id": "melodic_trap",
+      "familyId": "trap",
+      "name": "Melodic Trap",
+      "description": "Loop-first melodic trap with dark minor cycles, tilted turnbacks, and restrained harmonic movement.",
+      "tags": [
+        "trap",
+        "loop_first",
+        "dark",
+        "melodic"
+      ],
+      "modeBias": "loop_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "archetypeIds": [
+        "melodic_trap_noir_core",
+        "melodic_trap_lament_loop",
+        "melodic_trap_glass_loop",
+        "melodic_trap_minor_roll",
+        "melodic_trap_shadow_bounce",
+        "melodic_trap_narrow_drop",
+        "melodic_trap_hook_hold",
+        "melodic_trap_rise_tilt",
+        "melodic_trap_moody_two_step",
+        "melodic_trap_distant_memory",
+        "melodic_trap_unstable_pull",
+        "melodic_trap_cold_turn",
+        "melodic_trap_open_minor",
+        "melodic_trap_smoke_arc",
+        "melodic_trap_descent_frame"
+      ],
+      "cadenceProfileIds": [
+        "melodic_trap_open_loop",
+        "melodic_trap_last_bar_release",
+        "melodic_trap_tilted_push"
+      ],
+      "harmonicRhythmProfileIds": [
+        "melodic_trap_slow_drag",
+        "melodic_trap_mid_roll",
+        "melodic_trap_tilt_turn"
+      ],
+      "sectionBehaviorId": "melodic_trap_sections",
+      "spicinessTransformIds": [
+        "melodic_trap_low_color",
+        "melodic_trap_trap_glow",
+        "melodic_trap_edge_tilt"
+      ],
+      "variationRuleIds": [
+        "melodic_trap_safer_loop",
+        "melodic_trap_darker_pull",
+        "melodic_trap_more_open_loop",
+        "melodic_trap_pre_lift_rule",
+        "melodic_trap_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "melodic_trap_groove_lock",
+        "melodic_trap_last_bar_tilt",
+        "melodic_trap_dominant_pressure",
+        "melodic_trap_trap_soul_enrich"
+      ],
+      "explanationTemplateIds": [
+        "melodic_trap_why",
+        "melodic_trap_section",
+        "melodic_trap_learn"
+      ],
+      "midiPresetIds": [
+        "melodic_trap_block",
+        "melodic_trap_comp"
+      ],
+      "mustIncludeTags": [
+        "trap",
+        "loop_core"
+      ],
+      "mustAvoidTags": [
+        "blunt_major"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap",
+      "familyId": "trap",
+      "name": "Trap-Soul / R&B Rap",
+      "description": "Loop-first trap-soul with smoother color, late-night sway, and restrained R&B extension.",
+      "tags": [
+        "trap_soul",
+        "loop_first",
+        "rich_color",
+        "late_night"
+      ],
+      "modeBias": "loop_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "archetypeIds": [
+        "trap_soul_rnb_rap_velvet_loop",
+        "trap_soul_rnb_rap_late_drive",
+        "trap_soul_rnb_rap_soul_turn",
+        "trap_soul_rnb_rap_low_light",
+        "trap_soul_rnb_rap_champagne_minor",
+        "trap_soul_rnb_rap_night_ribbon",
+        "trap_soul_rnb_rap_dusky_resolve",
+        "trap_soul_rnb_rap_warm_slide",
+        "trap_soul_rnb_rap_tape_wobble",
+        "trap_soul_rnb_rap_soft_push",
+        "trap_soul_rnb_rap_moody_home",
+        "trap_soul_rnb_rap_clouded_hook",
+        "trap_soul_rnb_rap_city_afterglow",
+        "trap_soul_rnb_rap_open_letter",
+        "trap_soul_rnb_rap_lean_back"
+      ],
+      "cadenceProfileIds": [
+        "trap_soul_rnb_rap_open_loop",
+        "trap_soul_rnb_rap_soft_pull",
+        "trap_soul_rnb_rap_late_push"
+      ],
+      "harmonicRhythmProfileIds": [
+        "trap_soul_rnb_rap_slow_lux",
+        "trap_soul_rnb_rap_mid_sway",
+        "trap_soul_rnb_rap_turnback_push"
+      ],
+      "sectionBehaviorId": "trap_soul_rnb_rap_sections",
+      "spicinessTransformIds": [
+        "trap_soul_rnb_rap_soft_color",
+        "trap_soul_rnb_rap_rich_color",
+        "trap_soul_rnb_rap_late_night_edge"
+      ],
+      "variationRuleIds": [
+        "trap_soul_rnb_rap_safer_loop",
+        "trap_soul_rnb_rap_richer_color",
+        "trap_soul_rnb_rap_darker_turn",
+        "trap_soul_rnb_rap_pre_lift_rule",
+        "trap_soul_rnb_rap_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "trap_soul_rnb_rap_groove_lock",
+        "trap_soul_rnb_rap_trap_soul_enrich",
+        "trap_soul_rnb_rap_last_bar_tilt",
+        "trap_soul_rnb_rap_dominant_pressure"
+      ],
+      "explanationTemplateIds": [
+        "trap_soul_rnb_rap_why",
+        "trap_soul_rnb_rap_section",
+        "trap_soul_rnb_rap_learn"
+      ],
+      "midiPresetIds": [
+        "trap_soul_rnb_rap_block",
+        "trap_soul_rnb_rap_comp"
+      ],
+      "mustIncludeTags": [
+        "trap_soul",
+        "rich_color"
+      ],
+      "mustAvoidTags": [
+        "blunt_major"
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "melodic_trap_noir_core",
+      "substyleId": "melodic_trap",
+      "name": "Noir Core",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "III",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "tonic_family",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.95,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "glow",
+        "open"
+      ],
+      "tags": [
+        "trap",
+        "loop_core",
+        "dark"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_lament_loop",
+      "substyleId": "melodic_trap",
+      "name": "Lament Loop",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VI",
+        "v"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.87,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "expand",
+        "open"
+      ],
+      "tags": [
+        "melodic",
+        "dark",
+        "loop_core"
+      ],
+      "weight": 0.9,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_glass_loop",
+      "substyleId": "melodic_trap",
+      "name": "Glass Loop",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_slow_drag",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.93,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "shadow",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "cold",
+        "trap"
+      ],
+      "weight": 0.92,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_minor_roll",
+      "substyleId": "melodic_trap",
+      "name": "Minor Roll",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "i",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.91,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "reset",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "pedal_low",
+        "trap"
+      ],
+      "weight": 0.86,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_shadow_bounce",
+      "substyleId": "melodic_trap",
+      "name": "Shadow Bounce",
+      "romanNumerals": [
+        "i",
+        "III",
+        "VII",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "dominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_slow_drag",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.88,
+      "tensionCurve": [
+        "stable",
+        "glow",
+        "push",
+        "open"
+      ],
+      "tags": [
+        "melodic",
+        "hook_forward",
+        "trap"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_narrow_drop",
+      "substyleId": "melodic_trap",
+      "name": "Narrow Drop",
+      "romanNumerals": [
+        "i",
+        "i",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_slow_drag",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.94,
+      "tensionCurve": [
+        "stable",
+        "anchor",
+        "expand",
+        "open"
+      ],
+      "tags": [
+        "drop_ready",
+        "pedal_low",
+        "trap"
+      ],
+      "weight": 0.89,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_hook_hold",
+      "substyleId": "melodic_trap",
+      "name": "Hook Hold",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "i",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "tonic",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.85,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "reset",
+        "expand"
+      ],
+      "tags": [
+        "melodic",
+        "hook_forward",
+        "dark"
+      ],
+      "weight": 0.81,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_rise_tilt",
+      "substyleId": "melodic_trap",
+      "name": "Rise Tilt",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "VII",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "dominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_tilt_turn",
+      "allowedSectionIntents": [
+        "chorus",
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.74,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "push",
+        "tilt"
+      ],
+      "tags": [
+        "turnback",
+        "trap",
+        "dark"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_moody_two_step",
+      "substyleId": "melodic_trap",
+      "name": "Moody Two-Step",
+      "romanNumerals": [
+        "i",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_slow_drag",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.97,
+      "tensionCurve": [
+        "stable",
+        "open"
+      ],
+      "tags": [
+        "minimal",
+        "loop_core",
+        "trap"
+      ],
+      "weight": 0.83,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_distant_memory",
+      "substyleId": "melodic_trap",
+      "name": "Distant Memory",
+      "romanNumerals": [
+        "VI",
+        "i",
+        "VII",
+        "i"
+      ],
+      "functionPath": [
+        "contrast",
+        "tonic",
+        "dominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.73,
+      "tensionCurve": [
+        "expand",
+        "tease",
+        "push",
+        "reset"
+      ],
+      "tags": [
+        "melodic",
+        "memory",
+        "trap"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_unstable_pull",
+      "substyleId": "melodic_trap",
+      "name": "Unstable Pull",
+      "romanNumerals": [
+        "i",
+        "v",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_tilt_turn",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "expand",
+        "held_tension"
+      ],
+      "tags": [
+        "pre_lift",
+        "dark",
+        "trap"
+      ],
+      "weight": 0.76,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_cold_turn",
+      "substyleId": "melodic_trap",
+      "name": "Cold Turn",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "i",
+        "v"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.86,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "reset",
+        "open"
+      ],
+      "tags": [
+        "cold",
+        "loop_core",
+        "trap"
+      ],
+      "weight": 0.77,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_open_minor",
+      "substyleId": "melodic_trap",
+      "name": "Open Minor",
+      "romanNumerals": [
+        "i",
+        "III",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.8,
+      "tensionCurve": [
+        "stable",
+        "glow",
+        "expand",
+        "open"
+      ],
+      "tags": [
+        "melodic",
+        "wide",
+        "trap"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_smoke_arc",
+      "substyleId": "melodic_trap",
+      "name": "Smoke Arc",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VII",
+        "III"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_tilt_turn",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.62,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "push",
+        "glow"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "smoke",
+        "trap"
+      ],
+      "weight": 0.68,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "melodic_trap_descent_frame",
+      "substyleId": "melodic_trap",
+      "name": "Descent Frame",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "iv",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "melodic_trap_mid_roll",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.84,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "darken",
+        "open"
+      ],
+      "tags": [
+        "descent",
+        "loop_core",
+        "trap"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_velvet_loop",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Velvet Loop",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VII",
+        "III"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.92,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "push",
+        "glow"
+      ],
+      "tags": [
+        "trap_soul",
+        "loop_core",
+        "rich_color"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_late_drive",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Late Drive",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "iv",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.81,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "darken",
+        "push"
+      ],
+      "tags": [
+        "trap_soul",
+        "late_night",
+        "rich_color"
+      ],
+      "weight": 0.92,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_soul_turn",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Soul Turn",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.78,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "crossover",
+        "hook_forward",
+        "rich_color"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_low_light",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Low Light",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "i",
+        "III"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "tonic",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_slow_lux",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.9,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "reset",
+        "glow"
+      ],
+      "tags": [
+        "trap_soul",
+        "loop_core",
+        "smoky"
+      ],
+      "weight": 0.86,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_champagne_minor",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Champagne Minor",
+      "romanNumerals": [
+        "i",
+        "III",
+        "VII",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "dominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.84,
+      "tensionCurve": [
+        "stable",
+        "glow",
+        "push",
+        "open"
+      ],
+      "tags": [
+        "rich_color",
+        "luxury",
+        "trap_soul"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_night_ribbon",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Night Ribbon",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "V",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "dominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_turnback_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.69,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "push",
+        "release"
+      ],
+      "tags": [
+        "crossover",
+        "silky",
+        "rich_color"
+      ],
+      "weight": 0.76,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_dusky_resolve",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Dusky Resolve",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VI",
+        "III"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "contrast",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.83,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "expand",
+        "glow"
+      ],
+      "tags": [
+        "smoky",
+        "loop_core",
+        "trap_soul"
+      ],
+      "weight": 0.81,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_warm_slide",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Warm Slide",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_turnback_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.66,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "crossover",
+        "warm",
+        "rich_color"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_tape_wobble",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Tape Wobble",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "iv",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "predominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_slow_lux",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.88,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "darken",
+        "open"
+      ],
+      "tags": [
+        "smoky",
+        "loop_core",
+        "wobble"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_soft_push",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Soft Push",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_turnback_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.7,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "pre_lift",
+        "crossover",
+        "rich_color"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_moody_home",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Moody Home",
+      "romanNumerals": [
+        "i",
+        "V",
+        "VI",
+        "iv"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.75,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "expand",
+        "darken"
+      ],
+      "tags": [
+        "late_night",
+        "trap_soul",
+        "rich_color"
+      ],
+      "weight": 0.77,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_clouded_hook",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Clouded Hook",
+      "romanNumerals": [
+        "iii",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_turnback_push",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.63,
+      "tensionCurve": [
+        "glow",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "crossover",
+        "hook_forward",
+        "silky"
+      ],
+      "weight": 0.68,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_city_afterglow",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "City Afterglow",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VII",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "dominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.82,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "push",
+        "expand"
+      ],
+      "tags": [
+        "trap_soul",
+        "afterglow",
+        "rich_color"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_open_letter",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Open Letter",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "iv"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_turnback_push",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.58,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "lift",
+        "darken"
+      ],
+      "tags": [
+        "borrowed_color",
+        "crossover",
+        "bridge_contrast"
+      ],
+      "weight": 0.66,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "9",
+            "11",
+            "sus2"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_lean_back",
+      "substyleId": "trap_soul_rnb_rap",
+      "name": "Lean Back",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "III",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "tonic_family",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "trap_soul_rnb_rap_mid_sway",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.85,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "glow",
+        "push"
+      ],
+      "tags": [
+        "trap_soul",
+        "loop_core",
+        "late_night"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "9"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "maj7",
+            "9",
+            "13"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "min7",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "b9",
+            "sus4"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "melodic_trap_open_loop",
+      "name": "Open Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "contrast",
+        "dominant"
+      ],
+      "strength": 0.46,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_last_bar_release",
+      "name": "Last-Bar Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.6,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 0.8
+    },
+    {
+      "id": "melodic_trap_tilted_push",
+      "name": "Tilted Push",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.64,
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "weight": 0.82
+    },
+    {
+      "id": "trap_soul_rnb_rap_open_loop",
+      "name": "Open Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "contrast",
+        "dominant"
+      ],
+      "strength": 0.44,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_soft_pull",
+      "name": "Soft Pull",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.66,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 0.88
+    },
+    {
+      "id": "trap_soul_rnb_rap_late_push",
+      "name": "Late Push",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.62,
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "weight": 0.82
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "melodic_trap_slow_drag",
+      "name": "Slow Drag",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ]
+    },
+    {
+      "id": "melodic_trap_mid_roll",
+      "name": "Mid Roll",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "chorus"
+      ]
+    },
+    {
+      "id": "melodic_trap_tilt_turn",
+      "name": "Tilt Turn",
+      "density": "variable",
+      "beatsPerChangePattern": [
+        8,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_slow_lux",
+      "name": "Slow Lux",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_mid_sway",
+      "name": "Mid Sway",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "chorus"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_turnback_push",
+      "name": "Turnback Push",
+      "density": "variable",
+      "beatsPerChangePattern": [
+        8,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "melodic_trap_sections",
+      "substyleId": "melodic_trap",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "minimal"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "darker",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "melodic_trap_groove_lock",
+          "melodic_trap_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "locked"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "hook_forward"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "melodic_trap_groove_lock",
+          "melodic_trap_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "steady"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "pre_lift",
+          "turnback"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "melodic_trap_last_bar_tilt",
+          "melodic_trap_dominant_pressure"
+        ],
+        "forbiddenTags": [
+          "minimal"
+        ],
+        "energyShape": "pressure"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "open_loop",
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "drop_ready",
+          "melodic"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "melodic_trap_groove_lock",
+          "melodic_trap_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "lifted_loop"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "smoke"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "melodic_trap_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "minimal"
+        ],
+        "energyShape": "reframe"
+      }
+    },
+    {
+      "id": "trap_soul_rnb_rap_sections",
+      "substyleId": "trap_soul_rnb_rap",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "trap_soul"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "trap_soul_rnb_rap_groove_lock",
+          "trap_soul_rnb_rap_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "sway"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "late_night"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "trap_soul_rnb_rap_groove_lock",
+          "trap_soul_rnb_rap_trap_soul_enrich"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "steady"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "pre_lift",
+          "crossover"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "trap_soul_rnb_rap_last_bar_tilt",
+          "trap_soul_rnb_rap_dominant_pressure"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "tilting"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "rich_color",
+          "hook_forward"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "richer",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "trap_soul_rnb_rap_trap_soul_enrich",
+          "trap_soul_rnb_rap_groove_lock"
+        ],
+        "forbiddenTags": [
+          "blunt_major"
+        ],
+        "energyShape": "open_release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "borrowed_color"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "trap_soul_rnb_rap_last_bar_tilt",
+          "trap_soul_rnb_rap_trap_soul_enrich"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "reframe"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "melodic_trap_low_color",
+      "name": "Low Color",
+      "level": 1,
+      "styleScope": [
+        "trap",
+        "melodic_trap"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "min7"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_trap_glow",
+      "name": "Trap Glow",
+      "level": 2,
+      "styleScope": [
+        "trap",
+        "melodic_trap"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "11",
+        "sus2"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "contrast",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_edge_tilt",
+      "name": "Edge Tilt",
+      "level": 3,
+      "styleScope": [
+        "trap",
+        "melodic_trap"
+      ],
+      "allowedDecorations": [
+        "11",
+        "sus4",
+        "b9"
+      ],
+      "allowedFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.84
+    },
+    {
+      "id": "trap_soul_rnb_rap_soft_color",
+      "name": "Soft Color",
+      "level": 1,
+      "styleScope": [
+        "trap",
+        "trap_soul_rnb_rap"
+      ],
+      "allowedDecorations": [
+        "min7",
+        "add9"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_rich_color",
+      "name": "Rich Color",
+      "level": 2,
+      "styleScope": [
+        "trap",
+        "trap_soul_rnb_rap"
+      ],
+      "allowedDecorations": [
+        "9",
+        "11",
+        "maj7"
+      ],
+      "allowedFunctions": [
+        "tonic_family",
+        "predominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_late_night_edge",
+      "name": "Late-Night Edge",
+      "level": 3,
+      "styleScope": [
+        "trap",
+        "trap_soul_rnb_rap"
+      ],
+      "allowedDecorations": [
+        "9",
+        "11",
+        "13",
+        "b9"
+      ],
+      "allowedFunctions": [
+        "contrast",
+        "dominant"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.86
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "melodic_trap_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "groove_space",
+        "root_identity"
+      ],
+      "targets": [
+        "surface_simplify",
+        "cleaner_last_bar"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_darker_pull",
+      "name": "Darker Pull",
+      "type": "darker",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "preserve": [
+        "loop_identity"
+      ],
+      "targets": [
+        "contrast_shadow",
+        "minor_weight"
+      ],
+      "requiredTags": [
+        "dark"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.95
+    },
+    {
+      "id": "melodic_trap_more_open_loop",
+      "name": "More Open Loop",
+      "type": "more_open",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "preserve": [
+        "groove_space"
+      ],
+      "targets": [
+        "last_slot_openness",
+        "cadence_softening"
+      ],
+      "requiredTags": [
+        "melodic"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.82
+    },
+    {
+      "id": "melodic_trap_pre_lift_rule",
+      "name": "Tilt Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "loop_identity",
+        "808_space"
+      ],
+      "targets": [
+        "last_bar_motion",
+        "dominant_pressure"
+      ],
+      "requiredTags": [
+        "turnback"
+      ],
+      "forbiddenTags": [
+        "minimal"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "melodic_trap_chorus_payoff_rule",
+      "name": "Loop Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "loop_identity"
+      ],
+      "targets": [
+        "arrival_width",
+        "hook_emphasis"
+      ],
+      "requiredTags": [
+        "drop_ready"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.86
+    },
+    {
+      "id": "trap_soul_rnb_rap_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "groove_space",
+        "smoky_identity"
+      ],
+      "targets": [
+        "surface_simplify",
+        "cleaner_turnback"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_richer_color",
+      "name": "Richer Color",
+      "type": "richer",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "preserve": [
+        "roman_root_path",
+        "trap_identity"
+      ],
+      "targets": [
+        "upper_extensions",
+        "smoother_color"
+      ],
+      "requiredTags": [
+        "rich_color"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_darker_turn",
+      "name": "Darker Turn",
+      "type": "darker",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus",
+        "bridge"
+      ],
+      "preserve": [
+        "loop_identity"
+      ],
+      "targets": [
+        "borrowed_shadow",
+        "contrast_weight"
+      ],
+      "requiredTags": [
+        "late_night"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "trap_soul_rnb_rap_pre_lift_rule",
+      "name": "Late Push",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "groove_space",
+        "vocal_pocket"
+      ],
+      "targets": [
+        "dominant_pull",
+        "last_bar_motion"
+      ],
+      "requiredTags": [
+        "pre_lift"
+      ],
+      "forbiddenTags": [
+        "loop_core"
+      ],
+      "weight": 0.84
+    },
+    {
+      "id": "trap_soul_rnb_rap_chorus_payoff_rule",
+      "name": "Soul Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "hook_identity"
+      ],
+      "targets": [
+        "release_width",
+        "upper_extension"
+      ],
+      "requiredTags": [
+        "hook_forward"
+      ],
+      "forbiddenTags": [
+        "blunt_major"
+      ],
+      "weight": 0.82
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "melodic_trap_groove_lock",
+      "name": "Groove Lock",
+      "category": "groove",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "triggerTags": [
+        "loop_core",
+        "minimal"
+      ],
+      "operation": "groove_lock",
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_last_bar_tilt",
+      "name": "Last Bar Tilt",
+      "category": "turnback",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "pre_chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "turnback",
+        "descent"
+      ],
+      "operation": "last_bar_tilt",
+      "weight": 0.9
+    },
+    {
+      "id": "melodic_trap_dominant_pressure",
+      "name": "Dominant Pressure",
+      "category": "tension",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "pre_lift",
+        "turnback"
+      ],
+      "operation": "dominant_pressure",
+      "weight": 0.72
+    },
+    {
+      "id": "melodic_trap_trap_soul_enrich",
+      "name": "Trap-Soul Enrich",
+      "category": "color",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "melodic",
+        "memory"
+      ],
+      "operation": "trap_soul_enrich",
+      "weight": 0.68
+    },
+    {
+      "id": "trap_soul_rnb_rap_groove_lock",
+      "name": "Groove Lock",
+      "category": "groove",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "triggerTags": [
+        "loop_core",
+        "late_night"
+      ],
+      "operation": "groove_lock",
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_trap_soul_enrich",
+      "name": "Trap-Soul Enrich",
+      "category": "color",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "rich_color",
+        "crossover"
+      ],
+      "operation": "trap_soul_enrich",
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_last_bar_tilt",
+      "name": "Last Bar Tilt",
+      "category": "turnback",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "pre_chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "turnback",
+        "smoky"
+      ],
+      "operation": "last_bar_tilt",
+      "weight": 0.88
+    },
+    {
+      "id": "trap_soul_rnb_rap_dominant_pressure",
+      "name": "Dominant Pressure",
+      "category": "tension",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "pre_lift",
+        "hook_forward"
+      ],
+      "operation": "dominant_pressure",
+      "weight": 0.72
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "melodic_trap_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} works because the loop stays planted. The harmony adds motion, but it never steals space from the groove or vocal pocket.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "melodic_trap_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, melodic trap usually changes direction through the last bar, not through a whole new chord world.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "melodic_trap_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "melodic_trap"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "If {cadenceType} starts feeling too strong, the progression stops sounding trap-first. Keep the loop identity louder than the resolution.",
+      "requiredPlaceholders": [
+        "cadenceType"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} keeps the trap pocket intact while the harmony leans smoother and richer than straight melodic trap.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, trap-soul usually changes feel through color and last-bar direction, not through busy harmonic rewriting. Keep the loop lazy, then tilt it.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "trap_soul_rnb_rap_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "trap_soul_rnb_rap"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "If {rhythmName} still feels loop-first after you add color chords, you are inside the style. If it starts sounding like pop-R&B, you pushed too far.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "melodic_trap_block",
+      "name": "Melodic Trap Block",
+      "mode": "block",
+      "styleTags": [
+        "trap",
+        "dark"
+      ],
+      "voicingStyle": "low_mid_stack",
+      "registerRange": [
+        42,
+        70
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "firm_even",
+      "sustainBehavior": "tight_bar_sustain",
+      "weight": 1
+    },
+    {
+      "id": "melodic_trap_comp",
+      "name": "Melodic Trap Comp",
+      "mode": "comp",
+      "styleTags": [
+        "melodic",
+        "trap"
+      ],
+      "voicingStyle": "short_mid_stabs",
+      "registerRange": [
+        45,
+        72
+      ],
+      "rhythmPattern": "restrained_syncopation",
+      "velocityProfile": "accented_even",
+      "sustainBehavior": "short_release",
+      "weight": 0.6
+    },
+    {
+      "id": "trap_soul_rnb_rap_block",
+      "name": "Trap-Soul Block",
+      "mode": "block",
+      "styleTags": [
+        "trap_soul",
+        "late_night"
+      ],
+      "voicingStyle": "soft_low_mid_stack",
+      "registerRange": [
+        43,
+        74
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "warm_even",
+      "sustainBehavior": "smooth_bar_sustain",
+      "weight": 1
+    },
+    {
+      "id": "trap_soul_rnb_rap_comp",
+      "name": "Trap-Soul Comp",
+      "mode": "comp",
+      "styleTags": [
+        "crossover",
+        "rich_color"
+      ],
+      "voicingStyle": "soft_offbeat_stabs",
+      "registerRange": [
+        48,
+        78
+      ],
+      "rhythmPattern": "laid_back_syncopation",
+      "velocityProfile": "gentle_accent",
+      "sustainBehavior": "short_to_medium",
+      "weight": 0.74
+    }
+  ]
+}

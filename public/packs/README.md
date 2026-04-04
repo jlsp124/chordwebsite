@@ -12,3 +12,5 @@ Expected v1 files:
 
 The browser may fetch files from here at runtime.
 Do not place authoring fragments here.
+
+These files are generated from `data-src/authoring/` via `node scripts/build-packs.mjs`.

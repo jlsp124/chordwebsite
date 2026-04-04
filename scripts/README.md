@@ -14,7 +14,12 @@ Scripts in this folder are **not runtime dependencies** for the deployed GitHub 
 
 ---
 
-## Current Script
+## Current Scripts
+
+### `build-packs.mjs`
+Compiles the hand-authored source modules in `data-src/authoring/` into:
+- `public/packs/manifest.json`
+- `public/packs/*.pack.json`
 
 ### `validate-packs.mjs`
 Validates local JSON packs:
@@ -23,17 +28,12 @@ Validates local JSON packs:
 - cross-reference integrity
 - no empty required arrays
 
-Current implementation validates the hand-authored sample fixtures under `src/data/packs/samples/`.
+Current implementation validates the shipped runtime pack surface under `public/packs/`.
+Use `node scripts/validate-packs.mjs --samples` to validate the smaller sample fixtures.
 
 ---
 
 ## Recommended Future Files
-
-### `build-packs.ts` or `build-packs.py`
-Optional later script to transform curated source material into final pack JSON.
-
-Input should come from `data-src/`.
-Output should go to `public/packs/`.
 
 ### `build-pack-manifest.ts`
 Builds or validates `public/packs/manifest.json` from the compiled pack set.

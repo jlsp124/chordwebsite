@@ -8,20 +8,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const sampleDir = path.join(repoRoot, 'src', 'data', 'packs', 'samples');
+const runtimeDir = path.join(repoRoot, 'public', 'packs');
 
 async function readJson(filePath) {
   const contents = await readFile(filePath, 'utf8');
   return JSON.parse(contents);
 }
 
-async function loadSamplePackSet() {
-  const manifestPath = path.join(sampleDir, 'manifest.json');
+async function loadPackSet(baseDir) {
+  const manifestPath = path.join(baseDir, 'manifest.json');
   const manifest = await readJson(manifestPath);
   const packsByPath = {};
 
   for (const entry of manifest.packs) {
     const fileName = path.basename(entry.path);
-    const packPath = path.join(sampleDir, fileName);
+    const packPath = path.join(baseDir, fileName);
     packsByPath[entry.path] = await readJson(packPath);
   }
 
@@ -35,7 +36,9 @@ function printIssues(issues) {
 }
 
 async function main() {
-  const { manifest, packsByPath } = await loadSamplePackSet();
+  const useSamples = process.argv.includes('--samples');
+  const baseDir = useSamples ? sampleDir : runtimeDir;
+  const { manifest, packsByPath } = await loadPackSet(baseDir);
   const issues = validatePackSet(manifest, packsByPath);
 
   if (issues.length > 0) {
@@ -45,7 +48,7 @@ async function main() {
   }
 
   console.log(
-    `Validated ${manifest.packs.length} sample pack(s): ${manifest.packs
+    `Validated ${manifest.packs.length} ${useSamples ? 'sample' : 'runtime'} pack(s): ${manifest.packs
       .map((entry) => entry.packId)
       .join(', ')}`
   );

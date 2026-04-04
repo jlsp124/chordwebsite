@@ -68,7 +68,8 @@ function validateRequiredStringArray(
   scope: string,
   path: string,
   issues: ValidationIssue[],
-  allowEmpty = false
+  allowEmpty = false,
+  enforceUnique = true
 ): value is string[] {
   if (!isStringArray(value)) {
     issues.push(issue(scope, path, 'Expected an array of strings.'));
@@ -80,7 +81,7 @@ function validateRequiredStringArray(
     return false;
   }
 
-  if (!hasUniqueValues(value)) {
+  if (enforceUnique && !hasUniqueValues(value)) {
     issues.push(issue(scope, path, `Duplicate values found: ${collectDuplicates(value).join(', ')}`));
   }
 
@@ -483,8 +484,22 @@ export function validateFamilyPack(pack: unknown): ValidationIssue[] {
       issues.push(issue(scope, `${path}.substyleId`, `Unknown substyle "${archetype.substyleId}".`));
     }
 
-    validateRequiredStringArray(archetype.romanNumerals, scope, `${path}.romanNumerals`, issues);
-    validateRequiredStringArray(archetype.functionPath, scope, `${path}.functionPath`, issues);
+    validateRequiredStringArray(
+      archetype.romanNumerals,
+      scope,
+      `${path}.romanNumerals`,
+      issues,
+      false,
+      false
+    );
+    validateRequiredStringArray(
+      archetype.functionPath,
+      scope,
+      `${path}.functionPath`,
+      issues,
+      false,
+      false
+    );
 
     if (archetype.functionPath.length !== archetype.romanNumerals.length) {
       issues.push(
@@ -517,7 +532,14 @@ export function validateFamilyPack(pack: unknown): ValidationIssue[] {
     }
 
     validateRequiredNumber(archetype.loopability, scope, `${path}.loopability`, issues, 0, 1);
-    validateRequiredStringArray(archetype.tensionCurve, scope, `${path}.tensionCurve`, issues);
+    validateRequiredStringArray(
+      archetype.tensionCurve,
+      scope,
+      `${path}.tensionCurve`,
+      issues,
+      false,
+      false
+    );
 
     if (archetype.tensionCurve.length !== archetype.romanNumerals.length) {
       issues.push(

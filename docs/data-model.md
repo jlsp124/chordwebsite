@@ -61,6 +61,7 @@ Authoring assets are never fetched by the browser at runtime.
 The canonical authoring path is still `data-src/`, but this repo currently also includes:
 - starter schema mirrors in `src/data/templates/`
 - validator sample fixtures in `src/data/packs/samples/`
+- authored pack source modules in `data-src/authoring/*.mjs`
 
 Those files are implementation scaffolding only. They are not shipped runtime assets.
 
@@ -421,8 +422,11 @@ type GenerationResult = {
 - loop-aware cadence and variation choices
 
 ## Current Implementation Sources
+- `data-src/authoring/*.mjs`
+- `scripts/build-packs.mjs`
 - `src/core/types/data-model.ts`
 - `src/data/validators/pack-validator.ts`
+- `public/packs/*.json`
 - `src/data/templates/*.json`
 - `src/data/packs/samples/*.json`
 

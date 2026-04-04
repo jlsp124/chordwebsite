@@ -1,0 +1,5922 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "kpop",
+  "family": {
+    "id": "kpop",
+    "name": "K-pop",
+    "description": "Section-aware K-pop harmony with bright hooks, dark drops, and emotional ballad contrast.",
+    "tags": [
+      "producer_first",
+      "section_aware",
+      "kpop"
+    ],
+    "defaultModeBias": "section_first",
+    "substyleIds": [
+      "kpop_bright_easy",
+      "kpop_dark_synth",
+      "kpop_ballad_emotional"
+    ]
+  },
+  "substyles": [
+    {
+      "id": "kpop_bright_easy",
+      "familyId": "kpop",
+      "name": "K-pop Bright Easy-Listening",
+      "description": "Polished major-key K-pop with clean hook loops, clear lift, and easy-listening payoff.",
+      "tags": [
+        "bright",
+        "easy_listening",
+        "hook_forward",
+        "section_aware"
+      ],
+      "modeBias": "section_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus"
+      ],
+      "archetypeIds": [
+        "kpop_bright_easy_hook_loop",
+        "kpop_bright_easy_chorus_window",
+        "kpop_bright_easy_sunrise_walk",
+        "kpop_bright_easy_lift_lane",
+        "kpop_bright_easy_tonic_delay",
+        "kpop_bright_easy_smile_turn",
+        "kpop_bright_easy_clear_climb",
+        "kpop_bright_easy_glass_rise",
+        "kpop_bright_easy_sunny_turnaround",
+        "kpop_bright_easy_homecoming",
+        "kpop_bright_easy_open_sky",
+        "kpop_bright_easy_pre_climb",
+        "kpop_bright_easy_light_pedal",
+        "kpop_bright_easy_melodic_reset",
+        "kpop_bright_easy_bridge_clear"
+      ],
+      "cadenceProfileIds": [
+        "kpop_bright_easy_open_loop",
+        "kpop_bright_easy_clean_release",
+        "kpop_bright_easy_pre_lift"
+      ],
+      "harmonicRhythmProfileIds": [
+        "kpop_bright_easy_mid_pulse",
+        "kpop_bright_easy_lift_drive",
+        "kpop_bright_easy_wide_hold"
+      ],
+      "sectionBehaviorId": "kpop_bright_easy_sections",
+      "spicinessTransformIds": [
+        "kpop_bright_easy_clean_color",
+        "kpop_bright_easy_hook_polish",
+        "kpop_bright_easy_chorus_sheen"
+      ],
+      "variationRuleIds": [
+        "kpop_bright_easy_safer_loop",
+        "kpop_bright_easy_brighter_hook",
+        "kpop_bright_easy_more_open_turn",
+        "kpop_bright_easy_pre_lift_rule",
+        "kpop_bright_easy_chorus_payoff_rule"
+      ],
+      "specialMoveIds": [
+        "kpop_bright_easy_delay_arrival",
+        "kpop_bright_easy_bass_climb",
+        "kpop_bright_easy_chorus_widen",
+        "kpop_bright_easy_last_bar_tilt",
+        "kpop_bright_easy_bridge_reframe"
+      ],
+      "explanationTemplateIds": [
+        "kpop_bright_easy_why",
+        "kpop_bright_easy_section",
+        "kpop_bright_easy_learn"
+      ],
+      "midiPresetIds": [
+        "kpop_bright_easy_block",
+        "kpop_bright_easy_arp"
+      ],
+      "mustIncludeTags": [
+        "bright",
+        "hook_forward"
+      ],
+      "mustAvoidTags": [
+        "heavy_dissonance"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth",
+      "familyId": "kpop",
+      "name": "K-pop Dark Synth / Futuristic",
+      "description": "Darker synth-led K-pop with dramatic loop pressure, drop framing, and cinematic contrast.",
+      "tags": [
+        "dark",
+        "synth",
+        "drop_ready",
+        "section_aware"
+      ],
+      "modeBias": "section_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus",
+        "bridge"
+      ],
+      "archetypeIds": [
+        "kpop_dark_synth_shadow_cycle",
+        "kpop_dark_synth_neon_drop",
+        "kpop_dark_synth_glass_minor",
+        "kpop_dark_synth_chrome_lift",
+        "kpop_dark_synth_machine_turn",
+        "kpop_dark_synth_hollow_hook",
+        "kpop_dark_synth_synth_pull",
+        "kpop_dark_synth_cold_arrival",
+        "kpop_dark_synth_midnight_axis",
+        "kpop_dark_synth_tension_spiral",
+        "kpop_dark_synth_reverse_glow",
+        "kpop_dark_synth_wide_minor",
+        "kpop_dark_synth_drop_frame",
+        "kpop_dark_synth_pre_echo",
+        "kpop_dark_synth_bridge_mirror"
+      ],
+      "cadenceProfileIds": [
+        "kpop_dark_synth_shadow_loop",
+        "kpop_dark_synth_drop_release",
+        "kpop_dark_synth_build_pull"
+      ],
+      "harmonicRhythmProfileIds": [
+        "kpop_dark_synth_locked_grid",
+        "kpop_dark_synth_build_drive",
+        "kpop_dark_synth_drop_hold"
+      ],
+      "sectionBehaviorId": "kpop_dark_synth_sections",
+      "spicinessTransformIds": [
+        "kpop_dark_synth_low_glow",
+        "kpop_dark_synth_tension_color",
+        "kpop_dark_synth_edge_color"
+      ],
+      "variationRuleIds": [
+        "kpop_dark_synth_safer_loop",
+        "kpop_dark_synth_darker_pull",
+        "kpop_dark_synth_more_open_drop",
+        "kpop_dark_synth_pre_lift_rule",
+        "kpop_dark_synth_bridge_contrast_rule"
+      ],
+      "specialMoveIds": [
+        "kpop_dark_synth_delay_arrival",
+        "kpop_dark_synth_drop_simplify",
+        "kpop_dark_synth_bass_climb",
+        "kpop_dark_synth_chorus_widen",
+        "kpop_dark_synth_bridge_reframe"
+      ],
+      "explanationTemplateIds": [
+        "kpop_dark_synth_why",
+        "kpop_dark_synth_section",
+        "kpop_dark_synth_learn"
+      ],
+      "midiPresetIds": [
+        "kpop_dark_synth_block",
+        "kpop_dark_synth_comp"
+      ],
+      "mustIncludeTags": [
+        "dark",
+        "synth"
+      ],
+      "mustAvoidTags": [
+        "sunny_major"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional",
+      "familyId": "kpop",
+      "name": "K-pop Ballad / Emotional",
+      "description": "Emotional K-pop ballad writing with slower turns, stronger release, and borrowed-color moments.",
+      "tags": [
+        "emotional",
+        "ballad",
+        "section_aware",
+        "open_heart"
+      ],
+      "modeBias": "section_first",
+      "defaultSectionIntents": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus",
+        "bridge"
+      ],
+      "archetypeIds": [
+        "kpop_ballad_emotional_warm_release",
+        "kpop_ballad_emotional_aching_turn",
+        "kpop_ballad_emotional_sigh_lift",
+        "kpop_ballad_emotional_open_confession",
+        "kpop_ballad_emotional_late_night_return",
+        "kpop_ballad_emotional_borrowed_glow",
+        "kpop_ballad_emotional_soft_climb",
+        "kpop_ballad_emotional_prayer_cycle",
+        "kpop_ballad_emotional_held_tonic",
+        "kpop_ballad_emotional_blue_arrival",
+        "kpop_ballad_emotional_bridge_window",
+        "kpop_ballad_emotional_falling_letter",
+        "kpop_ballad_emotional_patient_lift",
+        "kpop_ballad_emotional_emotional_open",
+        "kpop_ballad_emotional_cinematic_close"
+      ],
+      "cadenceProfileIds": [
+        "kpop_ballad_emotional_soft_return",
+        "kpop_ballad_emotional_tear_lift",
+        "kpop_ballad_emotional_bridge_set"
+      ],
+      "harmonicRhythmProfileIds": [
+        "kpop_ballad_emotional_wide_hold",
+        "kpop_ballad_emotional_turnback_flow",
+        "kpop_ballad_emotional_rise_push"
+      ],
+      "sectionBehaviorId": "kpop_ballad_emotional_sections",
+      "spicinessTransformIds": [
+        "kpop_ballad_emotional_soft_color",
+        "kpop_ballad_emotional_rich_color",
+        "kpop_ballad_emotional_borrowed_color"
+      ],
+      "variationRuleIds": [
+        "kpop_ballad_emotional_safer_loop",
+        "kpop_ballad_emotional_richer_voicing",
+        "kpop_ballad_emotional_darker_turn",
+        "kpop_ballad_emotional_pre_lift_rule",
+        "kpop_ballad_emotional_bridge_contrast_rule"
+      ],
+      "specialMoveIds": [
+        "kpop_ballad_emotional_borrowed_iv",
+        "kpop_ballad_emotional_delay_arrival",
+        "kpop_ballad_emotional_chorus_widen",
+        "kpop_ballad_emotional_bridge_reframe",
+        "kpop_ballad_emotional_dominant_pressure"
+      ],
+      "explanationTemplateIds": [
+        "kpop_ballad_emotional_why",
+        "kpop_ballad_emotional_section",
+        "kpop_ballad_emotional_learn"
+      ],
+      "midiPresetIds": [
+        "kpop_ballad_emotional_block",
+        "kpop_ballad_emotional_arp"
+      ],
+      "mustIncludeTags": [
+        "emotional",
+        "open_heart"
+      ],
+      "mustAvoidTags": [
+        "blunt_groove"
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "kpop_bright_easy_hook_loop",
+      "substyleId": "kpop_bright_easy",
+      "name": "Hook Loop",
+      "romanNumerals": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.95,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "soft_drop",
+        "open"
+      ],
+      "tags": [
+        "bright",
+        "hook_forward",
+        "loop_core"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_chorus_window",
+      "substyleId": "kpop_bright_easy",
+      "name": "Chorus Window",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.84,
+      "tensionCurve": [
+        "held_tension",
+        "lift",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "bright",
+        "chorus_payoff",
+        "section_peak"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_sunrise_walk",
+      "substyleId": "kpop_bright_easy",
+      "name": "Sunrise Walk",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.8,
+      "tensionCurve": [
+        "stable",
+        "glide",
+        "lift",
+        "open"
+      ],
+      "tags": [
+        "bright",
+        "optimistic",
+        "clean_motion"
+      ],
+      "weight": 0.86,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_lift_lane",
+      "substyleId": "kpop_bright_easy",
+      "name": "Lift Lane",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "iii",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.7,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "hover",
+        "held_tension"
+      ],
+      "tags": [
+        "lift_ready",
+        "pre_chorus_energy",
+        "bright"
+      ],
+      "weight": 0.92,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_tonic_delay",
+      "substyleId": "kpop_bright_easy",
+      "name": "Tonic Delay",
+      "romanNumerals": [
+        "I",
+        "V",
+        "IV",
+        "vi"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "predominant",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.76,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "lift",
+        "held_tension"
+      ],
+      "tags": [
+        "delay_ready",
+        "hook_forward",
+        "bright"
+      ],
+      "weight": 0.88,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_smile_turn",
+      "substyleId": "kpop_bright_easy",
+      "name": "Smile Turn",
+      "romanNumerals": [
+        "vi",
+        "V",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "dominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.74,
+      "tensionCurve": [
+        "soft_drop",
+        "push",
+        "lift",
+        "held_tension"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "turnback",
+        "bright"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_clear_climb",
+      "substyleId": "kpop_bright_easy",
+      "name": "Clear Climb",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.77,
+      "tensionCurve": [
+        "stable",
+        "open",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "clean_motion",
+        "uplift",
+        "bright"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_glass_rise",
+      "substyleId": "kpop_bright_easy",
+      "name": "Glass Rise",
+      "romanNumerals": [
+        "ii",
+        "V",
+        "I",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.73,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "release",
+        "float"
+      ],
+      "tags": [
+        "section_peak",
+        "release",
+        "bright"
+      ],
+      "weight": 0.84,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_sunny_turnaround",
+      "substyleId": "kpop_bright_easy",
+      "name": "Sunny Turnaround",
+      "romanNumerals": [
+        "IV",
+        "I",
+        "V",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic",
+        "dominant",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.83,
+      "tensionCurve": [
+        "open",
+        "stable",
+        "push",
+        "soft_drop"
+      ],
+      "tags": [
+        "loop_core",
+        "bright",
+        "easy_listening"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_homecoming",
+      "substyleId": "kpop_bright_easy",
+      "name": "Homecoming",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.9,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "lift",
+        "open"
+      ],
+      "tags": [
+        "chorus_payoff",
+        "bright",
+        "easy_listening"
+      ],
+      "weight": 0.98,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_open_sky",
+      "substyleId": "kpop_bright_easy",
+      "name": "Open Sky",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "I",
+        "I"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.68,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "release",
+        "settle"
+      ],
+      "tags": [
+        "section_peak",
+        "anthemic",
+        "bright"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_pre_climb",
+      "substyleId": "kpop_bright_easy",
+      "name": "Pre Climb",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.69,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "bass_climb_ready",
+        "bright"
+      ],
+      "weight": 0.87,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_light_pedal",
+      "substyleId": "kpop_bright_easy",
+      "name": "Light Pedal",
+      "romanNumerals": [
+        "I",
+        "I",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.89,
+      "tensionCurve": [
+        "stable",
+        "settle",
+        "open",
+        "push"
+      ],
+      "tags": [
+        "easy_listening",
+        "pedal_hook",
+        "bright"
+      ],
+      "weight": 0.71,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_melodic_reset",
+      "substyleId": "kpop_bright_easy",
+      "name": "Melodic Reset",
+      "romanNumerals": [
+        "iii",
+        "vi",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.76,
+      "tensionCurve": [
+        "glide",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "clean_motion",
+        "reset",
+        "bright"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "sus4",
+            "7",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_bridge_clear",
+      "substyleId": "kpop_bright_easy",
+      "name": "Bridge Clear",
+      "romanNumerals": [
+        "ii",
+        "iii",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic_family",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_wide_hold",
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.58,
+      "tensionCurve": [
+        "open",
+        "hover",
+        "lift",
+        "release"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "clear_air",
+        "bright"
+      ],
+      "weight": 0.68,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "maj7"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "sus2",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_shadow_cycle",
+      "substyleId": "kpop_dark_synth",
+      "name": "Shadow Cycle",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "III",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "tonic_family",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.94,
+      "tensionCurve": [
+        "stable",
+        "broaden",
+        "glow",
+        "open"
+      ],
+      "tags": [
+        "dark",
+        "synth",
+        "loop_core"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_neon_drop",
+      "substyleId": "kpop_dark_synth",
+      "name": "Neon Drop",
+      "romanNumerals": [
+        "i",
+        "v",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_build_drive",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.78,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "expand",
+        "drop"
+      ],
+      "tags": [
+        "drop_ready",
+        "dark",
+        "synth"
+      ],
+      "weight": 0.96,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_glass_minor",
+      "substyleId": "kpop_dark_synth",
+      "name": "Glass Minor",
+      "romanNumerals": [
+        "i",
+        "iv",
+        "VI",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.8,
+      "tensionCurve": [
+        "stable",
+        "darken",
+        "expand",
+        "push"
+      ],
+      "tags": [
+        "dark",
+        "emphatic",
+        "drop_ready"
+      ],
+      "weight": 0.88,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "sus2",
+            "11",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_chrome_lift",
+      "substyleId": "kpop_dark_synth",
+      "name": "Chrome Lift",
+      "romanNumerals": [
+        "VI",
+        "VII",
+        "i",
+        "v"
+      ],
+      "functionPath": [
+        "contrast",
+        "dominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_build_drive",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.7,
+      "tensionCurve": [
+        "expand",
+        "push",
+        "tease",
+        "held_tension"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "drop_ready",
+        "synth"
+      ],
+      "weight": 0.92,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_machine_turn",
+      "substyleId": "kpop_dark_synth",
+      "name": "Machine Turn",
+      "romanNumerals": [
+        "i",
+        "VII",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.91,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "shadow",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "dark",
+        "mechanical"
+      ],
+      "weight": 0.84,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_hollow_hook",
+      "substyleId": "kpop_dark_synth",
+      "name": "Hollow Hook",
+      "romanNumerals": [
+        "i",
+        "III",
+        "VII",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "dominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.87,
+      "tensionCurve": [
+        "stable",
+        "glow",
+        "push",
+        "open"
+      ],
+      "tags": [
+        "dark",
+        "hook_forward",
+        "synth"
+      ],
+      "weight": 0.83,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_synth_pull",
+      "substyleId": "kpop_dark_synth",
+      "name": "Synth Pull",
+      "romanNumerals": [
+        "iv",
+        "VI",
+        "i",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "contrast",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_build_drive",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "darken",
+        "expand",
+        "tease",
+        "push"
+      ],
+      "tags": [
+        "drop_ready",
+        "pull_forward",
+        "dark"
+      ],
+      "weight": 0.81,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "11",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_cold_arrival",
+      "substyleId": "kpop_dark_synth",
+      "name": "Cold Arrival",
+      "romanNumerals": [
+        "VI",
+        "i",
+        "VII",
+        "V"
+      ],
+      "functionPath": [
+        "contrast",
+        "tonic",
+        "dominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_drop_hold",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.67,
+      "tensionCurve": [
+        "expand",
+        "tease",
+        "push",
+        "drop"
+      ],
+      "tags": [
+        "chorus_payoff",
+        "cold",
+        "dark"
+      ],
+      "weight": 0.76,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_midnight_axis",
+      "substyleId": "kpop_dark_synth",
+      "name": "Midnight Axis",
+      "romanNumerals": [
+        "i",
+        "v",
+        "i",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.88,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "reset",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "focused",
+        "dark"
+      ],
+      "weight": 0.79,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_tension_spiral",
+      "substyleId": "kpop_dark_synth",
+      "name": "Tension Spiral",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "iv",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_build_drive",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.66,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "darken",
+        "push"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "spiral",
+        "dark"
+      ],
+      "weight": 0.86,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "11",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_reverse_glow",
+      "substyleId": "kpop_dark_synth",
+      "name": "Reverse Glow",
+      "romanNumerals": [
+        "III",
+        "VII",
+        "i",
+        "VI"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "dominant",
+        "tonic",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_drop_hold",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.63,
+      "tensionCurve": [
+        "glow",
+        "push",
+        "reveal",
+        "shadow"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "futuristic",
+        "dark"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_wide_minor",
+      "substyleId": "kpop_dark_synth",
+      "name": "Wide Minor",
+      "romanNumerals": [
+        "i",
+        "VI",
+        "iv",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "contrast",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_locked_grid",
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.85,
+      "tensionCurve": [
+        "stable",
+        "expand",
+        "darken",
+        "open"
+      ],
+      "tags": [
+        "loop_core",
+        "wide",
+        "dark"
+      ],
+      "weight": 0.77,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "sus2",
+            "11",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_drop_frame",
+      "substyleId": "kpop_dark_synth",
+      "name": "Drop Frame",
+      "romanNumerals": [
+        "i",
+        "i",
+        "VI",
+        "VII"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic",
+        "contrast",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_drop_hold",
+      "allowedSectionIntents": [
+        "chorus",
+        "full_loop"
+      ],
+      "resolutionBias": "open_loop",
+      "loopability": 0.89,
+      "tensionCurve": [
+        "stable",
+        "anchor",
+        "expand",
+        "drop"
+      ],
+      "tags": [
+        "drop_ready",
+        "pedal_dark",
+        "synth"
+      ],
+      "weight": 0.82,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_pre_echo",
+      "substyleId": "kpop_dark_synth",
+      "name": "Pre Echo",
+      "romanNumerals": [
+        "VI",
+        "V",
+        "i",
+        "VII"
+      ],
+      "functionPath": [
+        "contrast",
+        "dominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_build_drive",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.68,
+      "tensionCurve": [
+        "expand",
+        "push",
+        "tease",
+        "held_tension"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "bass_climb_ready",
+        "dark"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_bridge_mirror",
+      "substyleId": "kpop_dark_synth",
+      "name": "Bridge Mirror",
+      "romanNumerals": [
+        "iv",
+        "i",
+        "VI",
+        "III"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic",
+        "contrast",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_dark_synth_drop_hold",
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.55,
+      "tensionCurve": [
+        "darken",
+        "reveal",
+        "expand",
+        "glow"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "mirror",
+        "dark"
+      ],
+      "weight": 0.69,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "sus2",
+            "11",
+            "add9"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "min7"
+          ],
+          "allowedSlashBassDegrees": [
+            "5"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "#11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "add11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_warm_release",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Warm Release",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "vi",
+        "IV"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "tonic_family",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.82,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "soft_drop",
+        "release"
+      ],
+      "tags": [
+        "emotional",
+        "open_heart",
+        "ballad_core"
+      ],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_aching_turn",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Aching Turn",
+      "romanNumerals": [
+        "vi",
+        "IV",
+        "I",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "tonic",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.85,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "emotional",
+        "chorus_payoff",
+        "ballad_core"
+      ],
+      "weight": 0.97,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_sigh_lift",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Sigh Lift",
+      "romanNumerals": [
+        "IV",
+        "V",
+        "iii",
+        "vi"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_rise_push",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.68,
+      "tensionCurve": [
+        "open",
+        "push",
+        "hover",
+        "held_tension"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "yearning",
+        "emotional"
+      ],
+      "weight": 0.95,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_open_confession",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Open Confession",
+      "romanNumerals": [
+        "I",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_wide_hold",
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.77,
+      "tensionCurve": [
+        "stable",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "open_heart",
+        "confessional",
+        "emotional"
+      ],
+      "weight": 0.88,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_late_night_return",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Late Night Return",
+      "romanNumerals": [
+        "vi",
+        "iii",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_wide_hold",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.72,
+      "tensionCurve": [
+        "soft_drop",
+        "lean",
+        "lift",
+        "release"
+      ],
+      "tags": [
+        "emotional",
+        "afterglow",
+        "ballad_core"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_borrowed_glow",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Borrowed Glow",
+      "romanNumerals": [
+        "I",
+        "IV",
+        "iv",
+        "I"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "contrast",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.64,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "darken",
+        "release"
+      ],
+      "tags": [
+        "borrowed_color",
+        "emotional",
+        "cinematic"
+      ],
+      "weight": 0.9,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_soft_climb",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Soft Climb",
+      "romanNumerals": [
+        "ii",
+        "iii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_rise_push",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.63,
+      "tensionCurve": [
+        "lift",
+        "lean",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "pre_chorus_energy",
+        "soft_climb",
+        "emotional"
+      ],
+      "weight": 0.84,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_prayer_cycle",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Prayer Cycle",
+      "romanNumerals": [
+        "vi",
+        "V",
+        "IV",
+        "I"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "dominant",
+        "predominant",
+        "tonic"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "chorus",
+        "verse"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.71,
+      "tensionCurve": [
+        "soft_drop",
+        "push",
+        "lift",
+        "release"
+      ],
+      "tags": [
+        "open_heart",
+        "release",
+        "emotional"
+      ],
+      "weight": 0.83,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_held_tonic",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Held Tonic",
+      "romanNumerals": [
+        "I",
+        "V",
+        "vi",
+        "iii"
+      ],
+      "functionPath": [
+        "tonic",
+        "dominant",
+        "tonic_family",
+        "tonic_family"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_wide_hold",
+      "allowedSectionIntents": [
+        "verse",
+        "chorus"
+      ],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.69,
+      "tensionCurve": [
+        "stable",
+        "push",
+        "soft_drop",
+        "lean"
+      ],
+      "tags": [
+        "ballad_core",
+        "held_center",
+        "emotional"
+      ],
+      "weight": 0.74,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_blue_arrival",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Blue Arrival",
+      "romanNumerals": [
+        "ii",
+        "V",
+        "I",
+        "IV"
+      ],
+      "functionPath": [
+        "predominant",
+        "dominant",
+        "tonic",
+        "predominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "resolutionBias": "strong_resolve",
+      "loopability": 0.62,
+      "tensionCurve": [
+        "lift",
+        "push",
+        "release",
+        "open"
+      ],
+      "tags": [
+        "chorus_payoff",
+        "blue_tint",
+        "emotional"
+      ],
+      "weight": 0.75,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_bridge_window",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Bridge Window",
+      "romanNumerals": [
+        "iii",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_wide_hold",
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.56,
+      "tensionCurve": [
+        "lean",
+        "soft_drop",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "bridge_contrast",
+        "emotional",
+        "suspended"
+      ],
+      "weight": 0.7,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_falling_letter",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Falling Letter",
+      "romanNumerals": [
+        "IV",
+        "iii",
+        "ii",
+        "V"
+      ],
+      "functionPath": [
+        "predominant",
+        "tonic_family",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_turnback_flow",
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.67,
+      "tensionCurve": [
+        "open",
+        "lean",
+        "lift",
+        "push"
+      ],
+      "tags": [
+        "yearning",
+        "letter",
+        "emotional"
+      ],
+      "weight": 0.72,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_patient_lift",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Patient Lift",
+      "romanNumerals": [
+        "I",
+        "ii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_rise_push",
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.66,
+      "tensionCurve": [
+        "stable",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "patient_build",
+        "pre_chorus_energy",
+        "emotional"
+      ],
+      "weight": 0.8,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_emotional_open",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Emotional Open",
+      "romanNumerals": [
+        "vi",
+        "ii",
+        "IV",
+        "V"
+      ],
+      "functionPath": [
+        "tonic_family",
+        "predominant",
+        "predominant",
+        "dominant"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_rise_push",
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "resolutionBias": "lift_without_arrival",
+      "loopability": 0.65,
+      "tensionCurve": [
+        "soft_drop",
+        "lift",
+        "rise",
+        "push"
+      ],
+      "tags": [
+        "open_heart",
+        "rise",
+        "emotional"
+      ],
+      "weight": 0.78,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "7",
+            "sus4",
+            "b9"
+          ],
+          "allowedSlashBassDegrees": [
+            "7"
+          ],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_cinematic_close",
+      "substyleId": "kpop_ballad_emotional",
+      "name": "Cinematic Close",
+      "romanNumerals": [
+        "I",
+        "iii",
+        "IV",
+        "iv"
+      ],
+      "functionPath": [
+        "tonic",
+        "tonic_family",
+        "predominant",
+        "contrast"
+      ],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_ballad_emotional_wide_hold",
+      "allowedSectionIntents": [
+        "bridge",
+        "chorus"
+      ],
+      "resolutionBias": "contrastive",
+      "loopability": 0.53,
+      "tensionCurve": [
+        "stable",
+        "lean",
+        "lift",
+        "darken"
+      ],
+      "tags": [
+        "borrowed_color",
+        "bridge_contrast",
+        "emotional"
+      ],
+      "weight": 0.77,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": [
+            "add9",
+            "maj7",
+            "6"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": [
+            "min7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "3"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": [
+            "add9",
+            "6",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [
+            "6"
+          ],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": [
+            "maj7",
+            "add9",
+            "11"
+          ],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "kpop_bright_easy_open_loop",
+      "name": "Open Hook Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "predominant",
+        "dominant"
+      ],
+      "strength": 0.42,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_clean_release",
+      "name": "Clean Chorus Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.78,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_pre_lift",
+      "name": "Pre-Chorus Lift",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.67,
+      "commonUseCases": [
+        "pre_chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_shadow_loop",
+      "name": "Shadow Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": [
+        "contrast",
+        "dominant"
+      ],
+      "strength": 0.48,
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_drop_release",
+      "name": "Drop Release",
+      "type": "strong_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "dominant"
+      ],
+      "strength": 0.82,
+      "commonUseCases": [
+        "chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_build_pull",
+      "name": "Build Pull",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.7,
+      "commonUseCases": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_soft_return",
+      "name": "Soft Return",
+      "type": "soft_resolve",
+      "allowedEndFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "strength": 0.72,
+      "commonUseCases": [
+        "verse",
+        "chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_tear_lift",
+      "name": "Tear Lift",
+      "type": "lift_without_arrival",
+      "allowedEndFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "strength": 0.74,
+      "commonUseCases": [
+        "pre_chorus"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_bridge_set",
+      "name": "Bridge Reframe",
+      "type": "contrastive",
+      "allowedEndFunctions": [
+        "contrast",
+        "predominant"
+      ],
+      "strength": 0.66,
+      "commonUseCases": [
+        "bridge"
+      ],
+      "weight": 1
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "kpop_bright_easy_mid_pulse",
+      "name": "Mid Pulse",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_lift_drive",
+      "name": "Lift Drive",
+      "density": "active",
+      "beatsPerChangePattern": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "chorus"
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_wide_hold",
+      "name": "Wide Hold",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "bridge"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_locked_grid",
+      "name": "Locked Grid",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "full_loop",
+        "verse"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_build_drive",
+      "name": "Build Drive",
+      "density": "active",
+      "beatsPerChangePattern": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "commonUseCases": [
+        "pre_chorus",
+        "chorus"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_drop_hold",
+      "name": "Drop Hold",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "chorus",
+        "bridge"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_wide_hold",
+      "name": "Wide Hold",
+      "density": "slow",
+      "beatsPerChangePattern": [
+        8,
+        8
+      ],
+      "commonUseCases": [
+        "verse",
+        "bridge"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_turnback_flow",
+      "name": "Turnback Flow",
+      "density": "medium",
+      "beatsPerChangePattern": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "commonUseCases": [
+        "chorus"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_rise_push",
+      "name": "Rise Push",
+      "density": "active",
+      "beatsPerChangePattern": [
+        2,
+        2,
+        4,
+        4,
+        2,
+        2
+      ],
+      "commonUseCases": [
+        "pre_chorus"
+      ]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "kpop_bright_easy_sections",
+      "substyleId": "kpop_bright_easy",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "easy_listening"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_bright_easy_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "stable"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "hook_forward",
+          "clean_motion"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "brighter"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_bright_easy_last_bar_tilt"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "grounded"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "pre_chorus_energy",
+          "bass_climb_ready"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_bright_easy_delay_arrival",
+          "kpop_bright_easy_bass_climb"
+        ],
+        "forbiddenTags": [
+          "pedal_hook"
+        ],
+        "energyShape": "rising"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve",
+          "strong_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "medium",
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "chorus_payoff",
+          "section_peak"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "brighter",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_bright_easy_delay_arrival",
+          "kpop_bright_easy_chorus_widen"
+        ],
+        "forbiddenTags": [
+          "heavy_dissonance"
+        ],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "clear_air"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_bright_easy_bridge_reframe"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "contrast"
+      }
+    },
+    {
+      "id": "kpop_dark_synth_sections",
+      "substyleId": "kpop_dark_synth",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "loop_core",
+          "dark"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_dark_synth_drop_simplify"
+        ],
+        "forbiddenTags": [
+          "sunny_major"
+        ],
+        "energyShape": "locked"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "open_loop"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "dark",
+          "hook_forward"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "darker",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_dark_synth_drop_simplify"
+        ],
+        "forbiddenTags": [
+          "sunny_major"
+        ],
+        "energyShape": "cold"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "pre_chorus_energy",
+          "bass_climb_ready"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_dark_synth_delay_arrival",
+          "kpop_dark_synth_bass_climb"
+        ],
+        "forbiddenTags": [
+          "pedal_dark"
+        ],
+        "energyShape": "tightening"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "strong_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "active"
+        ],
+        "preferredArchetypeTags": [
+          "drop_ready",
+          "chorus_payoff"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "more_resolved",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_dark_synth_drop_simplify",
+          "kpop_dark_synth_chorus_widen"
+        ],
+        "forbiddenTags": [
+          "sunny_major"
+        ],
+        "energyShape": "drop_release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive",
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "variable"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "futuristic"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "more_open"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_dark_synth_bridge_reframe"
+        ],
+        "forbiddenTags": [
+          "loop_core"
+        ],
+        "energyShape": "reframe"
+      }
+    },
+    {
+      "id": "kpop_ballad_emotional_sections",
+      "substyleId": "kpop_ballad_emotional",
+      "fullLoopRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "ballad_core",
+          "open_heart"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_ballad_emotional_borrowed_iv"
+        ],
+        "forbiddenTags": [
+          "blunt_groove"
+        ],
+        "energyShape": "steady_breath"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "slow",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "confessional",
+          "ballad_core"
+        ],
+        "allowedVariationTypes": [
+          "safer",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_ballad_emotional_borrowed_iv"
+        ],
+        "forbiddenTags": [
+          "blunt_groove"
+        ],
+        "energyShape": "intimate"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": [
+          "lift_without_arrival"
+        ],
+        "preferredRhythmDensities": [
+          "active",
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "pre_chorus_energy",
+          "yearning"
+        ],
+        "allowedVariationTypes": [
+          "pre_chorus_lift",
+          "richer"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_ballad_emotional_delay_arrival",
+          "kpop_ballad_emotional_dominant_pressure"
+        ],
+        "forbiddenTags": [
+          "held_center"
+        ],
+        "energyShape": "swelling"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": [
+          "soft_resolve",
+          "strong_resolve"
+        ],
+        "preferredRhythmDensities": [
+          "medium"
+        ],
+        "preferredArchetypeTags": [
+          "chorus_payoff",
+          "release"
+        ],
+        "allowedVariationTypes": [
+          "chorus_payoff",
+          "richer",
+          "more_resolved"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_ballad_emotional_chorus_widen",
+          "kpop_ballad_emotional_borrowed_iv"
+        ],
+        "forbiddenTags": [
+          "blunt_groove"
+        ],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": [
+          "contrastive"
+        ],
+        "preferredRhythmDensities": [
+          "slow"
+        ],
+        "preferredArchetypeTags": [
+          "bridge_contrast",
+          "borrowed_color"
+        ],
+        "allowedVariationTypes": [
+          "bridge_contrast",
+          "darker"
+        ],
+        "allowedSpecialMoveIds": [
+          "kpop_ballad_emotional_bridge_reframe",
+          "kpop_ballad_emotional_borrowed_iv"
+        ],
+        "forbiddenTags": [
+          "ballad_core"
+        ],
+        "energyShape": "wider_perspective"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "kpop_bright_easy_clean_color",
+      "name": "Clean Color",
+      "level": 1,
+      "styleScope": [
+        "kpop",
+        "kpop_bright_easy"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "sus2",
+        "6"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [
+        "bridge"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_hook_polish",
+      "name": "Hook Polish",
+      "level": 2,
+      "styleScope": [
+        "kpop",
+        "kpop_bright_easy"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "maj7",
+        "sus2"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_chorus_sheen",
+      "name": "Chorus Sheen",
+      "level": 3,
+      "styleScope": [
+        "kpop",
+        "kpop_bright_easy"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "maj7",
+        "sus4"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "dominant",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.9
+    },
+    {
+      "id": "kpop_dark_synth_low_glow",
+      "name": "Low Glow",
+      "level": 1,
+      "styleScope": [
+        "kpop",
+        "kpop_dark_synth"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "min7"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_tension_color",
+      "name": "Tension Color",
+      "level": 2,
+      "styleScope": [
+        "kpop",
+        "kpop_dark_synth"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "11",
+        "sus4"
+      ],
+      "allowedFunctions": [
+        "predominant",
+        "dominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_edge_color",
+      "name": "Edge Color",
+      "level": 3,
+      "styleScope": [
+        "kpop",
+        "kpop_dark_synth"
+      ],
+      "allowedDecorations": [
+        "b9",
+        "#11",
+        "sus4"
+      ],
+      "allowedFunctions": [
+        "dominant",
+        "contrast"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 0.85
+    },
+    {
+      "id": "kpop_ballad_emotional_soft_color",
+      "name": "Soft Color",
+      "level": 1,
+      "styleScope": [
+        "kpop",
+        "kpop_ballad_emotional"
+      ],
+      "allowedDecorations": [
+        "add9",
+        "6",
+        "min7"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_rich_color",
+      "name": "Rich Color",
+      "level": 2,
+      "styleScope": [
+        "kpop",
+        "kpop_ballad_emotional"
+      ],
+      "allowedDecorations": [
+        "maj7",
+        "9",
+        "11"
+      ],
+      "allowedFunctions": [
+        "tonic",
+        "tonic_family",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_borrowed_color",
+      "name": "Borrowed Color",
+      "level": 3,
+      "styleScope": [
+        "kpop",
+        "kpop_ballad_emotional"
+      ],
+      "allowedDecorations": [
+        "maj7",
+        "9",
+        "11",
+        "b9"
+      ],
+      "allowedFunctions": [
+        "contrast",
+        "dominant",
+        "predominant"
+      ],
+      "forbiddenSectionIntents": [
+        "full_loop"
+      ],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 0.86
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "kpop_bright_easy_safer_loop",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "hook_recognition",
+        "loop_length"
+      ],
+      "targets": [
+        "decoration_reduction",
+        "cleaner_turnback"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_brighter_hook",
+      "name": "Brighter Hook",
+      "type": "brighter",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "preserve": [
+        "roman_root_path",
+        "hook_role"
+      ],
+      "targets": [
+        "tonic_color",
+        "upper_extension"
+      ],
+      "requiredTags": [
+        "bright"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.92
+    },
+    {
+      "id": "kpop_bright_easy_more_open_turn",
+      "name": "More Open Turn",
+      "type": "more_open",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "hook_shape"
+      ],
+      "targets": [
+        "last_slot_openness",
+        "cadence_softening"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 0.88
+    },
+    {
+      "id": "kpop_bright_easy_pre_lift_rule",
+      "name": "Pre Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "section_role",
+        "topline_space"
+      ],
+      "targets": [
+        "dominant_pull",
+        "last_bar_motion"
+      ],
+      "requiredTags": [
+        "pre_chorus_energy"
+      ],
+      "forbiddenTags": [
+        "pedal_hook"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_chorus_payoff_rule",
+      "name": "Chorus Payoff",
+      "type": "chorus_payoff",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "section_role",
+        "hook_recognition"
+      ],
+      "targets": [
+        "arrival_weight",
+        "tonic_brightness"
+      ],
+      "requiredTags": [
+        "chorus_payoff"
+      ],
+      "forbiddenTags": [
+        "heavy_dissonance"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_safer_loop",
+      "name": "Safer Dark Loop",
+      "type": "safer",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "loop_identity",
+        "drop_space"
+      ],
+      "targets": [
+        "contrast_reduction",
+        "simpler_surface"
+      ],
+      "requiredTags": [
+        "loop_core"
+      ],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_darker_pull",
+      "name": "Darker Pull",
+      "type": "darker",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "pre_chorus",
+        "chorus"
+      ],
+      "preserve": [
+        "roman_root_path"
+      ],
+      "targets": [
+        "borrowed_pressure",
+        "dominant_edge"
+      ],
+      "requiredTags": [
+        "dark"
+      ],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 0.96
+    },
+    {
+      "id": "kpop_dark_synth_more_open_drop",
+      "name": "More Open Drop",
+      "type": "more_open",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "preserve": [
+        "drop_role",
+        "low_end_space"
+      ],
+      "targets": [
+        "last_slot_release",
+        "contrast_width"
+      ],
+      "requiredTags": [
+        "drop_ready"
+      ],
+      "forbiddenTags": [
+        "sunny_major"
+      ],
+      "weight": 0.82
+    },
+    {
+      "id": "kpop_dark_synth_pre_lift_rule",
+      "name": "Pre-Drop Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "section_role",
+        "drop_space"
+      ],
+      "targets": [
+        "dominant_pressure",
+        "bass_motion"
+      ],
+      "requiredTags": [
+        "pre_chorus_energy"
+      ],
+      "forbiddenTags": [
+        "pedal_dark"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_bridge_contrast_rule",
+      "name": "Bridge Contrast",
+      "type": "bridge_contrast",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "preserve": [
+        "dark_identity"
+      ],
+      "targets": [
+        "reframe",
+        "new_anchor"
+      ],
+      "requiredTags": [
+        "bridge_contrast"
+      ],
+      "forbiddenTags": [
+        "loop_core"
+      ],
+      "weight": 0.94
+    },
+    {
+      "id": "kpop_ballad_emotional_safer_loop",
+      "name": "Safer Ballad Loop",
+      "type": "safer",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "preserve": [
+        "emotional_center",
+        "topline_space"
+      ],
+      "targets": [
+        "surface_color_reduction",
+        "cleaner_resolution"
+      ],
+      "requiredTags": [
+        "ballad_core"
+      ],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_richer_voicing",
+      "name": "Richer Voicing",
+      "type": "richer",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "preserve": [
+        "roman_root_path",
+        "emotional_center"
+      ],
+      "targets": [
+        "upper_extensions",
+        "smoother_voice_leading"
+      ],
+      "requiredTags": [
+        "emotional"
+      ],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 0.97
+    },
+    {
+      "id": "kpop_ballad_emotional_darker_turn",
+      "name": "Darker Turn",
+      "type": "darker",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "chorus",
+        "bridge"
+      ],
+      "preserve": [
+        "release_shape"
+      ],
+      "targets": [
+        "borrowed_color",
+        "contrast_slot"
+      ],
+      "requiredTags": [
+        "borrowed_color"
+      ],
+      "forbiddenTags": [
+        "blunt_groove"
+      ],
+      "weight": 0.89
+    },
+    {
+      "id": "kpop_ballad_emotional_pre_lift_rule",
+      "name": "Ballad Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "preserve": [
+        "emotional_center",
+        "section_role"
+      ],
+      "targets": [
+        "dominant_pull",
+        "phrase_swell"
+      ],
+      "requiredTags": [
+        "pre_chorus_energy"
+      ],
+      "forbiddenTags": [
+        "held_center"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_bridge_contrast_rule",
+      "name": "Ballad Bridge Contrast",
+      "type": "bridge_contrast",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "preserve": [
+        "emotional_identity"
+      ],
+      "targets": [
+        "borrowed_color",
+        "bridge_reframe"
+      ],
+      "requiredTags": [
+        "bridge_contrast"
+      ],
+      "forbiddenTags": [
+        "ballad_core"
+      ],
+      "weight": 0.95
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "kpop_bright_easy_delay_arrival",
+      "name": "Delay Arrival",
+      "category": "section_lift",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "delay_ready",
+        "section_peak"
+      ],
+      "operation": "delay_tonic_arrival",
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_bass_climb",
+      "name": "Bass Climb Lead-In",
+      "category": "lead_in",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "triggerTags": [
+        "bass_climb_ready",
+        "pre_chorus_energy"
+      ],
+      "operation": "bass_climb_lead_in",
+      "weight": 0.92
+    },
+    {
+      "id": "kpop_bright_easy_chorus_widen",
+      "name": "Chorus Widen",
+      "category": "payoff",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "triggerTags": [
+        "chorus_payoff",
+        "section_peak"
+      ],
+      "operation": "chorus_payoff_widen",
+      "weight": 0.94
+    },
+    {
+      "id": "kpop_bright_easy_last_bar_tilt",
+      "name": "Last Bar Tilt",
+      "category": "turnback",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "verse"
+      ],
+      "triggerTags": [
+        "turnback",
+        "loop_core"
+      ],
+      "operation": "last_bar_tilt",
+      "weight": 0.82
+    },
+    {
+      "id": "kpop_bright_easy_bridge_reframe",
+      "name": "Bridge Reframe",
+      "category": "bridge",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "triggerTags": [
+        "bridge_contrast",
+        "clear_air"
+      ],
+      "operation": "bridge_reframe",
+      "weight": 0.8
+    },
+    {
+      "id": "kpop_dark_synth_delay_arrival",
+      "name": "Delay Arrival",
+      "category": "section_lift",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "pre_chorus_energy",
+        "drop_ready"
+      ],
+      "operation": "delay_tonic_arrival",
+      "weight": 0.92
+    },
+    {
+      "id": "kpop_dark_synth_drop_simplify",
+      "name": "Drop Simplify",
+      "category": "drop",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus"
+      ],
+      "triggerTags": [
+        "drop_ready",
+        "pedal_dark"
+      ],
+      "operation": "drop_simplify",
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_bass_climb",
+      "name": "Bass Climb Lead-In",
+      "category": "lead_in",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "triggerTags": [
+        "bass_climb_ready",
+        "pre_chorus_energy"
+      ],
+      "operation": "bass_climb_lead_in",
+      "weight": 0.9
+    },
+    {
+      "id": "kpop_dark_synth_chorus_widen",
+      "name": "Chorus Widen",
+      "category": "payoff",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "triggerTags": [
+        "chorus_payoff",
+        "drop_ready"
+      ],
+      "operation": "chorus_payoff_widen",
+      "weight": 0.88
+    },
+    {
+      "id": "kpop_dark_synth_bridge_reframe",
+      "name": "Bridge Reframe",
+      "category": "bridge",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "triggerTags": [
+        "bridge_contrast",
+        "futuristic"
+      ],
+      "operation": "bridge_reframe",
+      "weight": 0.86
+    },
+    {
+      "id": "kpop_ballad_emotional_borrowed_iv",
+      "name": "Borrowed iv Darken",
+      "category": "color_shift",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "full_loop",
+        "chorus",
+        "bridge"
+      ],
+      "triggerTags": [
+        "borrowed_color",
+        "emotional"
+      ],
+      "operation": "borrowed_iv_darken",
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_delay_arrival",
+      "name": "Delay Arrival",
+      "category": "section_lift",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus"
+      ],
+      "triggerTags": [
+        "pre_chorus_energy",
+        "yearning"
+      ],
+      "operation": "delay_tonic_arrival",
+      "weight": 0.86
+    },
+    {
+      "id": "kpop_ballad_emotional_chorus_widen",
+      "name": "Chorus Widen",
+      "category": "payoff",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "chorus"
+      ],
+      "triggerTags": [
+        "chorus_payoff",
+        "release"
+      ],
+      "operation": "chorus_payoff_widen",
+      "weight": 0.9
+    },
+    {
+      "id": "kpop_ballad_emotional_bridge_reframe",
+      "name": "Bridge Reframe",
+      "category": "bridge",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "bridge"
+      ],
+      "triggerTags": [
+        "bridge_contrast",
+        "borrowed_color"
+      ],
+      "operation": "bridge_reframe",
+      "weight": 0.88
+    },
+    {
+      "id": "kpop_ballad_emotional_dominant_pressure",
+      "name": "Dominant Pressure",
+      "category": "tension",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "allowedSectionIntents": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "triggerTags": [
+        "yearning",
+        "pre_chorus_energy"
+      ],
+      "operation": "dominant_pressure",
+      "weight": 0.84
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "kpop_bright_easy_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} stays bright by keeping the hook readable while the cadence leans {cadenceType} instead of overcomplicating the loop.",
+      "requiredPlaceholders": [
+        "sectionIntent",
+        "cadenceType"
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, {substyleName} usually increases lift through cleaner dominant pull and a brighter payoff slot.",
+      "requiredPlaceholders": [
+        "sectionIntent",
+        "substyleName"
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "kpop_bright_easy"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "pre_chorus",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "Notice how {rhythmName} keeps the progression producer-friendly: the harmony moves enough to feel polished, but the loop still leaves topline space.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "chorus"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} works because the dark loop identity stays intact while {specialMoveNames} can sharpen the drop or build without changing the core root path.",
+      "requiredPlaceholders": [
+        "sectionIntent",
+        "specialMoveNames"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "For {sectionIntent}, {substyleName} leans on pressure and contrast more than sweetness, so the progression should feel like it is tightening or reframing.",
+      "requiredPlaceholders": [
+        "sectionIntent",
+        "substyleName"
+      ]
+    },
+    {
+      "id": "kpop_dark_synth_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "kpop_dark_synth"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus"
+      ],
+      "tone": "learning_aware",
+      "content": "The dark-synth trick is keeping {cadenceType} energy inside a repeatable loop. That lets the production feel heavy without turning the harmony into noise.",
+      "requiredPlaceholders": [
+        "cadenceType"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_why",
+      "templateType": "why_it_works",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "sectionIntentScope": [
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} feels emotional because {substyleName} keeps the release gentle, then uses richer color only where the phrase can actually carry it.",
+      "requiredPlaceholders": [
+        "sectionIntent",
+        "substyleName"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_section",
+      "templateType": "section_idea",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "sectionIntentScope": [
+        "pre_chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "In {sectionIntent}, the job is not speed. The job is direction: make the next arrival feel inevitable through cadence pressure or borrowed color.",
+      "requiredPlaceholders": [
+        "sectionIntent"
+      ]
+    },
+    {
+      "id": "kpop_ballad_emotional_learn",
+      "templateType": "learn",
+      "styleScope": [
+        "kpop_ballad_emotional"
+      ],
+      "sectionIntentScope": [
+        "full_loop",
+        "verse",
+        "chorus",
+        "bridge"
+      ],
+      "tone": "learning_aware",
+      "content": "When {rhythmName} slows the harmony down, every color chord matters more. That is why this substyle can support richer voicings without losing clarity.",
+      "requiredPlaceholders": [
+        "rhythmName"
+      ]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "kpop_bright_easy_block",
+      "name": "Bright Block",
+      "mode": "block",
+      "styleTags": [
+        "bright",
+        "hook_forward"
+      ],
+      "voicingStyle": "tight_pop_stack",
+      "registerRange": [
+        50,
+        78
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "medium_even",
+      "sustainBehavior": "clean_bar_sustain",
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_arp",
+      "name": "Bright Arp",
+      "mode": "arp",
+      "styleTags": [
+        "bright",
+        "easy_listening"
+      ],
+      "voicingStyle": "light_upper_motion",
+      "registerRange": [
+        55,
+        84
+      ],
+      "rhythmPattern": "eighth_note_lift",
+      "velocityProfile": "gentle_rise",
+      "sustainBehavior": "phrase_sustain",
+      "weight": 0.8
+    },
+    {
+      "id": "kpop_dark_synth_block",
+      "name": "Dark Block",
+      "mode": "block",
+      "styleTags": [
+        "dark",
+        "drop_ready"
+      ],
+      "voicingStyle": "tight_low_mid_stack",
+      "registerRange": [
+        45,
+        74
+      ],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "firm_even",
+      "sustainBehavior": "tight_bar_sustain",
+      "weight": 1
+    },
+    {
+      "id": "kpop_dark_synth_comp",
+      "name": "Dark Comp",
+      "mode": "comp",
+      "styleTags": [
+        "dark",
+        "synth"
+      ],
+      "voicingStyle": "staccato_mid_stabs",
+      "registerRange": [
+        48,
+        76
+      ],
+      "rhythmPattern": "syncopated_stabs",
+      "velocityProfile": "accented_drop",
+      "sustainBehavior": "short_release",
+      "weight": 0.84
+    },
+    {
+      "id": "kpop_ballad_emotional_block",
+      "name": "Ballad Block",
+      "mode": "block",
+      "styleTags": [
+        "emotional",
+        "ballad"
+      ],
+      "voicingStyle": "wide_ballad_stack",
+      "registerRange": [
+        44,
+        82
+      ],
+      "rhythmPattern": "half_note_support",
+      "velocityProfile": "soft_swell",
+      "sustainBehavior": "long_phrase_sustain",
+      "weight": 1
+    },
+    {
+      "id": "kpop_ballad_emotional_arp",
+      "name": "Ballad Arp",
+      "mode": "arp",
+      "styleTags": [
+        "emotional",
+        "open_heart"
+      ],
+      "voicingStyle": "rolled_upper_spread",
+      "registerRange": [
+        52,
+        86
+      ],
+      "rhythmPattern": "slow_broken_chords",
+      "velocityProfile": "gentle_wave",
+      "sustainBehavior": "pedal_like",
+      "weight": 0.72
+    }
+  ]
+}
