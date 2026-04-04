@@ -1,0 +1,28 @@
+Use this Ask Mode prompt in Codex to create or verify the repo AGENTS.md:
+
+Read the repo docs first.
+
+I need a repo-root AGENTS.md for a static browser-only chord progression generator.
+
+Requirements:
+- project identity: Vite + React + TypeScript + GitHub Pages
+- no backend required in v1
+- no auth/accounts
+- no melody generation
+- no bassline generation
+- no raw corpus shipping
+- runtime packs live in public/packs
+- authoring assets live in data-src
+- generation is Roman-numeral/function first
+- K-pop must preserve section-aware behavior
+- full_loop must be first-class
+- future_pop belongs to pop
+- house_disco belongs to dance
+- single-screen desktop-first UI with top control bar, big center result, right suggestion rail, tabs under result
+- quality rules: validate/build before finishing, stop if docs conflict
+
+Output:
+- proposed AGENTS.md content only
+
+Do not redesign the product.
+Do not add backend architecture.
