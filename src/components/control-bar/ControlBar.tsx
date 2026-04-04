@@ -3,6 +3,7 @@ import {
   FAMILY_OPTIONS,
   KEY_OPTIONS,
   MIDI_MODE_OPTIONS,
+  SCALE_OPTIONS,
   SECTION_OPTIONS,
   SPICE_OPTIONS,
   SUBSTYLE_OPTIONS,
@@ -19,6 +20,8 @@ interface ControlBarProps {
   settingsOpen: boolean;
   onToggleSettings: () => void;
   onCloseSettings: () => void;
+  onGenerate: () => void;
+  isGenerating: boolean;
   runtimeBasePath: string;
   manifestUrl: string;
 }
@@ -32,6 +35,8 @@ export function ControlBar({
   settingsOpen,
   onToggleSettings,
   onCloseSettings,
+  onGenerate,
+  isGenerating,
   runtimeBasePath,
   manifestUrl
 }: ControlBarProps) {
@@ -41,17 +46,23 @@ export function ControlBar({
     <header className="control-bar panel">
       <div className="control-bar__header">
         <div className="control-bar__title-group">
-          <span className="eyebrow">Static v1 scaffold</span>
+          <span className="eyebrow">Browser-side generator</span>
           <h1 className="control-bar__title">Chord progression workspace</h1>
           <p className="control-bar__subtitle">
-            Layout, theming, deployment, and runtime-path plumbing are ready. Generation stays
-            intentionally unwired in this pass.
+            Deterministic Roman-numeral generation runs locally from authored packs. Pick a family,
+            seed, section, and key, then generate a progression with explanations and variation
+            ideas.
           </p>
         </div>
 
         <div className="control-bar__actions">
-          <button className="button button--secondary" disabled title="Generator not wired yet">
-            Generate
+          <button
+            className="button button--secondary"
+            disabled={isGenerating}
+            onClick={onGenerate}
+            type="button"
+          >
+            {isGenerating ? 'Generating...' : 'Generate'}
           </button>
 
           <button className="button button--ghost" onClick={onToggleTheme} type="button">
@@ -113,6 +124,17 @@ export function ControlBar({
         </label>
 
         <label className="field">
+          <span className="field__label">Seed</span>
+          <input
+            className="field__control"
+            value={controls.seed}
+            onChange={(event) => onControlsChange({ seed: event.target.value })}
+            placeholder="Enter deterministic seed"
+            type="text"
+          />
+        </label>
+
+        <label className="field">
           <span className="field__label">Section</span>
           <select
             className="field__control"
@@ -147,11 +169,32 @@ export function ControlBar({
         </label>
 
         <label className="field">
+          <span className="field__label">Scale</span>
+          <select
+            className="field__control"
+            value={controls.scaleMode}
+            onChange={(event) =>
+              onControlsChange({
+                scaleMode: event.target.value as ShellControlState['scaleMode']
+              })
+            }
+          >
+            {SCALE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="field">
           <span className="field__label">Spice</span>
           <select
             className="field__control"
             value={controls.spiceLevel}
-            onChange={(event) => onControlsChange({ spiceLevel: event.target.value })}
+            onChange={(event) =>
+              onControlsChange({ spiceLevel: Number.parseInt(event.target.value, 10) || 1 })
+            }
           >
             {SPICE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>

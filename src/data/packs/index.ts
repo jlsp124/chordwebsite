@@ -1,4 +1,4 @@
-import { resolveRuntimeAsset } from '../../core/runtime-path';
+import { resolveRuntimeAsset } from '../../core/runtime-path.ts';
 import type { PackManifest } from '../../core/types';
 
 export type { FamilyPack, PackManifest, PackManifestEntry } from '../../core/types';

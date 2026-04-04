@@ -160,7 +160,7 @@ html[data-motion='reduced'] * {
 
 .control-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -375,8 +375,17 @@ html[data-motion='reduced'] * {
 
 .result-surface {
   display: grid;
+  gap: 14px;
   align-items: stretch;
   min-height: 320px;
+}
+
+.status-banner {
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--text-muted);
 }
 
 .empty-state {
@@ -440,6 +449,85 @@ html[data-motion='reduced'] * {
   color: var(--text-muted);
 }
 
+.progression-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.progression-summary {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+
+.progression-summary__title {
+  margin: 6px 0 0;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.05;
+}
+
+.progression-summary__chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.progression-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.chord-card {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    linear-gradient(155deg, var(--surface-strong), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at top right, var(--accent-soft), transparent 42%);
+  border: 1px solid var(--border);
+}
+
+.chord-card__index {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.chord-card__roman {
+  font-size: clamp(1.7rem, 2vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chord-card__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.chord-card__function {
+  color: var(--accent-strong);
+  font-size: 0.92rem;
+  text-transform: capitalize;
+}
+
+.chord-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.progression-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .tabs-panel {
   padding: 18px;
   display: grid;
@@ -497,6 +585,26 @@ html[data-motion='reduced'] * {
   color: var(--text-muted);
 }
 
+.tab-item-list {
+  display: grid;
+  gap: 14px;
+}
+
+.tab-item {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.tabs-panel__links {
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .suggestion-rail {
   position: sticky;
   top: 132px;
@@ -533,6 +641,42 @@ html[data-motion='reduced'] * {
   margin: 0;
   color: var(--text-muted);
   font-size: 0.94rem;
+}
+
+.suggestion-list {
+  display: grid;
+  gap: 12px;
+}
+
+.suggestion-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+
+.suggestion-card__header {
+  display: grid;
+  gap: 8px;
+}
+
+.suggestion-card__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.suggestion-card__copy {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}
+
+.suggestion-card__preview {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.88rem;
+  color: var(--accent-strong);
 }
 
 .rail-note {

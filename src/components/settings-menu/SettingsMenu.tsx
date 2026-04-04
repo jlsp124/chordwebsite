@@ -21,7 +21,8 @@ export function SettingsMenu({
         <div>
           <h2 className="settings-menu__title">Preferences</h2>
           <p className="settings-menu__copy">
-            These toggles shape the shell only. Generator behavior remains unwired.
+            These toggles shape how the generated progression is displayed, not how the musical
+            engine chooses harmony.
           </p>
         </div>
 

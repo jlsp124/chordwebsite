@@ -1,22 +1,15 @@
+import type {
+  ExplanationType,
+  MidiMode,
+  ScaleMode,
+  SectionIntent
+} from './types/index.ts';
+
+export type { ExplanationType, MidiMode, ScaleMode, SectionIntent } from './types/index.ts';
+
 export type ThemeMode = 'light' | 'dark';
 
-export type SectionIntent =
-  | 'full_loop'
-  | 'verse'
-  | 'pre_chorus'
-  | 'chorus'
-  | 'bridge';
-
-export type MidiMode = 'block' | 'comp' | 'arp';
-
-export type ExplanationType =
-  | 'why_it_works'
-  | 'add_notes'
-  | 'transition'
-  | 'section_idea'
-  | 'learn';
-
-export interface SelectOption<TValue extends string = string> {
+export interface SelectOption<TValue extends string | number = string> {
   value: TValue;
   label: string;
 }
@@ -24,9 +17,11 @@ export interface SelectOption<TValue extends string = string> {
 export interface ShellControlState {
   familyId: string;
   substyleId: string;
+  seed: string;
   sectionIntent: SectionIntent;
   key: string;
-  spiceLevel: string;
+  scaleMode: ScaleMode;
+  spiceLevel: number;
   midiMode: MidiMode;
 }
 
@@ -76,11 +71,16 @@ export const KEY_OPTIONS: SelectOption[] = [
   { value: 'B', label: 'B' }
 ];
 
-export const SPICE_OPTIONS: SelectOption[] = [
-  { value: '1', label: '1 / Safe' },
-  { value: '2', label: '2 / Lifted' },
-  { value: '3', label: '3 / Richer' },
-  { value: '4', label: '4 / Bold' }
+export const SCALE_OPTIONS: SelectOption<ScaleMode>[] = [
+  { value: 'major', label: 'Major' },
+  { value: 'minor', label: 'Minor' }
+];
+
+export const SPICE_OPTIONS: SelectOption<number>[] = [
+  { value: 1, label: '1 / Safe' },
+  { value: 2, label: '2 / Lifted' },
+  { value: 3, label: '3 / Richer' },
+  { value: 4, label: '4 / Bold' }
 ];
 
 export const MIDI_MODE_OPTIONS: SelectOption<MidiMode>[] = [
@@ -100,9 +100,11 @@ export const EXPLANATION_TABS: SelectOption<ExplanationType>[] = [
 export const DEFAULT_CONTROL_STATE: ShellControlState = {
   familyId: 'kpop',
   substyleId: 'kpop_bright_easy',
+  seed: 'starter-kpop-bright-01',
   sectionIntent: 'full_loop',
   key: 'C',
-  spiceLevel: '1',
+  scaleMode: 'major',
+  spiceLevel: 1,
   midiMode: 'block'
 };
 

@@ -1,42 +1,21 @@
+import type { ExplanationItem } from '../../core/types';
 import type { ExplanationType, SelectOption } from '../../core/options';
 
 interface ResultTabsProps {
   activeTab: ExplanationType;
   onTabChange: (nextTab: ExplanationType) => void;
   tabOptions: SelectOption<ExplanationType>[];
-  hasProgression: boolean;
+  explanations: ExplanationItem[];
 }
-
-const TAB_PLACEHOLDER_COPY: Record<ExplanationType, { title: string; body: string }> = {
-  why_it_works: {
-    title: 'Why It Works',
-    body: 'This tab is ready for producer-first harmonic reasoning once generation results exist.'
-  },
-  add_notes: {
-    title: 'Add Notes',
-    body: 'This tab will suggest tasteful color extensions after the actual progression engine is wired.'
-  },
-  transition: {
-    title: 'Transition',
-    body: 'This tab will explain turnarounds, lifts, and bridge links using the runtime result contract.'
-  },
-  section_idea: {
-    title: 'Section Idea',
-    body: 'This tab will surface section-aware guidance for verse, pre-chorus, chorus, bridge, and full-loop use.'
-  },
-  learn: {
-    title: 'Learn',
-    body: 'This tab will connect Roman numerals, functions, and cadence behavior without becoming a textbook dump.'
-  }
-};
 
 export function ResultTabs({
   activeTab,
   onTabChange,
   tabOptions,
-  hasProgression
+  explanations
 }: ResultTabsProps) {
-  const activeCopy = TAB_PLACEHOLDER_COPY[activeTab];
+  const activeItems = explanations.filter((item) => item.type === activeTab);
+  const hasProgression = explanations.length > 0;
 
   return (
     <section className="tabs-panel panel">
@@ -63,12 +42,32 @@ export function ResultTabs({
       </div>
 
       <div className="tabs-panel__body" role="tabpanel">
-        <h3 className="tabs-panel__body-title">{activeCopy.title}</h3>
-        <p className="tabs-panel__body-copy">
-          {hasProgression
-            ? activeCopy.body
-            : `${activeCopy.body} Until then, the tabs stay as structured placeholders instead of fake content.`}
-        </p>
+        {hasProgression && activeItems.length > 0 ? (
+          <div className="tab-item-list">
+            {activeItems.map((item) => (
+              <article className="tab-item" key={item.id}>
+                <h3 className="tabs-panel__body-title">{item.title}</h3>
+                <p className="tabs-panel__body-copy">{item.body}</p>
+                {item.relatedChordIndexes?.length ? (
+                  <div className="tabs-panel__links">
+                    Related chords: {item.relatedChordIndexes.map((index) => index + 1).join(', ')}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        ) : (
+          <>
+            <h3 className="tabs-panel__body-title">
+              {tabOptions.find((option) => option.value === activeTab)?.label ?? 'Explanation'}
+            </h3>
+            <p className="tabs-panel__body-copy">
+              {hasProgression
+                ? 'This progression did not return copy for the selected tab.'
+                : 'Generate first to unlock pack-driven explanation copy for why it works, add-notes ideas, transitions, section guidance, and learning notes.'}
+            </p>
+          </>
+        )}
       </div>
     </section>
   );
