@@ -7,13 +7,13 @@ tags:
 status: draft
 ---
 
-# Chord Generator — Data Pack Plan
+# Chord Generator - Data Pack Plan
 
 > [!summary]
-> v1 ships **compiled family packs** from `public/packs/`.
+> v1 ships compiled family packs from `public/packs/`.
 > Musical authoring happens in `data-src/`.
 > Scripts validate, compile, and report.
-> Scripts do **not** invent core musical identity.
+> Scripts do not invent core musical identity.
 
 ## What This Note Freezes
 - shipped family-pack strategy
@@ -70,6 +70,12 @@ data-src/
 ```
 
 These files are source material for scripts and human editing only.
+
+Current repo scaffolding also includes:
+- starter schema mirrors in `src/data/templates/`
+- validator sample fixtures in `src/data/packs/samples/`
+
+Those are implementation scaffolding only. They do not replace `data-src/`.
 
 ---
 
@@ -162,30 +168,30 @@ Do not auto-generate from corpus or prose:
 
 ## K-pop Substyles
 Each K-pop substyle should reach:
-- 15–20 archetypes
+- 15-20 archetypes
 - full section rules
-- 4–6 special moves
-- 2–4 cadence profiles
-- 2–3 harmonic rhythm profiles
-- 3–6 spice transforms
-- 5–8 variation rules
-- 2–3 MIDI presets
+- 4-6 special moves
+- 2-4 cadence profiles
+- 2-3 harmonic rhythm profiles
+- 3-6 spice transforms
+- 5-8 variation rules
+- 2-3 MIDI presets
 
 ## Other Priority Substyles
 Each non-K-pop v1 substyle should reach:
-- 12–15 archetypes
+- 12-15 archetypes
 - lighter section rules unless strongly section-aware
-- 2–4 cadence profiles
-- 2–3 harmonic rhythm profiles
-- 3–6 spice transforms
-- 5–8 variation rules
-- 2–3 MIDI presets
+- 2-4 cadence profiles
+- 2-3 harmonic rhythm profiles
+- 3-6 spice transforms
+- 5-8 variation rules
+- 2-3 MIDI presets
 
 ---
 
 # Pack Quality Rules
 
-A substyle pack is not “usable” unless it has:
+A substyle pack is not "usable" unless it has:
 - real archetype diversity
 - distinct cadence behavior
 - distinct rhythm behavior
@@ -229,6 +235,9 @@ Expected script responsibilities:
 
 The scripts should compile and validate.
 They should not act as hidden music generators.
+
+Current repo implementation includes `scripts/validate-packs.mjs`, which validates the in-repo sample fixtures
+without treating them as shipped runtime packs.
 
 ---
 

@@ -1,0 +1,23 @@
+{
+  "id": "archetype_slug",
+  "substyleId": "substyle_slug",
+  "name": "Archetype Name",
+  "romanNumerals": ["I", "V", "vi", "IV"],
+  "functionPath": ["tonic", "dominant", "tonic_family", "predominant"],
+  "bars": 4,
+  "harmonicRhythmProfileId": "rhythm_slug",
+  "allowedSectionIntents": ["full_loop", "verse", "chorus"],
+  "resolutionBias": "soft_resolve",
+  "loopability": 0.9,
+  "tensionCurve": ["stable", "lift", "soft_release", "open"],
+  "tags": ["identity_tag"],
+  "weight": 1,
+  "slotOptions": [
+    {
+      "slotIndex": 0,
+      "allowedDecorations": ["add9"],
+      "allowedSlashBassDegrees": [],
+      "forbidOnLowSpice": false
+    }
+  ]
+}

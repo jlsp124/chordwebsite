@@ -1,0 +1,23 @@
+{
+  "manifestVersion": "1.0.0",
+  "packs": [
+    {
+      "packId": "kpop",
+      "familyId": "kpop",
+      "familyName": "K-pop",
+      "path": "packs/kpop.pack.json",
+      "version": "1.0.0",
+      "substyleIds": ["kpop_bright_easy"],
+      "tags": ["section-aware", "starter-sample"]
+    },
+    {
+      "packId": "pop",
+      "familyId": "pop",
+      "familyName": "Pop",
+      "path": "packs/pop.pack.json",
+      "version": "1.0.0",
+      "substyleIds": ["future_pop"],
+      "tags": ["loop-first", "starter-sample"]
+    }
+  ]
+}

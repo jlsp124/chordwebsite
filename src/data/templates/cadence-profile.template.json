@@ -1,0 +1,9 @@
+{
+  "id": "cadence_slug",
+  "name": "Cadence Name",
+  "type": "soft_resolve",
+  "allowedEndFunctions": ["tonic", "predominant"],
+  "strength": 0.65,
+  "commonUseCases": ["chorus", "full_loop"],
+  "weight": 1
+}

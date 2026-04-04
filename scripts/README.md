@@ -14,14 +14,20 @@ Scripts in this folder are **not runtime dependencies** for the deployed GitHub 
 
 ---
 
-## Recommended Files
+## Current Script
 
-### `validate-packs.ts` or `validate-packs.js`
+### `validate-packs.mjs`
 Validates local JSON packs:
 - required keys present
 - ID uniqueness
 - cross-reference integrity
 - no empty required arrays
+
+Current implementation validates the hand-authored sample fixtures under `src/data/packs/samples/`.
+
+---
+
+## Recommended Future Files
 
 ### `build-packs.ts` or `build-packs.py`
 Optional later script to transform curated source material into final pack JSON.

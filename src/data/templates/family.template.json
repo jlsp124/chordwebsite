@@ -1,0 +1,8 @@
+{
+  "id": "family_slug",
+  "name": "Family Name",
+  "description": "One-sentence family description.",
+  "tags": ["producer_first"],
+  "defaultModeBias": "section_first",
+  "substyleIds": ["substyle_slug"]
+}

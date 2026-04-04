@@ -1,0 +1,293 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "pop",
+  "family": {
+    "id": "pop",
+    "name": "Pop",
+    "description": "Hook-led modern pop progressions with clear loop readability.",
+    "tags": ["producer_first", "pop"],
+    "defaultModeBias": "loop_first",
+    "substyleIds": ["future_pop"]
+  },
+  "substyles": [
+    {
+      "id": "future_pop",
+      "familyId": "pop",
+      "name": "Future Pop",
+      "description": "Glossy loop-forward pop harmony with light lift and clean payoff control.",
+      "tags": ["glossy", "uplifting", "future_pop"],
+      "modeBias": "loop_first",
+      "defaultSectionIntents": ["full_loop", "chorus"],
+      "archetypeIds": [
+        "future_pop_glide_loop",
+        "future_pop_release_loop"
+      ],
+      "cadenceProfileIds": [
+        "future_pop_open_loop",
+        "future_pop_soft_release"
+      ],
+      "harmonicRhythmProfileIds": [
+        "future_pop_mid_glide",
+        "future_pop_active_push"
+      ],
+      "sectionBehaviorId": "future_pop_sections",
+      "spicinessTransformIds": ["future_pop_clean_extensions"],
+      "variationRuleIds": [
+        "future_pop_safer",
+        "future_pop_chorus_payoff_rule"
+      ],
+      "specialMoveIds": ["future_pop_payoff_widen"],
+      "explanationTemplateIds": ["future_pop_why"],
+      "midiPresetIds": ["future_pop_comp"],
+      "mustIncludeTags": ["glossy"],
+      "mustAvoidTags": ["heavy_dissonance"]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "future_pop_glide_loop",
+      "substyleId": "future_pop",
+      "name": "Glide Loop",
+      "romanNumerals": ["I", "vi", "IV", "V"],
+      "functionPath": ["tonic", "tonic_family", "predominant", "dominant"],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_mid_glide",
+      "allowedSectionIntents": ["full_loop", "verse"],
+      "resolutionBias": "open_loop",
+      "loopability": 0.92,
+      "tensionCurve": ["stable", "soft_drop", "lift", "open"],
+      "tags": ["glossy", "loop_core"],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": ["add9"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": ["maj7"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": ["add9", "sus2"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": ["sus4"],
+          "allowedSlashBassDegrees": ["7"],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "future_pop_release_loop",
+      "substyleId": "future_pop",
+      "name": "Release Loop",
+      "romanNumerals": ["vi", "IV", "I", "V"],
+      "functionPath": ["tonic_family", "predominant", "tonic", "dominant"],
+      "bars": 4,
+      "harmonicRhythmProfileId": "future_pop_active_push",
+      "allowedSectionIntents": ["chorus"],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.86,
+      "tensionCurve": ["held_tension", "lift", "release", "open"],
+      "tags": ["glossy", "payoff"],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": ["add9"],
+          "allowedSlashBassDegrees": ["3"],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": ["sus2"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": ["maj7"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": ["sus4"],
+          "allowedSlashBassDegrees": ["7"],
+          "forbidOnLowSpice": true
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "future_pop_open_loop",
+      "name": "Open Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": ["dominant", "predominant"],
+      "strength": 0.45,
+      "commonUseCases": ["full_loop"],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_soft_release",
+      "name": "Soft Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": ["tonic", "tonic_family"],
+      "strength": 0.72,
+      "commonUseCases": ["chorus"],
+      "weight": 1
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "future_pop_mid_glide",
+      "name": "Mid Glide",
+      "density": "medium",
+      "beatsPerChangePattern": [4, 4, 4, 4],
+      "commonUseCases": ["full_loop", "verse"]
+    },
+    {
+      "id": "future_pop_active_push",
+      "name": "Active Push",
+      "density": "active",
+      "beatsPerChangePattern": [2, 2, 2, 2, 2, 2, 2, 2],
+      "commonUseCases": ["chorus"]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "future_pop_sections",
+      "substyleId": "future_pop",
+      "fullLoopRules": {
+        "preferredCadenceTypes": ["open_loop"],
+        "preferredRhythmDensities": ["medium"],
+        "preferredArchetypeTags": ["loop_core"],
+        "allowedVariationTypes": ["safer", "more_open"],
+        "allowedSpecialMoveIds": [],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "stable"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": ["open_loop"],
+        "preferredRhythmDensities": ["medium"],
+        "preferredArchetypeTags": ["glossy"],
+        "allowedVariationTypes": ["safer"],
+        "allowedSpecialMoveIds": [],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "grounded"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": ["lift_without_arrival"],
+        "preferredRhythmDensities": ["active"],
+        "preferredArchetypeTags": ["payoff"],
+        "allowedVariationTypes": ["pre_chorus_lift"],
+        "allowedSpecialMoveIds": ["future_pop_payoff_widen"],
+        "forbiddenTags": ["loop_core"],
+        "energyShape": "rising"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": ["soft_resolve"],
+        "preferredRhythmDensities": ["active"],
+        "preferredArchetypeTags": ["payoff"],
+        "allowedVariationTypes": ["chorus_payoff", "richer"],
+        "allowedSpecialMoveIds": ["future_pop_payoff_widen"],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": ["contrastive"],
+        "preferredRhythmDensities": ["variable"],
+        "preferredArchetypeTags": ["payoff"],
+        "allowedVariationTypes": ["bridge_contrast"],
+        "allowedSpecialMoveIds": ["future_pop_payoff_widen"],
+        "forbiddenTags": ["loop_core"],
+        "energyShape": "contrast"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "future_pop_clean_extensions",
+      "name": "Clean Extensions",
+      "level": 1,
+      "styleScope": ["pop", "future_pop"],
+      "allowedDecorations": ["add9", "maj7", "sus2"],
+      "allowedFunctions": ["tonic", "tonic_family", "predominant"],
+      "forbiddenSectionIntents": ["bridge"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "future_pop_safer",
+      "name": "Safer Loop",
+      "type": "safer",
+      "styleScope": ["future_pop"],
+      "allowedSectionIntents": ["full_loop", "verse"],
+      "preserve": ["loop_length", "roman_root_path"],
+      "targets": ["decoration_reduction"],
+      "requiredTags": ["glossy"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    },
+    {
+      "id": "future_pop_chorus_payoff_rule",
+      "name": "Chorus Payoff",
+      "type": "chorus_payoff",
+      "styleScope": ["future_pop"],
+      "allowedSectionIntents": ["chorus"],
+      "preserve": ["section_role", "hook_recognition"],
+      "targets": ["opening_slot", "arrival_weight"],
+      "requiredTags": ["payoff"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "future_pop_payoff_widen",
+      "name": "Payoff Widen",
+      "category": "chorus_shape",
+      "styleScope": ["future_pop"],
+      "allowedSectionIntents": ["pre_chorus", "chorus"],
+      "triggerTags": ["payoff", "glossy"],
+      "operation": "chorus_payoff_widen",
+      "weight": 1
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "future_pop_why",
+      "templateType": "why_it_works",
+      "styleScope": ["future_pop"],
+      "sectionIntentScope": ["full_loop", "chorus"],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} loop keeps {substyleName} glossy by opening the cadence without losing the hook shape.",
+      "requiredPlaceholders": ["sectionIntent", "substyleName"]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "future_pop_comp",
+      "name": "Future Pop Comp",
+      "mode": "comp",
+      "styleTags": ["glossy", "uplifting"],
+      "voicingStyle": "wide_pop_comp",
+      "registerRange": [50, 82],
+      "rhythmPattern": "syncopated_glide",
+      "velocityProfile": "lifted_even",
+      "sustainBehavior": "phrase_sustain",
+      "weight": 1
+    }
+  ]
+}

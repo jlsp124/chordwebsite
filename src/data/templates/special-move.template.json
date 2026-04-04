@@ -1,0 +1,10 @@
+{
+  "id": "special_move_slug",
+  "name": "Special Move Name",
+  "category": "section_magic",
+  "styleScope": ["family_slug", "substyle_slug"],
+  "allowedSectionIntents": ["pre_chorus", "chorus"],
+  "triggerTags": ["lift_tag"],
+  "operation": "delay_tonic_arrival",
+  "weight": 1
+}

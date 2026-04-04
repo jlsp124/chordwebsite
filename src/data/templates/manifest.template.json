@@ -1,0 +1,14 @@
+{
+  "manifestVersion": "1.0.0",
+  "packs": [
+    {
+      "packId": "family_slug",
+      "familyId": "family_slug",
+      "familyName": "Family Name",
+      "path": "packs/family_slug.pack.json",
+      "version": "1.0.0",
+      "substyleIds": ["substyle_slug"],
+      "tags": ["producer_first"]
+    }
+  ]
+}

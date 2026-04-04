@@ -1,0 +1,9 @@
+{
+  "id": "explanation_slug",
+  "templateType": "why_it_works",
+  "styleScope": ["family_slug", "substyle_slug"],
+  "sectionIntentScope": ["full_loop", "chorus"],
+  "tone": "producer_friendly",
+  "content": "This loop works because {start_label} sets home, {lift_label} adds pull, and {ending_label} keeps the phrase reusable.",
+  "requiredPlaceholders": ["start_label", "lift_label", "ending_label"]
+}

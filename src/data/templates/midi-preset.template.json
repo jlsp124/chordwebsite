@@ -1,0 +1,12 @@
+{
+  "id": "midi_preset_slug",
+  "name": "MIDI Preset Name",
+  "mode": "block",
+  "styleTags": ["family_slug"],
+  "voicingStyle": "close_mid_register",
+  "registerRange": [48, 76],
+  "rhythmPattern": "bar_hits",
+  "velocityProfile": "medium_even",
+  "sustainBehavior": "bar_sustain",
+  "weight": 1
+}

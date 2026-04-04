@@ -1,0 +1,293 @@
+{
+  "packVersion": "1.0.0",
+  "packId": "kpop",
+  "family": {
+    "id": "kpop",
+    "name": "K-pop",
+    "description": "Section-aware polished pop progressions with bright hook logic.",
+    "tags": ["producer_first", "section_aware", "kpop"],
+    "defaultModeBias": "section_first",
+    "substyleIds": ["kpop_bright_easy"]
+  },
+  "substyles": [
+    {
+      "id": "kpop_bright_easy",
+      "familyId": "kpop",
+      "name": "K-pop Bright Easy",
+      "description": "Clean major-key hook writing with a clear lift into payoff sections.",
+      "tags": ["bright", "hook_forward", "kpop"],
+      "modeBias": "section_first",
+      "defaultSectionIntents": ["full_loop", "verse", "pre_chorus", "chorus"],
+      "archetypeIds": [
+        "kpop_bright_easy_hook_loop",
+        "kpop_bright_easy_chorus_payoff"
+      ],
+      "cadenceProfileIds": [
+        "kpop_bright_easy_open_loop",
+        "kpop_bright_easy_chorus_release"
+      ],
+      "harmonicRhythmProfileIds": [
+        "kpop_bright_easy_mid_pulse",
+        "kpop_bright_easy_lift_drive"
+      ],
+      "sectionBehaviorId": "kpop_bright_easy_sections",
+      "spicinessTransformIds": ["kpop_bright_easy_extensions"],
+      "variationRuleIds": [
+        "kpop_bright_easy_pre_lift",
+        "kpop_bright_easy_chorus_payoff_rule"
+      ],
+      "specialMoveIds": ["kpop_bright_easy_delay_arrival"],
+      "explanationTemplateIds": ["kpop_bright_easy_why"],
+      "midiPresetIds": ["kpop_bright_easy_block"],
+      "mustIncludeTags": ["bright", "hook_forward"],
+      "mustAvoidTags": ["heavy_dissonance"]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "kpop_bright_easy_hook_loop",
+      "substyleId": "kpop_bright_easy",
+      "name": "Hook Loop",
+      "romanNumerals": ["I", "V", "vi", "IV"],
+      "functionPath": ["tonic", "dominant", "tonic_family", "predominant"],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_mid_pulse",
+      "allowedSectionIntents": ["full_loop", "verse"],
+      "resolutionBias": "open_loop",
+      "loopability": 0.95,
+      "tensionCurve": ["stable", "lift", "soft_release", "open"],
+      "tags": ["bright", "hook_forward", "loop_core"],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": ["add9", "maj7"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": ["sus4"],
+          "allowedSlashBassDegrees": ["7"],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": ["add9"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": ["6", "add9"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": true
+        }
+      ]
+    },
+    {
+      "id": "kpop_bright_easy_chorus_payoff",
+      "substyleId": "kpop_bright_easy",
+      "name": "Chorus Payoff",
+      "romanNumerals": ["vi", "IV", "I", "V"],
+      "functionPath": ["tonic_family", "predominant", "tonic", "dominant"],
+      "bars": 4,
+      "harmonicRhythmProfileId": "kpop_bright_easy_lift_drive",
+      "allowedSectionIntents": ["pre_chorus", "chorus"],
+      "resolutionBias": "soft_resolve",
+      "loopability": 0.82,
+      "tensionCurve": ["held_tension", "lift", "release", "open"],
+      "tags": ["bright", "chorus_payoff", "section_peak"],
+      "weight": 1,
+      "slotOptions": [
+        {
+          "slotIndex": 0,
+          "allowedDecorations": ["add9"],
+          "allowedSlashBassDegrees": ["3"],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 1,
+          "allowedDecorations": ["sus2"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 2,
+          "allowedDecorations": ["maj7", "add9"],
+          "allowedSlashBassDegrees": [],
+          "forbidOnLowSpice": false
+        },
+        {
+          "slotIndex": 3,
+          "allowedDecorations": ["sus4"],
+          "allowedSlashBassDegrees": ["7"],
+          "forbidOnLowSpice": true
+        }
+      ]
+    }
+  ],
+  "cadenceProfiles": [
+    {
+      "id": "kpop_bright_easy_open_loop",
+      "name": "Open Loop",
+      "type": "open_loop",
+      "allowedEndFunctions": ["predominant", "dominant"],
+      "strength": 0.4,
+      "commonUseCases": ["full_loop", "verse"],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_chorus_release",
+      "name": "Chorus Release",
+      "type": "soft_resolve",
+      "allowedEndFunctions": ["tonic", "tonic_family"],
+      "strength": 0.78,
+      "commonUseCases": ["chorus"],
+      "weight": 1
+    }
+  ],
+  "harmonicRhythmProfiles": [
+    {
+      "id": "kpop_bright_easy_mid_pulse",
+      "name": "Mid Pulse",
+      "density": "medium",
+      "beatsPerChangePattern": [4, 4, 4, 4],
+      "commonUseCases": ["full_loop", "verse", "chorus"]
+    },
+    {
+      "id": "kpop_bright_easy_lift_drive",
+      "name": "Lift Drive",
+      "density": "active",
+      "beatsPerChangePattern": [2, 2, 2, 2, 2, 2, 2, 2],
+      "commonUseCases": ["pre_chorus", "chorus"]
+    }
+  ],
+  "sectionBehaviors": [
+    {
+      "id": "kpop_bright_easy_sections",
+      "substyleId": "kpop_bright_easy",
+      "fullLoopRules": {
+        "preferredCadenceTypes": ["open_loop"],
+        "preferredRhythmDensities": ["medium"],
+        "preferredArchetypeTags": ["loop_core"],
+        "allowedVariationTypes": ["safer"],
+        "allowedSpecialMoveIds": [],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "stable"
+      },
+      "verseRules": {
+        "preferredCadenceTypes": ["open_loop"],
+        "preferredRhythmDensities": ["medium"],
+        "preferredArchetypeTags": ["hook_forward"],
+        "allowedVariationTypes": ["safer", "more_open"],
+        "allowedSpecialMoveIds": [],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "grounded"
+      },
+      "preChorusRules": {
+        "preferredCadenceTypes": ["lift_without_arrival"],
+        "preferredRhythmDensities": ["active"],
+        "preferredArchetypeTags": ["section_peak"],
+        "allowedVariationTypes": ["pre_chorus_lift"],
+        "allowedSpecialMoveIds": ["kpop_bright_easy_delay_arrival"],
+        "forbiddenTags": ["loop_core"],
+        "energyShape": "rising"
+      },
+      "chorusRules": {
+        "preferredCadenceTypes": ["soft_resolve"],
+        "preferredRhythmDensities": ["medium", "active"],
+        "preferredArchetypeTags": ["chorus_payoff"],
+        "allowedVariationTypes": ["chorus_payoff", "richer"],
+        "allowedSpecialMoveIds": ["kpop_bright_easy_delay_arrival"],
+        "forbiddenTags": ["heavy_dissonance"],
+        "energyShape": "release"
+      },
+      "bridgeRules": {
+        "preferredCadenceTypes": ["contrastive"],
+        "preferredRhythmDensities": ["variable"],
+        "preferredArchetypeTags": ["section_peak"],
+        "allowedVariationTypes": ["bridge_contrast"],
+        "allowedSpecialMoveIds": ["kpop_bright_easy_delay_arrival"],
+        "forbiddenTags": ["loop_core"],
+        "energyShape": "contrast"
+      }
+    }
+  ],
+  "spicinessTransforms": [
+    {
+      "id": "kpop_bright_easy_extensions",
+      "name": "Bright Extensions",
+      "level": 1,
+      "styleScope": ["kpop", "kpop_bright_easy"],
+      "allowedDecorations": ["add9", "sus2", "maj7"],
+      "allowedFunctions": ["tonic", "predominant", "dominant"],
+      "forbiddenSectionIntents": ["bridge"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    }
+  ],
+  "variationRules": [
+    {
+      "id": "kpop_bright_easy_pre_lift",
+      "name": "Pre-Chorus Lift",
+      "type": "pre_chorus_lift",
+      "styleScope": ["kpop_bright_easy"],
+      "allowedSectionIntents": ["pre_chorus"],
+      "preserve": ["loop_length", "hook_recognition"],
+      "targets": ["final_two_slots", "dominant_push"],
+      "requiredTags": ["hook_forward"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    },
+    {
+      "id": "kpop_bright_easy_chorus_payoff_rule",
+      "name": "Chorus Payoff",
+      "type": "chorus_payoff",
+      "styleScope": ["kpop_bright_easy"],
+      "allowedSectionIntents": ["chorus"],
+      "preserve": ["section_role", "cadence_strength"],
+      "targets": ["opening_slot", "arrival_weight"],
+      "requiredTags": ["section_peak"],
+      "forbiddenTags": ["heavy_dissonance"],
+      "weight": 1
+    }
+  ],
+  "specialMoves": [
+    {
+      "id": "kpop_bright_easy_delay_arrival",
+      "name": "Delay Arrival",
+      "category": "section_lift",
+      "styleScope": ["kpop_bright_easy"],
+      "allowedSectionIntents": ["pre_chorus", "chorus"],
+      "triggerTags": ["hook_forward", "section_peak"],
+      "operation": "delay_tonic_arrival",
+      "weight": 1
+    }
+  ],
+  "explanationTemplates": [
+    {
+      "id": "kpop_bright_easy_why",
+      "templateType": "why_it_works",
+      "styleScope": ["kpop_bright_easy"],
+      "sectionIntentScope": ["full_loop", "pre_chorus", "chorus"],
+      "tone": "producer_first",
+      "content": "This {sectionIntent} path keeps {substyleName} bright by saving the clean arrival for the payoff slot.",
+      "requiredPlaceholders": ["sectionIntent", "substyleName"]
+    }
+  ],
+  "midiPresets": [
+    {
+      "id": "kpop_bright_easy_block",
+      "name": "Bright Block",
+      "mode": "block",
+      "styleTags": ["bright", "hook_forward"],
+      "voicingStyle": "tight_pop_stack",
+      "registerRange": [48, 76],
+      "rhythmPattern": "bar_hits",
+      "velocityProfile": "medium_even",
+      "sustainBehavior": "bar_sustain",
+      "weight": 1
+    }
+  ]
+}

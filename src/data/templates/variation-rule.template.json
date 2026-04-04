@@ -1,0 +1,12 @@
+{
+  "id": "variation_slug",
+  "name": "Variation Rule Name",
+  "type": "pre_chorus_lift",
+  "styleScope": ["family_slug", "substyle_slug"],
+  "allowedSectionIntents": ["pre_chorus", "chorus"],
+  "preserve": ["core_function_path"],
+  "targets": ["last_two_chords"],
+  "requiredTags": ["identity_tag"],
+  "forbiddenTags": ["forbidden_tag"],
+  "weight": 1
+}

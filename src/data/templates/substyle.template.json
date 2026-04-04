@@ -1,0 +1,20 @@
+{
+  "id": "substyle_slug",
+  "familyId": "family_slug",
+  "name": "Substyle Name",
+  "description": "One-sentence substyle description.",
+  "tags": ["identity_tag"],
+  "modeBias": "section_first",
+  "defaultSectionIntents": ["full_loop", "verse", "chorus"],
+  "archetypeIds": ["archetype_slug"],
+  "cadenceProfileIds": ["cadence_slug"],
+  "harmonicRhythmProfileIds": ["rhythm_slug"],
+  "sectionBehaviorId": "section_behavior_slug",
+  "spicinessTransformIds": ["spice_slug"],
+  "variationRuleIds": ["variation_slug"],
+  "specialMoveIds": ["special_move_slug"],
+  "explanationTemplateIds": ["explanation_slug"],
+  "midiPresetIds": ["midi_preset_slug"],
+  "mustIncludeTags": ["identity_tag"],
+  "mustAvoidTags": ["forbidden_tag"]
+}

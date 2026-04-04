@@ -1,0 +1,49 @@
+{
+  "id": "section_behavior_slug",
+  "substyleId": "substyle_slug",
+  "fullLoopRules": {
+    "preferredCadenceTypes": ["open_loop"],
+    "preferredRhythmDensities": ["medium"],
+    "preferredArchetypeTags": ["identity_tag"],
+    "allowedVariationTypes": ["safer"],
+    "allowedSpecialMoveIds": ["special_move_slug"],
+    "forbiddenTags": ["forbidden_tag"],
+    "energyShape": "stable"
+  },
+  "verseRules": {
+    "preferredCadenceTypes": ["open_loop"],
+    "preferredRhythmDensities": ["medium"],
+    "preferredArchetypeTags": ["identity_tag"],
+    "allowedVariationTypes": ["safer"],
+    "allowedSpecialMoveIds": [],
+    "forbiddenTags": ["forbidden_tag"],
+    "energyShape": "grounded"
+  },
+  "preChorusRules": {
+    "preferredCadenceTypes": ["lift_without_arrival"],
+    "preferredRhythmDensities": ["active"],
+    "preferredArchetypeTags": ["lift_tag"],
+    "allowedVariationTypes": ["pre_chorus_lift"],
+    "allowedSpecialMoveIds": ["special_move_slug"],
+    "forbiddenTags": ["static_tag"],
+    "energyShape": "rising"
+  },
+  "chorusRules": {
+    "preferredCadenceTypes": ["soft_resolve"],
+    "preferredRhythmDensities": ["medium"],
+    "preferredArchetypeTags": ["payoff_tag"],
+    "allowedVariationTypes": ["chorus_payoff"],
+    "allowedSpecialMoveIds": ["special_move_slug"],
+    "forbiddenTags": ["flat_tag"],
+    "energyShape": "release"
+  },
+  "bridgeRules": {
+    "preferredCadenceTypes": ["contrastive"],
+    "preferredRhythmDensities": ["variable"],
+    "preferredArchetypeTags": ["contrast_tag"],
+    "allowedVariationTypes": ["bridge_contrast"],
+    "allowedSpecialMoveIds": ["special_move_slug"],
+    "forbiddenTags": ["same_as_verse"],
+    "energyShape": "contrast"
+  }
+}

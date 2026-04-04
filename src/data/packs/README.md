@@ -9,6 +9,10 @@ Authoring pack source material lives in `data-src/`.
 
 Use this folder only for runtime TypeScript helpers if pack-loading code needs a local home later.
 
+The only JSON allowed here is **sample validation fixtures** under `src/data/packs/samples/`.
+Those fixtures exist to prove the schema and validator work before the real `data-src/ -> public/packs/`
+pipeline is built.
+
 ---
 
 ## What Does Not Go Here
@@ -29,6 +33,7 @@ Those belong in `public/packs/`.
 - do not duplicate the runtime pack source of truth here
 - do not point future work back to the old `src/data/packs` layout
 - keep any code here aligned with `docs/data-model.md` and `docs/manifest-spec.md`
+- keep sample fixtures clearly labeled as non-runtime scaffolding
 
 ---
 

@@ -1,0 +1,7 @@
+{
+  "id": "rhythm_slug",
+  "name": "Rhythm Profile Name",
+  "density": "medium",
+  "beatsPerChangePattern": [4, 4, 4, 4],
+  "commonUseCases": ["full_loop", "verse"]
+}

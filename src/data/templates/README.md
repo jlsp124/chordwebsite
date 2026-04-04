@@ -1,29 +1,28 @@
-# src/data/templates/ Folder Plan
+# src/data/templates
 
-## Purpose
+This folder now holds **starter reference templates** for the v1 pack schema.
 
-This folder is not the canonical authoring-template surface.
+These files are:
+- shape references for hand-authoring
+- safe validator fixtures
+- not browser runtime assets
+- not raw corpus data
+- a mirror of the future `data-src/templates/` authoring shape
 
-Canonical authoring templates live in `data-src/templates/`.
+Template coverage includes:
+- manifest
+- family pack
+- family
+- substyle
+- archetype
+- cadence profile
+- harmonic rhythm profile
+- section behavior
+- spiciness transform
+- variation rule
+- special move
+- explanation template
+- MIDI preset
 
----
-
-## What Goes Here
-
-Only place runtime TypeScript helpers here if the app later needs local template logic.
-Do not put canonical pack authoring JSON or starter content here.
-
----
-
-## Why This Folder Exists
-
-The canonical split is:
-- shipped packs in `public/packs/`
-- authoring assets in `data-src/`
-
----
-
-## Rules
-
-- do not duplicate canonical authoring templates from `data-src/templates/`
-- keep any code here aligned with the official docs if this folder is later used
+The shipped runtime surface is still `public/packs/`.
+The canonical authoring path is still `data-src/templates/`.

@@ -7,10 +7,10 @@ tags:
 status: draft
 ---
 
-# Chord Generator — Data Model
+# Chord Generator - Data Model
 
 > [!summary]
-> This note freezes the **runtime data model** and the **authoring-to-runtime boundary** for v1.
+> This note freezes the runtime data model and the authoring-to-runtime boundary for v1.
 >
 > Runtime packs are compiled JSON files shipped in `public/packs/`.
 > Authoring assets live in `data-src/`.
@@ -57,6 +57,13 @@ Expected authoring areas:
 
 Authoring assets are never fetched by the browser at runtime.
 
+## Current Repo Scaffolding
+The canonical authoring path is still `data-src/`, but this repo currently also includes:
+- starter schema mirrors in `src/data/templates/`
+- validator sample fixtures in `src/data/packs/samples/`
+
+Those files are implementation scaffolding only. They are not shipped runtime assets.
+
 ---
 
 # Frozen Enums
@@ -83,6 +90,12 @@ Authoring assets are never fetched by the browser at runtime.
 - `strong_resolve`
 - `lift_without_arrival`
 - `contrastive`
+
+## HarmonicRhythmDensity
+- `slow`
+- `medium`
+- `active`
+- `variable`
 
 ## VariationType
 - `safer`
@@ -152,7 +165,7 @@ type FamilyPack = {
   packId: string
   family: Family
   substyles: Substyle[]
-  archetypes: Archetype[]
+  archetypes: ProgressionArchetype[]
   cadenceProfiles: CadenceProfile[]
   harmonicRhythmProfiles: HarmonicRhythmProfile[]
   sectionBehaviors: SectionBehavior[]
@@ -204,9 +217,9 @@ type Substyle = {
 }
 ```
 
-## Archetype
+## ProgressionArchetype
 ```ts
-type Archetype = {
+type ProgressionArchetype = {
   id: string
   substyleId: SubstyleId
   name: string
@@ -217,7 +230,7 @@ type Archetype = {
   allowedSectionIntents: SectionIntent[]
   resolutionBias: CadenceType
   loopability: number
-  tensionCurve: string
+  tensionCurve: string[]
   tags: string[]
   weight: number
   slotOptions: ArchetypeSlotOption[]
@@ -252,7 +265,7 @@ type CadenceProfile = {
 type HarmonicRhythmProfile = {
   id: string
   name: string
-  density: string
+  density: HarmonicRhythmDensity
   beatsPerChangePattern: number[]
   commonUseCases: SectionIntent[]
 }
@@ -277,7 +290,7 @@ type SectionBehavior = {
 ```ts
 type SectionRuleBlock = {
   preferredCadenceTypes: CadenceType[]
-  preferredRhythmDensities: string[]
+  preferredRhythmDensities: HarmonicRhythmDensity[]
   preferredArchetypeTags: string[]
   allowedVariationTypes: VariationType[]
   allowedSpecialMoveIds: string[]
@@ -406,6 +419,12 @@ type GenerationResult = {
 - `sectionIntent: "full_loop"`
 - `SectionBehavior.fullLoopRules`
 - loop-aware cadence and variation choices
+
+## Current Implementation Sources
+- `src/core/types/data-model.ts`
+- `src/data/validators/pack-validator.ts`
+- `src/data/templates/*.json`
+- `src/data/packs/samples/*.json`
 
 ---
 

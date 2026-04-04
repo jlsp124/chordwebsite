@@ -1,0 +1,11 @@
+{
+  "id": "spice_slug",
+  "name": "Spiciness Transform Name",
+  "level": 2,
+  "styleScope": ["family_slug", "substyle_slug"],
+  "allowedDecorations": ["add9", "maj7"],
+  "allowedFunctions": ["tonic", "predominant"],
+  "forbiddenSectionIntents": ["bridge"],
+  "forbiddenTags": ["forbidden_tag"],
+  "weight": 1
+}

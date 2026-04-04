@@ -1,19 +1,7 @@
 import { resolveRuntimeAsset } from '../../core/runtime-path';
+import type { PackManifest } from '../../core/types';
 
-export interface ManifestPackEntry {
-  packId: string;
-  familyId: string;
-  familyName: string;
-  path: string;
-  version: string;
-  substyleIds: string[];
-  tags?: string[];
-}
-
-export interface PackManifest {
-  manifestVersion: string;
-  packs: ManifestPackEntry[];
-}
+export type { FamilyPack, PackManifest, PackManifestEntry } from '../../core/types';
 
 export const PACK_MANIFEST_PATH = 'packs/manifest.json';
 
