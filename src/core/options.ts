@@ -1,13 +1,10 @@
-import type {
-  ExplanationType,
-  MidiMode,
-  ScaleMode,
-  SectionIntent
-} from './types/index.ts';
+import type { ScaleMode } from './types/index.ts';
 
-export type { ExplanationType, MidiMode, ScaleMode, SectionIntent } from './types/index.ts';
+export type { ScaleMode } from './types/index.ts';
 
 export type ThemeMode = 'light' | 'dark';
+export type LoopBarCount = 4 | 8 | 16;
+export type ChordChangeRate = 'two_bars' | 'one_bar';
 
 export interface SelectOption<TValue extends string | number = string> {
   value: TValue;
@@ -17,12 +14,11 @@ export interface SelectOption<TValue extends string | number = string> {
 export interface ShellControlState {
   familyId: string;
   substyleId: string;
-  seed: string;
-  sectionIntent: SectionIntent;
   key: string;
   scaleMode: ScaleMode;
+  loopBars: LoopBarCount;
+  chordChangeRate: ChordChangeRate;
   spiceLevel: number;
-  midiMode: MidiMode;
 }
 
 export const FAMILY_OPTIONS: SelectOption[] = [
@@ -48,13 +44,16 @@ export const SUBSTYLE_OPTIONS: Record<string, SelectOption[]> = {
   dance: [{ value: 'house_disco', label: 'House / Disco' }]
 };
 
-export const SECTION_OPTIONS: SelectOption<SectionIntent>[] = [
-  { value: 'full_loop', label: 'Full Loop' },
-  { value: 'verse', label: 'Verse' },
-  { value: 'pre_chorus', label: 'Pre-Chorus' },
-  { value: 'chorus', label: 'Chorus' },
-  { value: 'bridge', label: 'Bridge' }
-];
+export const CHANGE_RATE_OPTIONS_BY_SUBSTYLE: Record<string, ChordChangeRate[]> = {
+  kpop_bright_easy: ['one_bar'],
+  kpop_dark_synth: ['one_bar'],
+  kpop_ballad_emotional: ['one_bar'],
+  melodic_trap: ['one_bar', 'two_bars'],
+  trap_soul_rnb_rap: ['one_bar'],
+  modern_rnb: ['one_bar'],
+  future_pop: ['one_bar'],
+  house_disco: ['one_bar', 'two_bars']
+};
 
 export const KEY_OPTIONS: SelectOption[] = [
   { value: 'C', label: 'C' },
@@ -76,6 +75,22 @@ export const SCALE_OPTIONS: SelectOption<ScaleMode>[] = [
   { value: 'minor', label: 'Minor' }
 ];
 
+export interface KeyModeOption {
+  key: string;
+  label: string;
+  scaleMode: ScaleMode;
+  value: string;
+}
+
+export const KEY_MODE_OPTIONS: KeyModeOption[] = KEY_OPTIONS.flatMap((keyOption) =>
+  SCALE_OPTIONS.map((scaleOption) => ({
+    key: keyOption.value,
+    label: `${keyOption.label} ${scaleOption.label}`,
+    scaleMode: scaleOption.value,
+    value: `${keyOption.value}:${scaleOption.value}`
+  }))
+);
+
 export const SPICE_OPTIONS: SelectOption<number>[] = [
   { value: 1, label: '1 / Safe' },
   { value: 2, label: '2 / Lifted' },
@@ -83,29 +98,23 @@ export const SPICE_OPTIONS: SelectOption<number>[] = [
   { value: 4, label: '4 / Bold' }
 ];
 
-export const MIDI_MODE_OPTIONS: SelectOption<MidiMode>[] = [
-  { value: 'block', label: 'Block' },
-  { value: 'comp', label: 'Comp' },
-  { value: 'arp', label: 'Arp' }
+export const LOOP_BAR_OPTIONS: SelectOption<LoopBarCount>[] = [
+  { value: 4, label: '4 Bars' },
+  { value: 8, label: '8 Bars' },
+  { value: 16, label: '16 Bars' }
 ];
 
-export const EXPLANATION_TABS: SelectOption<ExplanationType>[] = [
-  { value: 'why_it_works', label: 'Why It Works' },
-  { value: 'add_notes', label: 'Add Notes' },
-  { value: 'transition', label: 'Transition' },
-  { value: 'section_idea', label: 'Section Idea' },
-  { value: 'learn', label: 'Learn' }
+export const CHORD_CHANGE_RATE_OPTIONS: SelectOption<ChordChangeRate>[] = [
+  { value: 'one_bar', label: '1 Bar / Chord' },
+  { value: 'two_bars', label: '2 Bars / Chord' }
 ];
 
 export const DEFAULT_CONTROL_STATE: ShellControlState = {
   familyId: 'kpop',
   substyleId: 'kpop_bright_easy',
-  seed: 'starter-kpop-bright-01',
-  sectionIntent: 'full_loop',
   key: 'C',
   scaleMode: 'major',
-  spiceLevel: 1,
-  midiMode: 'block'
+  loopBars: 4,
+  chordChangeRate: 'one_bar',
+  spiceLevel: 1
 };
-
-export const DEFAULT_TAB: ExplanationType = 'why_it_works';

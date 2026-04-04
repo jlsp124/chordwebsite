@@ -26,6 +26,7 @@ export interface GenerationRequest {
   sectionIntent: SectionIntent;
   spiceLevel: number;
   midiMode: MidiMode;
+  targetChordCount?: 2 | 4;
 }
 
 export interface ChordSlot {

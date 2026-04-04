@@ -31,8 +31,9 @@ Core stack:
 - Generation is **Roman-numeral / function first**
 - Selected key mapping happens **after** progression selection
 - K-pop must preserve **section-aware behavior**
-- Loop Mode and Section Mode are both first-class
+- The v1 shell is **loop-first**
 - `full_loop` is a first-class section intent and must not fall back to random verse/chorus rules
+- Section-aware internals may remain during transition, but the v1 UI should not expose section mode controls
 
 ## Runtime Shape
 The engine should work in this order:
@@ -61,9 +62,11 @@ The engine should work in this order:
 - single-screen desktop-first app
 - top control bar
 - big center result area
-- right-side suggestion rail
-- tabs under result
 - settings/preferences menu
+- theme lives inside preferences
+- no seed control in the main UI
+- no section mode UI
+- no multiple MIDI mode UI
 - Roman numerals slightly prioritized, but chord names always visible
 
 ## Required Enums / Structured Fields

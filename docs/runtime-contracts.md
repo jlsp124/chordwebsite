@@ -15,11 +15,13 @@ Freeze the runtime request/result shapes shared by:
 - control bar state
 - generation engine
 - result area
-- suggestion rail
-- tabs
 - MIDI/export layer
 
 This file exists so Code Mode does not invent payload shapes.
+
+The current v1 shell uses a loop-first subset of these contracts.
+Legacy explanation and suggestion fields may still exist in runtime payloads during transition,
+but they are not rendered in the simplified shell.
 
 ## Core Enums
 
@@ -165,28 +167,23 @@ export interface SuggestionItem {
 ## UI Expectations
 
 ### Top control bar consumes
-- `GenerationRequest`
+- family / substyle selection
+- key + scale
+- loop length
+- chord-change rate
+- spice level
 
 ### Big result area consumes
 - `GenerationResult`
 - especially:
   - `romanNumerals`
   - `chordSlots`
-  - `sectionIntent`
   - `familyId`
   - `substyleId`
-
-### Suggestion rail consumes
-- `suggestions`
-
-### Tabs consume
-- `explanations`
-- optionally `chordSlots` for chord-linked highlighting
 
 ### MIDI/export layer consumes
 - `chordSlots`
 - `midiPresetId`
-- `midiMode`
 
 ## full_loop rule
 
@@ -196,8 +193,7 @@ It must not inherit verse/chorus behavior by accident.
 
 At runtime:
 - `sectionIntent: "full_loop"` means the engine should apply `fullLoopRules`
-- UI surfaces must preserve `"full_loop"` as a valid explicit section intent
-- suggestion logic may still offer section-aware branches, but the base generation must remain loop-first
+- the simplified v1 shell keeps loop generation explicit and does not expose section-switching controls
 
 ## What Codex Must Not Guess
 

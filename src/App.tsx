@@ -2,19 +2,13 @@ import { startTransition, useEffect, useMemo, useState } from 'react';
 import { startProgressionPreview, stopProgressionPreview } from './audio';
 import { ControlBar } from './components/control-bar/ControlBar';
 import { ResultArea } from './components/result-area/ResultArea';
-import { ResultTabs } from './components/result-tabs/ResultTabs';
-import { SuggestionRail } from './components/suggestion-rail/SuggestionRail';
 import { generateProgression } from './core/engine';
 import {
+  CHANGE_RATE_OPTIONS_BY_SUBSTYLE,
   DEFAULT_CONTROL_STATE,
-  DEFAULT_TAB,
-  EXPLANATION_TABS,
-  SUBSTYLE_OPTIONS,
-  type ExplanationType,
   type ShellControlState
 } from './core/options';
-import { getRuntimeBasePath } from './core/runtime-path.ts';
-import { getPackManifestUrl } from './data/packs';
+import { adaptBundleToLoopSettings } from './core/utils/loop-shell.ts';
 import { downloadMidiBundle, MIDI_EXPORT_DISABLED_REASON } from './export';
 import {
   loadPreferences,
@@ -22,12 +16,8 @@ import {
   type UserPreferences
 } from './storage/preferences';
 import {
-  createStoredProgressionEntry,
   loadWorkspaceState,
-  saveWorkspaceState,
-  toggleFavoriteEntry,
-  upsertRecentHistory,
-  type StoredProgressionEntry
+  saveWorkspaceState
 } from './storage/workspace-state';
 import type { GenerationBundle } from './core/types';
 
@@ -38,13 +28,34 @@ function mergePreferences(
   return { ...previous, ...patch };
 }
 
+function createHiddenSeed(controls: ShellControlState): string {
+  const randomPart = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`;
+  return [
+    controls.familyId,
+    controls.substyleId,
+    controls.key,
+    controls.scaleMode,
+    controls.loopBars,
+    controls.chordChangeRate,
+    controls.spiceLevel,
+    randomPart
+  ].join(':');
+}
+
+const DEFAULT_SUBSTYLE_BY_FAMILY: Record<string, string> = {
+  kpop: 'kpop_bright_easy',
+  trap: 'melodic_trap',
+  rnb: 'modern_rnb',
+  pop: 'future_pop',
+  dance: 'house_disco'
+};
+
 export default function App() {
   const initialWorkspaceState = useMemo(() => loadWorkspaceState(), []);
   const [preferences, setPreferences] = useState<UserPreferences>(() => loadPreferences());
   const [controls, setControls] = useState<ShellControlState>(
     () => initialWorkspaceState.lastUsedSettings
   );
-  const [activeTab, setActiveTab] = useState<ExplanationType>(DEFAULT_TAB);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [generation, setGeneration] = useState<GenerationBundle | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -53,20 +64,11 @@ export default function App() {
   const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
   const [isDownloadingMidi, setIsDownloadingMidi] = useState(false);
   const [mediaMessage, setMediaMessage] = useState<string | null>(null);
-  const [favorites, setFavorites] = useState<StoredProgressionEntry[]>(
-    () => initialWorkspaceState.favorites
-  );
-  const [recentHistory, setRecentHistory] = useState<StoredProgressionEntry[]>(
-    () => initialWorkspaceState.recentHistory
-  );
 
-  const substyleOptions = useMemo(
-    () => SUBSTYLE_OPTIONS[controls.familyId] ?? [],
-    [controls.familyId]
+  const supportedChangeRates = useMemo(
+    () => CHANGE_RATE_OPTIONS_BY_SUBSTYLE[controls.substyleId] ?? ['one_bar'],
+    [controls.substyleId]
   );
-
-  const manifestUrl = useMemo(() => getPackManifestUrl(), []);
-  const runtimeBasePath = getRuntimeBasePath();
 
   useEffect(() => {
     savePreferences(preferences);
@@ -77,38 +79,42 @@ export default function App() {
 
   useEffect(() => {
     saveWorkspaceState({
-      favorites,
-      lastSeed: controls.seed,
-      lastUsedSettings: controls,
-      recentHistory
+      lastUsedSettings: controls
     });
-  }, [controls, favorites, recentHistory]);
+  }, [controls]);
 
   useEffect(() => {
-    if (substyleOptions.some((option) => option.value === controls.substyleId)) {
+    if (supportedChangeRates.includes(controls.chordChangeRate)) {
       return;
     }
 
-    const fallbackSubstyle = substyleOptions[0]?.value ?? '';
-    setControls((previous) => ({ ...previous, substyleId: fallbackSubstyle }));
-  }, [controls.substyleId, substyleOptions]);
+    setControls((previous) => ({
+      ...previous,
+      chordChangeRate:
+        (supportedChangeRates[0] as ShellControlState['chordChangeRate'] | undefined) ??
+        DEFAULT_CONTROL_STATE.chordChangeRate
+    }));
+  }, [controls.chordChangeRate, supportedChangeRates]);
 
   useEffect(() => () => {
     stopProgressionPreview(false);
   }, []);
 
   const updateControls = (patch: Partial<ShellControlState>) => {
-    setControls((previous) => ({ ...previous, ...patch }));
+    setControls((previous) => {
+      const nextControls = { ...previous, ...patch };
+
+      if (patch.familyId && patch.familyId !== previous.familyId) {
+        nextControls.substyleId =
+          DEFAULT_SUBSTYLE_BY_FAMILY[patch.familyId] ?? DEFAULT_CONTROL_STATE.substyleId;
+      }
+
+      return nextControls;
+    });
   };
 
   const updatePreferences = (patch: Partial<UserPreferences>) => {
     setPreferences((previous) => mergePreferences(previous, patch));
-  };
-
-  const toggleTheme = () => {
-    updatePreferences({
-      theme: preferences.theme === 'light' ? 'dark' : 'light'
-    });
   };
 
   const runGeneration = async (nextControls: ShellControlState) => {
@@ -120,22 +126,25 @@ export default function App() {
     setMediaMessage(null);
 
     try {
+      const targetChordCount = nextControls.chordChangeRate === 'two_bars' ? 2 : 4;
       const bundle = await generateProgression({
-        seed: nextControls.seed,
+        seed: createHiddenSeed(nextControls),
         familyId: nextControls.familyId,
         substyleId: nextControls.substyleId,
         key: nextControls.key,
         scaleMode: nextControls.scaleMode,
-        sectionIntent: nextControls.sectionIntent,
+        sectionIntent: 'full_loop',
         spiceLevel: nextControls.spiceLevel,
-        midiMode: nextControls.midiMode
+        midiMode: 'block',
+        targetChordCount
       });
-      const storedEntry = createStoredProgressionEntry(bundle);
+      const adaptedBundle = adaptBundleToLoopSettings(bundle, {
+        loopBars: nextControls.loopBars,
+        chordChangeRate: nextControls.chordChangeRate
+      });
 
       startTransition(() => {
-        setGeneration(bundle);
-        setActiveTab(DEFAULT_TAB);
-        setRecentHistory((previous) => upsertRecentHistory(previous, storedEntry));
+        setGeneration(adaptedBundle);
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown generation error.';
@@ -205,35 +214,6 @@ export default function App() {
     }
   };
 
-  const currentSavedEntry = useMemo(
-    () => (generation ? createStoredProgressionEntry(generation) : null),
-    [generation]
-  );
-  const isFavorite = currentSavedEntry
-    ? favorites.some((entry) => entry.id === currentSavedEntry.id)
-    : false;
-
-  const handleToggleFavorite = () => {
-    if (!currentSavedEntry) {
-      return;
-    }
-
-    const nextFavorites = toggleFavoriteEntry(favorites, currentSavedEntry);
-    const wasFavorite = favorites.some((entry) => entry.id === currentSavedEntry.id);
-    setFavorites(nextFavorites);
-    setMediaMessage(
-      wasFavorite
-        ? `Removed ${currentSavedEntry.substyleName} / ${currentSavedEntry.seed} from favorites.`
-        : `Saved ${currentSavedEntry.substyleName} / ${currentSavedEntry.seed} to favorites.`
-    );
-  };
-
-  const handleRecallEntry = async (entry: StoredProgressionEntry) => {
-    setControls(entry.controls);
-    setMediaMessage(`Restored ${entry.substyleName} / ${entry.seed}.`);
-    await runGeneration(entry.controls);
-  };
-
   return (
     <div className={`app-shell ${preferences.reducedMotion ? 'app-shell--reduced-motion' : ''}`}>
       <ControlBar
@@ -241,51 +221,30 @@ export default function App() {
         onControlsChange={updateControls}
         preferences={preferences}
         onPreferencesChange={updatePreferences}
-        onToggleTheme={toggleTheme}
         settingsOpen={settingsOpen}
         onToggleSettings={() => setSettingsOpen((previous) => !previous)}
         onCloseSettings={() => setSettingsOpen(false)}
         onGenerate={handleGenerate}
         isGenerating={isGenerating}
-        runtimeBasePath={runtimeBasePath}
-        manifestUrl={manifestUrl}
       />
 
-      <main className={`workspace ${preferences.compactRail ? 'workspace--compact-rail' : ''}`}>
-        <section className="main-column">
-          <ResultArea
-            result={generation?.result ?? null}
-            metadata={generation?.metadata ?? null}
-            showFunctionLabels={preferences.showFunctionLabels}
-            downloadDisabledReason={MIDI_EXPORT_DISABLED_REASON}
-            isGenerating={isGenerating}
-            errorMessage={errorMessage}
-            mediaMessage={mediaMessage}
-            onDownloadMidi={handleDownloadMidi}
-            onPreviewToggle={handlePreviewToggle}
-            isDownloadingMidi={isDownloadingMidi}
-            isPreviewPlaying={isPreviewPlaying}
-            isPreviewStarting={isPreviewStarting}
-            previewPresetName={generation?.midiPreset.name ?? null}
-            isFavorite={isFavorite}
-            favorites={favorites}
-            recentHistory={recentHistory}
-            onToggleFavorite={handleToggleFavorite}
-            onRecallEntry={handleRecallEntry}
-          />
-
-          <ResultTabs
-            activeTab={activeTab}
-            generation={generation}
-            onTabChange={setActiveTab}
-            tabOptions={EXPLANATION_TABS}
-          />
-        </section>
-
-        <SuggestionRail
-          suggestions={generation?.result.suggestions ?? []}
-          compact={preferences.compactRail}
-          activeVariationTypes={generation?.metadata.selectedVariationTypes ?? []}
+      <main className="workspace">
+        <ResultArea
+          result={generation?.result ?? null}
+          metadata={generation?.metadata ?? null}
+          showFunctionLabels={preferences.showFunctionLabels}
+          downloadDisabledReason={MIDI_EXPORT_DISABLED_REASON}
+          isGenerating={isGenerating}
+          errorMessage={errorMessage}
+          mediaMessage={mediaMessage}
+          onDownloadMidi={handleDownloadMidi}
+          onPreviewToggle={handlePreviewToggle}
+          isDownloadingMidi={isDownloadingMidi}
+          isPreviewPlaying={isPreviewPlaying}
+          isPreviewStarting={isPreviewStarting}
+          previewPresetName={generation?.midiPreset.name ?? null}
+          loopBars={controls.loopBars}
+          chordChangeRate={controls.chordChangeRate}
         />
       </main>
     </div>

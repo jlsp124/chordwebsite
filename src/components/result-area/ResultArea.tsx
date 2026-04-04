@@ -1,6 +1,6 @@
+import { getChordChangeRateLabel } from '../../core/utils/loop-shell.ts';
 import type { GenerationMetadata, GenerationResult } from '../../core/types';
-import type { StoredProgressionEntry } from '../../storage/workspace-state';
-import { SavedProgressionsPanel } from '../saved-progressions/SavedProgressionsPanel';
+import type { ChordChangeRate, LoopBarCount } from '../../core/options';
 
 interface ResultAreaProps {
   result: GenerationResult | null;
@@ -16,11 +16,8 @@ interface ResultAreaProps {
   isPreviewPlaying: boolean;
   isPreviewStarting: boolean;
   previewPresetName: string | null;
-  isFavorite: boolean;
-  favorites: StoredProgressionEntry[];
-  recentHistory: StoredProgressionEntry[];
-  onToggleFavorite: () => void;
-  onRecallEntry: (entry: StoredProgressionEntry) => void;
+  loopBars: LoopBarCount;
+  chordChangeRate: ChordChangeRate;
 }
 
 export function ResultArea({
@@ -37,11 +34,8 @@ export function ResultArea({
   isPreviewPlaying,
   isPreviewStarting,
   previewPresetName,
-  isFavorite,
-  favorites,
-  recentHistory,
-  onToggleFavorite,
-  onRecallEntry
+  loopBars,
+  chordChangeRate
 }: ResultAreaProps) {
   const hasProgression = result !== null && metadata !== null;
 
@@ -49,29 +43,20 @@ export function ResultArea({
     <section className="result-area panel">
       <div className="result-area__header">
         <div className="result-area__title-group">
-          <span className="eyebrow">Center result area</span>
-          <h2 className="result-area__title">Generated progression</h2>
+          <span className="eyebrow">Main workspace</span>
+          <h2 className="result-area__title">Loop output</h2>
           <p className="result-area__copy">
-            Roman numerals lead the decision layer, then chord names map them into the selected key.
+            The center canvas stays dominant: Roman numerals first, chord names always visible,
+            preview and download always close by.
           </p>
         </div>
 
         <div className="result-area__actions">
           <button
-            className={`button button--ghost ${isFavorite ? 'button--active' : ''}`}
-            disabled={!hasProgression || isGenerating}
-            onClick={onToggleFavorite}
-            title={hasProgression ? 'Save or remove this favorite' : 'Generate first to favorite'}
-            type="button"
-          >
-            {isFavorite ? 'Favorited' : 'Favorite'}
-          </button>
-
-          <button
             className="button button--secondary"
             disabled={!hasProgression || isGenerating || isDownloadingMidi}
             onClick={onPreviewToggle}
-            title={hasProgression ? 'Preview the current progression' : 'Generate first to preview'}
+            title={hasProgression ? 'Preview the current loop' : 'Generate first to preview'}
             type="button"
           >
             {isPreviewStarting
@@ -98,24 +83,22 @@ export function ResultArea({
           <div className="progression-panel">
             <div className="progression-summary">
               <div>
-                <span className="eyebrow">
-                  {metadata.mode === 'loop' ? 'Loop Mode' : 'Section Mode'}
-                </span>
+                <span className="eyebrow">{metadata.familyName}</span>
                 <h3 className="progression-summary__title">{metadata.substyleName}</h3>
               </div>
 
               <div className="progression-summary__chips">
+                <span className="chip">{loopBars} bars</span>
+                <span className="chip">{getChordChangeRateLabel(chordChangeRate)}</span>
                 <span className="chip">{metadata.archetypeName}</span>
                 <span className="chip">{metadata.cadenceName}</span>
-                <span className="chip">{metadata.rhythmName}</span>
-                <span className="chip">Energy {metadata.sectionEnergyShape}</span>
               </div>
             </div>
 
-            <div className="progression-grid" role="list" aria-label="Generated chord progression">
+            <div className="progression-grid" role="list" aria-label="Generated loop">
               {result.chordSlots.map((slot) => (
                 <article className="chord-card" key={`${slot.index}-${slot.romanNumeral}`} role="listitem">
-                  <span className="chord-card__index">#{slot.index + 1}</span>
+                  <span className="chord-card__index">Step {slot.index + 1}</span>
                   <div className="chord-card__roman">{slot.romanNumeral}</div>
                   <div className="chord-card__name">{slot.chordName}</div>
                   {showFunctionLabels ? (
@@ -123,11 +106,7 @@ export function ResultArea({
                   ) : null}
                   <div className="chord-card__meta">
                     <span>{slot.durationBeats} beats</span>
-                    {slot.decorationTags.length > 0 ? (
-                      <span>{slot.decorationTags.join(' / ')}</span>
-                    ) : (
-                      <span>clean shell</span>
-                    )}
+                    <span>{slot.decorationTags.join(' / ') || 'clean shell'}</span>
                   </div>
                 </article>
               ))}
@@ -136,8 +115,8 @@ export function ResultArea({
             <div className="progression-footer">
               <div className="hint-box">
                 Preview and export use <strong>{previewPresetName ?? result.midiPresetId}</strong>.
-                Tone.js handles browser preview, and `.mid` export is created locally from the same
-                deterministic note-event realization.
+                The shell is loop-first, but playback and MIDI still come from the authored pack
+                and selected key.
               </div>
             </div>
           </div>
@@ -146,7 +125,7 @@ export function ResultArea({
             <div className="empty-state__card">
               <div>
                 <span className="eyebrow">Generation error</span>
-                <h3 className="empty-state__title">Pack loading or generation failed</h3>
+                <h3 className="empty-state__title">Loop generation failed</h3>
               </div>
 
               <p className="empty-state__copy">{errorMessage}</p>
@@ -157,41 +136,26 @@ export function ResultArea({
             <div className="empty-state__card">
               <div>
                 <span className="eyebrow">Empty state</span>
-                <h3 className="empty-state__title">No progression yet</h3>
+                <h3 className="empty-state__title">No loop yet</h3>
               </div>
 
               <p className="empty-state__copy">
-                Generate a progression to populate this space with Roman numerals, selected-key chord
-                names, function labels, and pack-driven metadata.
+                Generate a loop to fill this center workspace with Roman numerals, selected-key
+                chord names, and browser-side preview/export actions.
               </p>
 
               <div className="empty-state__chips">
-                <span className="chip">Roman numerals</span>
-                <span className="chip">Chord names</span>
-                <span className="chip">
-                  Function labels {showFunctionLabels ? 'enabled' : 'hidden'}
-                </span>
+                <span className="chip">4 / 8 / 16 bars</span>
+                <span className="chip">{getChordChangeRateLabel(chordChangeRate)}</span>
                 <span className="chip">Tone.js preview</span>
                 <span className="chip">MIDI export</span>
-              </div>
-
-              <div className="empty-state__footer">
-                <div className="hint-box">
-                  Use the top bar to pick a family, substyle, section, seed, key, spice level, and
-                  MIDI mode. Preview and MIDI export stay local in the browser.
-                </div>
               </div>
             </div>
           </div>
         )}
 
-        {isGenerating ? <div className="status-banner">Loading pack data and generating...</div> : null}
+        {isGenerating ? <div className="status-banner">Loading pack data and shaping a loop...</div> : null}
         {mediaMessage ? <div className="status-banner">{mediaMessage}</div> : null}
-        <SavedProgressionsPanel
-          favorites={favorites}
-          recentHistory={recentHistory}
-          onRecallEntry={onRecallEntry}
-        />
       </div>
     </section>
   );

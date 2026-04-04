@@ -233,6 +233,9 @@ function selectArchetype(
     .map((id) => indexes.archetypes.get(id))
     .filter((entry): entry is ProgressionArchetype => entry !== undefined)
     .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
+    .filter((entry) =>
+      request.targetChordCount ? entry.romanNumerals.length === request.targetChordCount : true
+    )
     .filter((entry) => !hasForbiddenTag(entry.tags, substyle.mustAvoidTags))
     .filter((entry) => !hasForbiddenTag(entry.tags, sectionRules.forbiddenTags));
 
