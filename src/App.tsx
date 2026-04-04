@@ -1,4 +1,5 @@
 import { startTransition, useEffect, useMemo, useState } from 'react';
+import { startProgressionPreview, stopProgressionPreview } from './audio';
 import { ControlBar } from './components/control-bar/ControlBar';
 import { ResultArea } from './components/result-area/ResultArea';
 import { ResultTabs } from './components/result-tabs/ResultTabs';
@@ -14,7 +15,7 @@ import {
 } from './core/options';
 import { getRuntimeBasePath } from './core/runtime-path.ts';
 import { getPackManifestUrl } from './data/packs';
-import { MIDI_EXPORT_PLACEHOLDER_REASON } from './export';
+import { downloadMidiBundle, MIDI_EXPORT_DISABLED_REASON } from './export';
 import {
   loadPreferences,
   savePreferences,
@@ -38,6 +39,10 @@ export default function App() {
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isPreviewStarting, setIsPreviewStarting] = useState(false);
+  const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
+  const [isDownloadingMidi, setIsDownloadingMidi] = useState(false);
+  const [mediaMessage, setMediaMessage] = useState<string | null>(null);
 
   const substyleOptions = useMemo(
     () => SUBSTYLE_OPTIONS[controls.familyId] ?? [],
@@ -63,6 +68,10 @@ export default function App() {
     setControls((previous) => ({ ...previous, substyleId: fallbackSubstyle }));
   }, [controls.substyleId, substyleOptions]);
 
+  useEffect(() => () => {
+    stopProgressionPreview(false);
+  }, []);
+
   const updateControls = (patch: Partial<ShellControlState>) => {
     setControls((previous) => ({ ...previous, ...patch }));
   };
@@ -78,8 +87,12 @@ export default function App() {
   };
 
   const handleGenerate = async () => {
+    stopProgressionPreview(false);
+    setIsPreviewPlaying(false);
+    setIsPreviewStarting(false);
     setIsGenerating(true);
     setErrorMessage(null);
+    setMediaMessage(null);
 
     try {
       const bundle = await generateProgression({
@@ -108,6 +121,59 @@ export default function App() {
     }
   };
 
+  const handlePreviewToggle = async () => {
+    if (!generation) {
+      return;
+    }
+
+    setMediaMessage(null);
+
+    if (isPreviewPlaying || isPreviewStarting) {
+      stopProgressionPreview(false);
+      setIsPreviewStarting(false);
+      setIsPreviewPlaying(false);
+      setMediaMessage('Preview stopped.');
+      return;
+    }
+
+    setIsPreviewStarting(true);
+
+    try {
+      const preview = await startProgressionPreview(generation, () => {
+        setIsPreviewStarting(false);
+        setIsPreviewPlaying(false);
+      });
+
+      setIsPreviewStarting(false);
+      setIsPreviewPlaying(true);
+      setMediaMessage(
+        `Preview started at ${Math.round(preview.bpm)} BPM using ${generation.midiPreset.name}.`
+      );
+    } catch (error) {
+      setIsPreviewStarting(false);
+      setIsPreviewPlaying(false);
+      setMediaMessage(error instanceof Error ? error.message : 'Audio preview failed to start.');
+    }
+  };
+
+  const handleDownloadMidi = () => {
+    if (!generation) {
+      return;
+    }
+
+    setIsDownloadingMidi(true);
+    setMediaMessage(null);
+
+    try {
+      const artifact = downloadMidiBundle(generation);
+      setMediaMessage(`Download started for ${artifact.fileName}.`);
+    } catch (error) {
+      setMediaMessage(error instanceof Error ? error.message : 'MIDI export failed.');
+    } finally {
+      setIsDownloadingMidi(false);
+    }
+  };
+
   return (
     <div className={`app-shell ${preferences.reducedMotion ? 'app-shell--reduced-motion' : ''}`}>
       <ControlBar
@@ -131,9 +197,16 @@ export default function App() {
             result={generation?.result ?? null}
             metadata={generation?.metadata ?? null}
             showFunctionLabels={preferences.showFunctionLabels}
-            downloadDisabledReason={MIDI_EXPORT_PLACEHOLDER_REASON}
+            downloadDisabledReason={MIDI_EXPORT_DISABLED_REASON}
             isGenerating={isGenerating}
             errorMessage={errorMessage}
+            mediaMessage={mediaMessage}
+            onDownloadMidi={handleDownloadMidi}
+            onPreviewToggle={handlePreviewToggle}
+            isDownloadingMidi={isDownloadingMidi}
+            isPreviewPlaying={isPreviewPlaying}
+            isPreviewStarting={isPreviewStarting}
+            previewPresetName={generation?.midiPreset.name ?? null}
           />
 
           <ResultTabs

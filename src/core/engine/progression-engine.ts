@@ -1069,8 +1069,10 @@ export function generateProgressionFromPack(
   };
 
   return {
+    request,
     result,
-    metadata
+    metadata,
+    midiPreset: selections.midiPreset
   };
 }
 

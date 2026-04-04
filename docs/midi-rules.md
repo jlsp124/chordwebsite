@@ -128,6 +128,13 @@ The app should:
 The browser should handle export locally.
 No backend is required for MIDI export in v1.
 
+Implementation detail frozen for v1:
+- create the MIDI bytes locally
+- wrap them in a `Blob`
+- create a browser download URL with `URL.createObjectURL()`
+- trigger a normal browser download
+- revoke the object URL after the click flow completes
+
 ---
 
 # Preview vs Export
@@ -145,6 +152,11 @@ MIDI export is for:
 
 Preview should stay simple.
 MIDI export is the more important workflow.
+
+Preview must:
+- start audio only from a user gesture
+- use Tone.js only after that user-triggered start
+- reuse the same deterministic note-event realization used by MIDI export
 
 ---
 

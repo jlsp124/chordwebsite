@@ -2,6 +2,7 @@ import type {
   CadenceType,
   FamilyId,
   MidiMode,
+  MidiPreset,
   SectionIntent,
   SubstyleId,
   VariationType
@@ -93,6 +94,8 @@ export interface GenerationMetadata {
 }
 
 export interface GenerationBundle {
+  request: GenerationRequest;
   result: GenerationResult;
   metadata: GenerationMetadata;
+  midiPreset: MidiPreset;
 }

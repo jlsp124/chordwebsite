@@ -52,6 +52,20 @@ function getNoteFromSemitone(semitone: number): string {
   return note;
 }
 
+export function noteNameToSemitone(noteName: string): number {
+  const semitone = NOTE_TO_SEMITONE[noteName];
+
+  if (semitone === undefined) {
+    throw new Error(`Unsupported note name "${noteName}".`);
+  }
+
+  return semitone;
+}
+
+export function midiFromNoteName(noteName: string, octave: number): number {
+  return (octave + 1) * 12 + noteNameToSemitone(noteName);
+}
+
 export interface ParsedRomanNumeral {
   degree: number;
   quality: 'major' | 'minor';
@@ -124,6 +138,24 @@ export function noteNameFromDegree(key: string, scaleMode: ScaleMode, degreeText
 
   const semitone = (tonicSemitone + getScaleInterval(scaleMode, degree)) % 12;
   return getNoteFromSemitone(semitone);
+}
+
+export function midiFromRomanNumeral(
+  key: string,
+  scaleMode: ScaleMode,
+  romanNumeral: string,
+  octave: number
+): number {
+  return midiFromNoteName(noteNameFromKey(key, scaleMode, romanNumeral), octave);
+}
+
+export function midiFromDegree(
+  key: string,
+  scaleMode: ScaleMode,
+  degreeText: string,
+  octave: number
+): number {
+  return midiFromNoteName(noteNameFromDegree(key, scaleMode, degreeText), octave);
 }
 
 function decorationToSuffix(baseQuality: 'major' | 'minor', decorationTag: string): string {

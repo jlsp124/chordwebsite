@@ -7,6 +7,13 @@ interface ResultAreaProps {
   downloadDisabledReason: string;
   isGenerating: boolean;
   errorMessage: string | null;
+  mediaMessage: string | null;
+  onDownloadMidi: () => void;
+  onPreviewToggle: () => void;
+  isDownloadingMidi: boolean;
+  isPreviewPlaying: boolean;
+  isPreviewStarting: boolean;
+  previewPresetName: string | null;
 }
 
 export function ResultArea({
@@ -15,7 +22,14 @@ export function ResultArea({
   showFunctionLabels,
   downloadDisabledReason,
   isGenerating,
-  errorMessage
+  errorMessage,
+  mediaMessage,
+  onDownloadMidi,
+  onPreviewToggle,
+  isDownloadingMidi,
+  isPreviewPlaying,
+  isPreviewStarting,
+  previewPresetName
 }: ResultAreaProps) {
   const hasProgression = result !== null && metadata !== null;
 
@@ -30,14 +44,31 @@ export function ResultArea({
           </p>
         </div>
 
-        <button
-          className="button button--primary button--midi"
-          disabled
-          title={downloadDisabledReason}
-          type="button"
-        >
-          Download MIDI
-        </button>
+        <div className="result-area__actions">
+          <button
+            className="button button--secondary"
+            disabled={!hasProgression || isGenerating || isDownloadingMidi}
+            onClick={onPreviewToggle}
+            title={hasProgression ? 'Preview the current progression' : 'Generate first to preview'}
+            type="button"
+          >
+            {isPreviewStarting
+              ? 'Starting audio...'
+              : isPreviewPlaying
+                ? 'Stop Preview'
+                : 'Start Preview'}
+          </button>
+
+          <button
+            className="button button--primary button--midi"
+            disabled={!hasProgression || isGenerating || isDownloadingMidi}
+            onClick={onDownloadMidi}
+            title={hasProgression ? 'Download MIDI' : downloadDisabledReason}
+            type="button"
+          >
+            {isDownloadingMidi ? 'Preparing MIDI...' : 'Download MIDI'}
+          </button>
+        </div>
       </div>
 
       <div className="result-surface">
@@ -71,7 +102,7 @@ export function ResultArea({
                   <div className="chord-card__meta">
                     <span>{slot.durationBeats} beats</span>
                     {slot.decorationTags.length > 0 ? (
-                      <span>{slot.decorationTags.join(' · ')}</span>
+                      <span>{slot.decorationTags.join(' / ')}</span>
                     ) : (
                       <span>clean shell</span>
                     )}
@@ -82,8 +113,9 @@ export function ResultArea({
 
             <div className="progression-footer">
               <div className="hint-box">
-                MIDI preset placeholder: <strong>{result.midiPresetId}</strong>. Export stays stubbed,
-                but the engine already returns deterministic timing and harmony metadata.
+                Preview and export use <strong>{previewPresetName ?? result.midiPresetId}</strong>.
+                Tone.js handles browser preview, and `.mid` export is created locally from the same
+                deterministic note-event realization.
               </div>
             </div>
           </div>
@@ -117,14 +149,14 @@ export function ResultArea({
                 <span className="chip">
                   Function labels {showFunctionLabels ? 'enabled' : 'hidden'}
                 </span>
+                <span className="chip">Tone.js preview</span>
                 <span className="chip">MIDI export</span>
               </div>
 
               <div className="empty-state__footer">
                 <div className="hint-box">
                   Use the top bar to pick a family, substyle, section, seed, key, spice level, and
-                  MIDI mode. The harmonic engine is local and deterministic. MIDI event creation
-                  remains stubbed.
+                  MIDI mode. Preview and MIDI export stay local in the browser.
                 </div>
               </div>
             </div>
@@ -132,6 +164,7 @@ export function ResultArea({
         )}
 
         {isGenerating ? <div className="status-banner">Loading pack data and generating...</div> : null}
+        {mediaMessage ? <div className="status-banner">{mediaMessage}</div> : null}
       </div>
     </section>
   );

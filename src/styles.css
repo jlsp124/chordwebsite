@@ -358,6 +358,14 @@ html[data-motion='reduced'] * {
   gap: 16px;
 }
 
+.result-area__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .result-area__title-group {
   display: grid;
   gap: 4px;
