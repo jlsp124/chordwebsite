@@ -228,6 +228,12 @@ html[data-motion='reduced'] * {
   border: 1px solid var(--border);
 }
 
+.button--active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-color: transparent;
+}
+
 .button--midi {
   min-width: 172px;
 }
@@ -536,6 +542,70 @@ html[data-motion='reduced'] * {
   justify-content: flex-start;
 }
 
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.saved-card {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+}
+
+.saved-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-card__title {
+  margin: 4px 0 0;
+  font-size: 1rem;
+}
+
+.saved-card__empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+}
+
+.saved-list {
+  display: grid;
+  gap: 10px;
+}
+
+.saved-entry {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  text-align: left;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.saved-entry__title {
+  font-weight: 700;
+}
+
+.saved-entry__meta {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
+.saved-entry__preview {
+  color: var(--accent-strong);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.84rem;
+}
+
 .tabs-panel {
   padding: 18px;
   display: grid;
@@ -665,6 +735,15 @@ html[data-motion='reduced'] * {
   border: 1px solid var(--border);
 }
 
+.suggestion-card--active {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent-soft);
+}
+
+.suggestion-card--advisory {
+  opacity: 0.92;
+}
+
 .suggestion-card__header {
   display: grid;
   gap: 8px;
@@ -687,6 +766,11 @@ html[data-motion='reduced'] * {
   color: var(--accent-strong);
 }
 
+.suggestion-card__status {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
 .rail-note {
   padding: 14px;
   border-radius: 18px;
@@ -701,6 +785,10 @@ html[data-motion='reduced'] * {
 
   .workspace,
   .workspace--compact-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .saved-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 

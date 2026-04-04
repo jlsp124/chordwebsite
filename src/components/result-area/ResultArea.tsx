@@ -1,4 +1,6 @@
 import type { GenerationMetadata, GenerationResult } from '../../core/types';
+import type { StoredProgressionEntry } from '../../storage/workspace-state';
+import { SavedProgressionsPanel } from '../saved-progressions/SavedProgressionsPanel';
 
 interface ResultAreaProps {
   result: GenerationResult | null;
@@ -14,6 +16,11 @@ interface ResultAreaProps {
   isPreviewPlaying: boolean;
   isPreviewStarting: boolean;
   previewPresetName: string | null;
+  isFavorite: boolean;
+  favorites: StoredProgressionEntry[];
+  recentHistory: StoredProgressionEntry[];
+  onToggleFavorite: () => void;
+  onRecallEntry: (entry: StoredProgressionEntry) => void;
 }
 
 export function ResultArea({
@@ -29,7 +36,12 @@ export function ResultArea({
   isDownloadingMidi,
   isPreviewPlaying,
   isPreviewStarting,
-  previewPresetName
+  previewPresetName,
+  isFavorite,
+  favorites,
+  recentHistory,
+  onToggleFavorite,
+  onRecallEntry
 }: ResultAreaProps) {
   const hasProgression = result !== null && metadata !== null;
 
@@ -45,6 +57,16 @@ export function ResultArea({
         </div>
 
         <div className="result-area__actions">
+          <button
+            className={`button button--ghost ${isFavorite ? 'button--active' : ''}`}
+            disabled={!hasProgression || isGenerating}
+            onClick={onToggleFavorite}
+            title={hasProgression ? 'Save or remove this favorite' : 'Generate first to favorite'}
+            type="button"
+          >
+            {isFavorite ? 'Favorited' : 'Favorite'}
+          </button>
+
           <button
             className="button button--secondary"
             disabled={!hasProgression || isGenerating || isDownloadingMidi}
@@ -165,6 +187,11 @@ export function ResultArea({
 
         {isGenerating ? <div className="status-banner">Loading pack data and generating...</div> : null}
         {mediaMessage ? <div className="status-banner">{mediaMessage}</div> : null}
+        <SavedProgressionsPanel
+          favorites={favorites}
+          recentHistory={recentHistory}
+          onRecallEntry={onRecallEntry}
+        />
       </div>
     </section>
   );

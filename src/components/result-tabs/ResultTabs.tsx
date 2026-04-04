@@ -1,21 +1,23 @@
-import type { ExplanationItem } from '../../core/types';
+import { buildEducationalTabs } from '../../core/utils/education.ts';
+import type { GenerationBundle } from '../../core/types';
 import type { ExplanationType, SelectOption } from '../../core/options';
 
 interface ResultTabsProps {
   activeTab: ExplanationType;
+  generation: GenerationBundle | null;
   onTabChange: (nextTab: ExplanationType) => void;
   tabOptions: SelectOption<ExplanationType>[];
-  explanations: ExplanationItem[];
 }
 
 export function ResultTabs({
   activeTab,
+  generation,
   onTabChange,
-  tabOptions,
-  explanations
+  tabOptions
 }: ResultTabsProps) {
-  const activeItems = explanations.filter((item) => item.type === activeTab);
-  const hasProgression = explanations.length > 0;
+  const tabContent = buildEducationalTabs(generation);
+  const activeItems = tabContent[activeTab];
+  const hasProgression = generation !== null;
 
   return (
     <section className="tabs-panel panel">
@@ -63,8 +65,8 @@ export function ResultTabs({
             </h3>
             <p className="tabs-panel__body-copy">
               {hasProgression
-                ? 'This progression did not return copy for the selected tab.'
-                : 'Generate first to unlock pack-driven explanation copy for why it works, add-notes ideas, transitions, section guidance, and learning notes.'}
+                ? 'This progression did not return educational copy for the selected tab yet.'
+                : 'Generate first to unlock producer-first explanations, extension ideas, transition reads, section ideas, and lightweight learning notes.'}
             </p>
           </>
         )}

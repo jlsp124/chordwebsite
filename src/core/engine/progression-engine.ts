@@ -24,6 +24,10 @@ import type {
 } from '../types/index.ts';
 import { alignBeatsPattern, formatChordName } from './music-theory.ts';
 import { createSeededRng, type SeededRng, type WeightedChoice } from './seeded-rng.ts';
+import {
+  VARIATION_DISPLAY_ORDER,
+  getVariationVersionLabel
+} from '../utils/variation-display.ts';
 
 interface PackIndexes {
   substyles: Map<string, Substyle>;
@@ -844,6 +848,60 @@ function buildSuggestionSummary(variationRule: VariationRule, sectionIntent: Sec
   return `Push ${formatTokenLabel(sectionIntent)} toward ${targetSummary} while keeping ${formatTokenLabel(variationRule.preserve[0] ?? 'the core identity')} intact.`;
 }
 
+function createVirtualVariationRule(
+  substyle: Substyle,
+  request: GenerationRequest,
+  type: VariationRule['type']
+): VariationRule {
+  return {
+    id: `virtual-${substyle.id}-${type}`,
+    name: getVariationVersionLabel(type),
+    type,
+    styleScope: [substyle.id],
+    allowedSectionIntents: [request.sectionIntent],
+    preserve: ['core_identity', 'loop_length'],
+    targets: [type, 'section_shape'],
+    requiredTags: [],
+    forbiddenTags: [],
+    weight: 0.01
+  };
+}
+
+function buildGenericSuggestionSummary(
+  type: VariationRule['type'],
+  request: GenerationRequest,
+  companionMove: SpecialMove | null,
+  isSectionPreferred: boolean
+): string {
+  const sectionLabel = formatTokenLabel(request.sectionIntent);
+  const preferredSuffix = isSectionPreferred
+    ? 'This is a natural fit for the current section.'
+    : 'Use it more like a side path than the default move.';
+
+  switch (type) {
+    case 'safer':
+      return `Strip back extra color so the ${sectionLabel} stays readable and topline-friendly. ${preferredSuffix}`;
+    case 'richer':
+      return `Add upper color on tonic-family slots without changing the root path. ${preferredSuffix}`;
+    case 'darker':
+      return `Lean the harmony into a shadowier color pocket while keeping the loop recognizable. ${preferredSuffix}`;
+    case 'brighter':
+      return `Open the tonic side with cleaner lift and more shine. ${preferredSuffix}`;
+    case 'more_open':
+      return `Relax the final arrival so the loop keeps rolling instead of fully landing. ${preferredSuffix}`;
+    case 'more_resolved':
+      return `Aim the final slot harder at tonic so the phrase feels more finished. ${preferredSuffix}`;
+    case 'pre_chorus_lift':
+      return `Use late dominant pull${companionMove ? ` plus ${companionMove.name}` : ''} to make the next section feel earned. ${preferredSuffix}`;
+    case 'chorus_payoff':
+      return `Widen the release so the hook lands bigger without rewriting the progression. ${preferredSuffix}`;
+    case 'bridge_contrast':
+      return `Reframe one anchor chord so the section steps outside the main cycle for a moment. ${preferredSuffix}`;
+    default:
+      return `Shift the progression toward ${formatTokenLabel(type)} while keeping the identity intact.`;
+  }
+}
+
 function findCompanionMove(
   substyle: Substyle,
   indexes: PackIndexes,
@@ -886,28 +944,40 @@ function buildSuggestions(
   request: GenerationRequest,
   blueprint: MutableBlueprint
 ): SuggestionItem[] {
-  const candidates = selections.substyle.variationRuleIds
+  const variationRulesByType = new Map<VariationRule['type'], VariationRule>();
+  selections.substyle.variationRuleIds
     .map((id) => indexes.variationRules.get(id))
     .filter((entry): entry is VariationRule => entry !== undefined)
     .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
-    .filter((entry) => entry.type !== selections.variationRule?.type)
-    .filter((entry) => selections.sectionRules.allowedVariationTypes.includes(entry.type))
     .sort((left, right) => right.weight - left.weight)
-    .slice(0, 3);
+    .forEach((entry) => {
+      const existingEntry = variationRulesByType.get(entry.type);
 
-  return candidates.map((variationRule, index) => {
+      if (!existingEntry || existingEntry.weight < entry.weight) {
+        variationRulesByType.set(entry.type, entry);
+      }
+    });
+
+  return VARIATION_DISPLAY_ORDER.map((type, index) => {
+    const variationRule =
+      variationRulesByType.get(type) ?? createVirtualVariationRule(selections.substyle, request, type);
     const previewBlueprint = cloneBlueprint(blueprint);
     const companionMove = findCompanionMove(selections.substyle, indexes, variationRule, request);
+    const isSectionPreferred = selections.sectionRules.allowedVariationTypes.includes(type);
+    const hasAuthoredRule = variationRulesByType.has(type);
+
     applyVariationRule(variationRule, request, previewBlueprint);
     applySpecialMove(companionMove, request, previewBlueprint);
 
     return {
-      id: `suggestion-${variationRule.id}-${index}`,
-      type: variationRule.type,
-      title: variationRule.name,
-      summary: buildSuggestionSummary(variationRule, request.sectionIntent),
+      id: `suggestion-${type}-${index}`,
+      type,
+      title: getVariationVersionLabel(type),
+      summary: hasAuthoredRule
+        ? buildSuggestionSummary(variationRule, request.sectionIntent)
+        : buildGenericSuggestionSummary(type, request, companionMove, isSectionPreferred),
       previewRomanNumerals: previewBlueprint.slots.map((slot) => slot.romanNumeral),
-      appliesVariationIds: [variationRule.id],
+      appliesVariationIds: hasAuthoredRule ? [variationRule.id] : [],
       appliesSpecialMoveIds: companionMove ? [companionMove.id] : []
     };
   });

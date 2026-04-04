@@ -21,6 +21,15 @@ import {
   savePreferences,
   type UserPreferences
 } from './storage/preferences';
+import {
+  createStoredProgressionEntry,
+  loadWorkspaceState,
+  saveWorkspaceState,
+  toggleFavoriteEntry,
+  upsertRecentHistory,
+  type StoredProgressionEntry
+} from './storage/workspace-state';
+import type { GenerationBundle } from './core/types';
 
 function mergePreferences(
   previous: UserPreferences,
@@ -30,19 +39,26 @@ function mergePreferences(
 }
 
 export default function App() {
+  const initialWorkspaceState = useMemo(() => loadWorkspaceState(), []);
   const [preferences, setPreferences] = useState<UserPreferences>(() => loadPreferences());
-  const [controls, setControls] = useState<ShellControlState>(DEFAULT_CONTROL_STATE);
+  const [controls, setControls] = useState<ShellControlState>(
+    () => initialWorkspaceState.lastUsedSettings
+  );
   const [activeTab, setActiveTab] = useState<ExplanationType>(DEFAULT_TAB);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [generation, setGeneration] = useState<Awaited<ReturnType<typeof generateProgression>> | null>(
-    null
-  );
+  const [generation, setGeneration] = useState<GenerationBundle | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isPreviewStarting, setIsPreviewStarting] = useState(false);
   const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
   const [isDownloadingMidi, setIsDownloadingMidi] = useState(false);
   const [mediaMessage, setMediaMessage] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<StoredProgressionEntry[]>(
+    () => initialWorkspaceState.favorites
+  );
+  const [recentHistory, setRecentHistory] = useState<StoredProgressionEntry[]>(
+    () => initialWorkspaceState.recentHistory
+  );
 
   const substyleOptions = useMemo(
     () => SUBSTYLE_OPTIONS[controls.familyId] ?? [],
@@ -58,6 +74,15 @@ export default function App() {
     document.documentElement.dataset.motion = preferences.reducedMotion ? 'reduced' : 'full';
     document.documentElement.style.colorScheme = preferences.theme;
   }, [preferences]);
+
+  useEffect(() => {
+    saveWorkspaceState({
+      favorites,
+      lastSeed: controls.seed,
+      lastUsedSettings: controls,
+      recentHistory
+    });
+  }, [controls, favorites, recentHistory]);
 
   useEffect(() => {
     if (substyleOptions.some((option) => option.value === controls.substyleId)) {
@@ -86,7 +111,7 @@ export default function App() {
     });
   };
 
-  const handleGenerate = async () => {
+  const runGeneration = async (nextControls: ShellControlState) => {
     stopProgressionPreview(false);
     setIsPreviewPlaying(false);
     setIsPreviewStarting(false);
@@ -96,19 +121,21 @@ export default function App() {
 
     try {
       const bundle = await generateProgression({
-        seed: controls.seed,
-        familyId: controls.familyId,
-        substyleId: controls.substyleId,
-        key: controls.key,
-        scaleMode: controls.scaleMode,
-        sectionIntent: controls.sectionIntent,
-        spiceLevel: controls.spiceLevel,
-        midiMode: controls.midiMode
+        seed: nextControls.seed,
+        familyId: nextControls.familyId,
+        substyleId: nextControls.substyleId,
+        key: nextControls.key,
+        scaleMode: nextControls.scaleMode,
+        sectionIntent: nextControls.sectionIntent,
+        spiceLevel: nextControls.spiceLevel,
+        midiMode: nextControls.midiMode
       });
+      const storedEntry = createStoredProgressionEntry(bundle);
 
       startTransition(() => {
         setGeneration(bundle);
         setActiveTab(DEFAULT_TAB);
+        setRecentHistory((previous) => upsertRecentHistory(previous, storedEntry));
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown generation error.';
@@ -119,6 +146,10 @@ export default function App() {
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleGenerate = async () => {
+    await runGeneration(controls);
   };
 
   const handlePreviewToggle = async () => {
@@ -174,6 +205,35 @@ export default function App() {
     }
   };
 
+  const currentSavedEntry = useMemo(
+    () => (generation ? createStoredProgressionEntry(generation) : null),
+    [generation]
+  );
+  const isFavorite = currentSavedEntry
+    ? favorites.some((entry) => entry.id === currentSavedEntry.id)
+    : false;
+
+  const handleToggleFavorite = () => {
+    if (!currentSavedEntry) {
+      return;
+    }
+
+    const nextFavorites = toggleFavoriteEntry(favorites, currentSavedEntry);
+    const wasFavorite = favorites.some((entry) => entry.id === currentSavedEntry.id);
+    setFavorites(nextFavorites);
+    setMediaMessage(
+      wasFavorite
+        ? `Removed ${currentSavedEntry.substyleName} / ${currentSavedEntry.seed} from favorites.`
+        : `Saved ${currentSavedEntry.substyleName} / ${currentSavedEntry.seed} to favorites.`
+    );
+  };
+
+  const handleRecallEntry = async (entry: StoredProgressionEntry) => {
+    setControls(entry.controls);
+    setMediaMessage(`Restored ${entry.substyleName} / ${entry.seed}.`);
+    await runGeneration(entry.controls);
+  };
+
   return (
     <div className={`app-shell ${preferences.reducedMotion ? 'app-shell--reduced-motion' : ''}`}>
       <ControlBar
@@ -207,19 +267,25 @@ export default function App() {
             isPreviewPlaying={isPreviewPlaying}
             isPreviewStarting={isPreviewStarting}
             previewPresetName={generation?.midiPreset.name ?? null}
+            isFavorite={isFavorite}
+            favorites={favorites}
+            recentHistory={recentHistory}
+            onToggleFavorite={handleToggleFavorite}
+            onRecallEntry={handleRecallEntry}
           />
 
           <ResultTabs
             activeTab={activeTab}
+            generation={generation}
             onTabChange={setActiveTab}
             tabOptions={EXPLANATION_TABS}
-            explanations={generation?.result.explanations ?? []}
           />
         </section>
 
         <SuggestionRail
           suggestions={generation?.result.suggestions ?? []}
           compact={preferences.compactRail}
+          activeVariationTypes={generation?.metadata.selectedVariationTypes ?? []}
         />
       </main>
     </div>
