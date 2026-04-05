@@ -1,32 +1,22 @@
 import type {
-  CadenceType,
   FamilyId,
-  MidiMode,
+  HarmonicRhythmDensity,
   MidiPreset,
-  SectionIntent,
-  SubstyleId,
-  VariationType
+  SubstyleId
 } from './data-model.ts';
 
 export type ScaleMode = 'major' | 'minor';
-
-export type ExplanationType =
-  | 'why_it_works'
-  | 'add_notes'
-  | 'transition'
-  | 'section_idea'
-  | 'learn';
+export type LoopBarCount = 4 | 8 | 16;
+export type ChordChangeRate = 'one_bar' | 'two_bars';
 
 export interface GenerationRequest {
-  seed: string;
   familyId: FamilyId;
   substyleId: SubstyleId;
   key: string;
   scaleMode: ScaleMode;
-  sectionIntent: SectionIntent;
+  loopBars: LoopBarCount;
+  chordChangeRate: ChordChangeRate;
   spiceLevel: number;
-  midiMode: MidiMode;
-  targetChordCount?: 2 | 4;
 }
 
 export interface ChordSlot {
@@ -39,59 +29,36 @@ export interface ChordSlot {
   slashBassDegree?: string | null;
 }
 
-export interface ExplanationItem {
-  id: string;
-  type: ExplanationType;
-  title: string;
-  body: string;
-  relatedChordIndexes?: number[];
-}
-
-export interface SuggestionItem {
-  id: string;
-  type: VariationType;
-  title: string;
-  summary: string;
-  previewRomanNumerals?: string[];
-  appliesVariationIds: string[];
-  appliesSpecialMoveIds: string[];
-}
-
 export interface GenerationResult {
-  seed: string;
   packId: string;
   familyId: FamilyId;
   substyleId: SubstyleId;
-  sectionIntent: SectionIntent;
-  archetypeId: string;
-  cadenceProfileId: string;
+  loopArchetypeId: string;
   harmonicRhythmProfileId: string;
+  totalBars: LoopBarCount;
+  chordChangeRate: ChordChangeRate;
   romanNumerals: string[];
   functionPath: string[];
   chordSlots: ChordSlot[];
+  appliedSpicinessTransformIds: string[];
   appliedVariationIds: string[];
   appliedSpecialMoveIds: string[];
-  explanations: ExplanationItem[];
-  suggestions: SuggestionItem[];
   midiPresetId: string;
 }
 
 export interface GenerationMetadata {
-  mode: 'loop' | 'section';
   familyName: string;
   substyleName: string;
-  archetypeName: string;
-  cadenceName: string;
-  cadenceType: CadenceType;
+  loopName: string;
   rhythmName: string;
-  rhythmDensity: string;
-  sectionEnergyShape: string;
+  rhythmDensity: HarmonicRhythmDensity;
+  baseLoopBars: 4;
+  renderedBars: LoopBarCount;
+  loopTags: string[];
+  colorSummary: string[];
   activeSpicinessTransformIds: string[];
   selectedVariationIds: string[];
   selectedSpecialMoveIds: string[];
-  selectedVariationTypes: VariationType[];
-  preferredArchetypeTags: string[];
-  archetypeTags: string[];
 }
 
 export interface GenerationBundle {

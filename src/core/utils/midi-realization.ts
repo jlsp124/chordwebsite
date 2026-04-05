@@ -3,7 +3,6 @@ import {
   midiFromRomanNumeral,
   parseRomanNumeral
 } from '../engine/music-theory.ts';
-import { createSeededRng } from '../engine/seeded-rng.ts';
 import type { GenerationBundle, MidiPreset } from '../types/index.ts';
 
 export interface MidiHitEvent {
@@ -57,7 +56,7 @@ function sanitizeFilePart(value: string): string {
 }
 
 function resolvePreviewTempo(bundle: GenerationBundle): number {
-  const { request, metadata } = bundle;
+  const { metadata } = bundle;
 
   if (bundle.result.familyId === 'dance') {
     return 122;
@@ -76,7 +75,7 @@ function resolvePreviewTempo(bundle: GenerationBundle): number {
   }
 
   if (bundle.result.familyId === 'kpop') {
-    if (request.sectionIntent === 'bridge' || metadata.substyleName.includes('Ballad')) {
+    if (metadata.substyleName.includes('Ballad')) {
       return 86;
     }
 
@@ -88,6 +87,17 @@ function resolvePreviewTempo(bundle: GenerationBundle): number {
   }
 
   return 110;
+}
+
+function hashString(value: string): number {
+  let hash = 2166136261;
+
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
 }
 
 function resolveVoiceTarget(preset: MidiPreset): number {
@@ -437,10 +447,9 @@ function buildArpNotes(
   voices: readonly number[],
   stepIndex: number,
   stepCount: number,
-  seedKey: string
+  rotationKey: string
 ): number[] {
-  const rng = createSeededRng(`${seedKey}:arp-order`);
-  const rotated = rotatePattern(voices, rng.pickIndex(Math.max(voices.length, 1)));
+  const rotated = rotatePattern(voices, hashString(rotationKey) % Math.max(voices.length, 1));
 
   if (rotated.length === 0) {
     return [];
@@ -470,11 +479,13 @@ export function buildMidiFileName(bundle: GenerationBundle): string {
   const fileParts = [
     bundle.result.familyId,
     bundle.result.substyleId,
-    bundle.result.sectionIntent,
+    bundle.result.loopArchetypeId,
     bundle.request.key,
     bundle.request.scaleMode,
+    `${bundle.request.loopBars}bars`,
+    bundle.request.chordChangeRate,
     bundle.midiPreset.mode,
-    bundle.request.seed
+    bundle.result.midiPresetId
   ]
     .map(sanitizeFilePart)
     .filter((value) => value.length > 0);
@@ -497,7 +508,7 @@ export function realizeMidiClip(bundle: GenerationBundle): RealizedMidiClip {
               voices,
               stepIndex,
               patternSteps.length,
-              `${bundle.request.seed}:${bundle.result.substyleId}:${slot.index}`
+              `${bundle.result.substyleId}:${bundle.result.loopArchetypeId}:${bundle.midiPreset.id}:${slot.index}`
             )
           : voices;
 

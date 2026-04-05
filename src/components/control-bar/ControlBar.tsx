@@ -85,7 +85,8 @@ export function ControlBar({
         </div>
       </div>
 
-      <div className="control-grid">
+      <div className="control-bar__body">
+        <div className="control-grid">
         <label className="field">
           <span className="field__label">Family</span>
           <select
@@ -191,12 +192,23 @@ export function ControlBar({
             ))}
           </select>
         </label>
+
+        </div>
+
+        <aside className="control-bar__aside" aria-label="Current loop summary">
+          <span className="eyebrow">Current setup</span>
+          <div className="control-bar__aside-value">{controls.substyleId.replace(/_/g, ' ')}</div>
+          <div className="control-bar__aside-copy">
+            {controls.loopBars} bars, {getChordChangeRateLabel(controls.chordChangeRate).toLowerCase()}
+            , spice {controls.spiceLevel}.
+          </div>
+        </aside>
       </div>
 
       <div className="control-bar__status">
         <span className="chip">Loop-only surface</span>
+        <span className="chip">{controls.key} {controls.scaleMode}</span>
         <span className="chip">{controls.loopBars} bars</span>
-        <span className="chip">{getChordChangeRateLabel(controls.chordChangeRate)}</span>
       </div>
     </header>
   );

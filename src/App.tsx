@@ -8,7 +8,6 @@ import {
   DEFAULT_CONTROL_STATE,
   type ShellControlState
 } from './core/options';
-import { adaptBundleToLoopSettings } from './core/utils/loop-shell.ts';
 import { downloadMidiBundle, MIDI_EXPORT_DISABLED_REASON } from './export';
 import {
   loadPreferences,
@@ -26,20 +25,6 @@ function mergePreferences(
   patch: Partial<UserPreferences>
 ): UserPreferences {
   return { ...previous, ...patch };
-}
-
-function createHiddenSeed(controls: ShellControlState): string {
-  const randomPart = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`;
-  return [
-    controls.familyId,
-    controls.substyleId,
-    controls.key,
-    controls.scaleMode,
-    controls.loopBars,
-    controls.chordChangeRate,
-    controls.spiceLevel,
-    randomPart
-  ].join(':');
 }
 
 const DEFAULT_SUBSTYLE_BY_FAMILY: Record<string, string> = {
@@ -126,25 +111,18 @@ export default function App() {
     setMediaMessage(null);
 
     try {
-      const targetChordCount = nextControls.chordChangeRate === 'two_bars' ? 2 : 4;
       const bundle = await generateProgression({
-        seed: createHiddenSeed(nextControls),
         familyId: nextControls.familyId,
         substyleId: nextControls.substyleId,
         key: nextControls.key,
         scaleMode: nextControls.scaleMode,
-        sectionIntent: 'full_loop',
-        spiceLevel: nextControls.spiceLevel,
-        midiMode: 'block',
-        targetChordCount
-      });
-      const adaptedBundle = adaptBundleToLoopSettings(bundle, {
         loopBars: nextControls.loopBars,
-        chordChangeRate: nextControls.chordChangeRate
+        chordChangeRate: nextControls.chordChangeRate,
+        spiceLevel: nextControls.spiceLevel
       });
 
       startTransition(() => {
-        setGeneration(adaptedBundle);
+        setGeneration(bundle);
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown generation error.';

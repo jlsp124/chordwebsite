@@ -9,3 +9,15 @@ vite.config.d.ts
 .env
 .env.*
 !.env.example
+data-src/external/*/
+!data-src/external/source-registry.json
+data-src/generated/*.json
+data-src/staging/downloads.lock.json
+data-src/staging/normalized/*
+!data-src/staging/normalized/.gitkeep
+data-src/staging/windows/*
+!data-src/staging/windows/.gitkeep
+data-src/staging/clusters/*
+!data-src/staging/clusters/.gitkeep
+data-src/staging/reports/*
+!data-src/staging/reports/.gitkeep

@@ -38,6 +38,24 @@ const PACK_COLLECTION_KEYS = [
   'midiPresets'
 ] as const;
 
+const PROHIBITED_RUNTIME_KEYS = new Set([
+  'artist',
+  'artistName',
+  'songTitle',
+  'title',
+  'workId',
+  'annotationId',
+  'trackId',
+  'sourceRef',
+  'sourceRefs',
+  'sourceFile',
+  'sourceFiles',
+  'rawRows',
+  'rawCorpus',
+  'audioUrl',
+  'midiUrl'
+]);
+
 function issue(scope: string, path: string, message: string): ValidationIssue {
   return { scope, path, message };
 }
@@ -213,6 +231,39 @@ function validateRuleBlock(
     true
   );
   validateRequiredString(ruleBlock.energyShape, scope, `${path}.energyShape`, issues);
+}
+
+function validateNoRawCorpusLeak(
+  value: unknown,
+  scope: string,
+  path: string,
+  issues: ValidationIssue[]
+): void {
+  if (Array.isArray(value)) {
+    for (const [index, entry] of value.entries()) {
+      validateNoRawCorpusLeak(entry, scope, `${path}[${index}]`, issues);
+    }
+
+    return;
+  }
+
+  if (!isRecord(value)) {
+    return;
+  }
+
+  for (const [key, entry] of Object.entries(value)) {
+    if (PROHIBITED_RUNTIME_KEYS.has(key)) {
+      issues.push(
+        issue(
+          scope,
+          `${path}.${key}`,
+          'Runtime packs must not include raw corpus identifiers or direct source metadata.'
+        )
+      );
+    }
+
+    validateNoRawCorpusLeak(entry, scope, `${path}.${key}`, issues);
+  }
 }
 
 export function validatePackManifest(manifest: unknown): ValidationIssue[] {
@@ -856,6 +907,7 @@ export function validatePackSet(
 
     const packIssues = validateFamilyPack(pack);
     issues.push(...packIssues);
+    validateNoRawCorpusLeak(pack, 'runtime-pack-privacy', entry.path, issues);
 
     if (!isRecord(pack) || !isRecord(pack.family) || !Array.isArray(pack.substyles)) {
       continue;

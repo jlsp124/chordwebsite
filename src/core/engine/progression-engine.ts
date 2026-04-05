@@ -1,13 +1,9 @@
 import { loadFamilyPack } from '../../data/packs/runtime-loader.ts';
 import type {
-  CadenceProfile,
   FamilyPack,
   HarmonicRhythmProfile,
   MidiPreset,
   ProgressionArchetype,
-  SectionBehavior,
-  SectionIntent,
-  SectionRuleBlock,
   SpecialMove,
   SpicinessTransform,
   Substyle,
@@ -15,26 +11,19 @@ import type {
 } from '../types/index.ts';
 import type {
   ChordSlot,
-  ExplanationItem,
+  ChordChangeRate,
   GenerationBundle,
   GenerationMetadata,
   GenerationRequest,
   GenerationResult,
-  SuggestionItem
+  LoopBarCount
 } from '../types/index.ts';
 import { alignBeatsPattern, formatChordName } from './music-theory.ts';
-import { createSeededRng, type SeededRng, type WeightedChoice } from './seeded-rng.ts';
-import {
-  VARIATION_DISPLAY_ORDER,
-  getVariationVersionLabel
-} from '../utils/variation-display.ts';
 
 interface PackIndexes {
   substyles: Map<string, Substyle>;
   archetypes: Map<string, ProgressionArchetype>;
-  cadenceProfiles: Map<string, CadenceProfile>;
   harmonicRhythmProfiles: Map<string, HarmonicRhythmProfile>;
-  sectionBehaviors: Map<string, SectionBehavior>;
   spicinessTransforms: Map<string, SpicinessTransform>;
   variationRules: Map<string, VariationRule>;
   specialMoves: Map<string, SpecialMove>;
@@ -42,45 +31,56 @@ interface PackIndexes {
 }
 
 interface MutableSlot {
+  slotIndex: number;
   romanNumeral: string;
   functionLabel: string;
   decorationTags: string[];
   slashBassDegree: string | null;
-  slotIndex: number;
 }
 
 interface MutableBlueprint {
   slots: MutableSlot[];
-  cadenceProfile: CadenceProfile;
-  rhythmProfile: HarmonicRhythmProfile;
 }
 
 interface GenerationSelections {
   substyle: Substyle;
   archetype: ProgressionArchetype;
-  cadenceProfile: CadenceProfile;
   rhythmProfile: HarmonicRhythmProfile;
-  sectionBehavior: SectionBehavior;
-  sectionRules: SectionRuleBlock;
+  rhythmPattern: number[];
   spicinessTransforms: SpicinessTransform[];
   variationRule: VariationRule | null;
   specialMove: SpecialMove | null;
   midiPreset: MidiPreset;
 }
 
-interface ExplanationTemplateRecord {
-  id: string;
-  type: ExplanationItem['type'];
-  content: string;
+interface WeightedChoice<TValue> {
+  value: TValue;
+  weight: number;
 }
+
+const LOOP_SAFE_VARIATION_TYPES = new Set<VariationRule['type']>([
+  'safer',
+  'richer',
+  'darker',
+  'brighter',
+  'more_open',
+  'more_resolved'
+]);
+
+const LOOP_SAFE_SPECIAL_MOVES = new Set<SpecialMove['operation']>([
+  'borrowed_iv_darken',
+  'delay_tonic_arrival',
+  'drop_simplify',
+  'groove_lock',
+  'last_bar_tilt',
+  'trap_soul_enrich'
+]);
 
 function createIndexes(pack: FamilyPack): PackIndexes {
   return {
     substyles: new Map(pack.substyles.map((entry) => [entry.id, entry])),
     archetypes: new Map(pack.archetypes.map((entry) => [entry.id, entry])),
-    cadenceProfiles: new Map(pack.cadenceProfiles.map((entry) => [entry.id, entry])),
     harmonicRhythmProfiles: new Map(pack.harmonicRhythmProfiles.map((entry) => [entry.id, entry])),
-    sectionBehaviors: new Map(pack.sectionBehaviors.map((entry) => [entry.id, entry])),
     spicinessTransforms: new Map(pack.spicinessTransforms.map((entry) => [entry.id, entry])),
     variationRules: new Map(pack.variationRules.map((entry) => [entry.id, entry])),
     specialMoves: new Map(pack.specialMoves.map((entry) => [entry.id, entry])),
@@ -88,24 +88,36 @@ function createIndexes(pack: FamilyPack): PackIndexes {
   };
 }
 
-function getSectionRuleBlock(
-  sectionBehavior: SectionBehavior,
-  sectionIntent: SectionIntent
-): SectionRuleBlock {
-  switch (sectionIntent) {
-    case 'full_loop':
-      return sectionBehavior.fullLoopRules;
-    case 'verse':
-      return sectionBehavior.verseRules;
-    case 'pre_chorus':
-      return sectionBehavior.preChorusRules;
-    case 'chorus':
-      return sectionBehavior.chorusRules;
-    case 'bridge':
-      return sectionBehavior.bridgeRules;
-    default:
-      return sectionBehavior.fullLoopRules;
+function randomUnit(): number {
+  const cryptoObject = globalThis.crypto;
+
+  if (cryptoObject?.getRandomValues) {
+    const values = new Uint32Array(1);
+    cryptoObject.getRandomValues(values);
+    return (values[0] ?? 0) / 0x100000000;
   }
+
+  return Math.random();
+}
+
+function chooseWeighted<TValue>(entries: readonly WeightedChoice<TValue>[]): TValue {
+  const totalWeight = entries.reduce((sum, entry) => sum + Math.max(0, entry.weight), 0);
+
+  if (!Number.isFinite(totalWeight) || totalWeight <= 0) {
+    throw new Error('Weighted selection failed because all weights were non-positive.');
+  }
+
+  let cursor = randomUnit() * totalWeight;
+
+  for (const entry of entries) {
+    cursor -= Math.max(0, entry.weight);
+
+    if (cursor <= 0) {
+      return entry.value;
+    }
+  }
+
+  return entries[entries.length - 1]!.value;
 }
 
 function overlapCount(values: readonly string[], preferred: readonly string[]): number {
@@ -120,6 +132,30 @@ function hasForbiddenTag(values: readonly string[], forbiddenTags: readonly stri
 
 function styleScopeMatches(styleScope: readonly string[], familyId: string, substyleId: string): boolean {
   return styleScope.includes(familyId) || styleScope.includes(substyleId);
+}
+
+function targetChordCount(chordChangeRate: ChordChangeRate): 2 | 4 {
+  return chordChangeRate === 'two_bars' ? 2 : 4;
+}
+
+function targetDurationPattern(chordChangeRate: ChordChangeRate): number[] {
+  return chordChangeRate === 'two_bars' ? [8, 8] : [4, 4, 4, 4];
+}
+
+function tonicRoman(scaleMode: GenerationRequest['scaleMode']): string {
+  return scaleMode === 'minor' ? 'i' : 'I';
+}
+
+function dominantRoman(scaleMode: GenerationRequest['scaleMode']): string {
+  return scaleMode === 'minor' ? 'V' : 'V';
+}
+
+function contrastRoman(scaleMode: GenerationRequest['scaleMode']): string {
+  return scaleMode === 'minor' ? 'bVI' : 'vi';
+}
+
+function getContextTags(substyle: Substyle, archetype: ProgressionArchetype): string[] {
+  return Array.from(new Set([...substyle.tags, ...archetype.tags]));
 }
 
 function buildChoice<TValue>(value: TValue, weight: number): WeightedChoice<TValue> {
@@ -139,372 +175,12 @@ function getSlot(blueprint: MutableBlueprint, index: number): MutableSlot {
   return slot;
 }
 
-function findSlotIndexByFunction(
-  blueprint: MutableBlueprint,
-  functionLabels: readonly string[],
-  preferLast = false
-): number | null {
-  const indexes = blueprint.slots
-    .map((slot, index) => ({ index, slot }))
-    .filter(({ slot }) => functionLabels.includes(slot.functionLabel))
-    .map(({ index }) => index);
+function setRomanNumeral(slot: MutableSlot, romanNumeral: string, functionLabel?: string): void {
+  slot.romanNumeral = romanNumeral;
 
-  if (indexes.length === 0) {
-    return null;
+  if (functionLabel) {
+    slot.functionLabel = functionLabel;
   }
-
-  return preferLast ? (indexes[indexes.length - 1] ?? null) : (indexes[0] ?? null);
-}
-
-function findLastNonInitialTonicSlot(blueprint: MutableBlueprint): number | null {
-  for (let index = blueprint.slots.length - 1; index >= 1; index -= 1) {
-    if (getSlot(blueprint, index).functionLabel === 'tonic') {
-      return index;
-    }
-  }
-
-  return null;
-}
-
-function tonicRoman(request: GenerationRequest): string {
-  return request.scaleMode === 'minor' ? 'i' : 'I';
-}
-
-function dominantRoman(request: GenerationRequest): string {
-  return request.scaleMode === 'minor' ? 'V' : 'V';
-}
-
-function contrastRoman(request: GenerationRequest): string {
-  return request.scaleMode === 'minor' ? 'bVI' : 'vi';
-}
-
-function createBlueprint(
-  archetype: ProgressionArchetype,
-  cadenceProfile: CadenceProfile,
-  rhythmProfile: HarmonicRhythmProfile
-): MutableBlueprint {
-  return {
-    cadenceProfile,
-    rhythmProfile,
-    slots: archetype.romanNumerals.map((romanNumeral, slotIndex) => ({
-      romanNumeral,
-      functionLabel: archetype.functionPath[slotIndex] ?? 'tonic',
-      decorationTags: [],
-      slashBassDegree: null,
-      slotIndex
-    }))
-  };
-}
-
-function cloneBlueprint(blueprint: MutableBlueprint): MutableBlueprint {
-  return {
-    cadenceProfile: blueprint.cadenceProfile,
-    rhythmProfile: blueprint.rhythmProfile,
-    slots: blueprint.slots.map((slot) => ({
-      romanNumeral: slot.romanNumeral,
-      functionLabel: slot.functionLabel,
-      decorationTags: [...slot.decorationTags],
-      slashBassDegree: slot.slashBassDegree,
-      slotIndex: slot.slotIndex
-    }))
-  };
-}
-
-function getContextTags(substyle: Substyle, archetype: ProgressionArchetype): string[] {
-  return Array.from(new Set([...substyle.tags, ...archetype.tags]));
-}
-
-function chooseWeighted<TValue>(
-  rng: SeededRng,
-  entries: readonly WeightedChoice<TValue>[]
-): TValue {
-  return rng.chooseWeighted(entries);
-}
-
-function selectArchetype(
-  pack: FamilyPack,
-  indexes: PackIndexes,
-  substyle: Substyle,
-  sectionRules: SectionRuleBlock,
-  request: GenerationRequest,
-  rng: SeededRng
-): ProgressionArchetype {
-  const archetypes = substyle.archetypeIds
-    .map((id) => indexes.archetypes.get(id))
-    .filter((entry): entry is ProgressionArchetype => entry !== undefined)
-    .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
-    .filter((entry) =>
-      request.targetChordCount ? entry.romanNumerals.length === request.targetChordCount : true
-    )
-    .filter((entry) => !hasForbiddenTag(entry.tags, substyle.mustAvoidTags))
-    .filter((entry) => !hasForbiddenTag(entry.tags, sectionRules.forbiddenTags));
-
-  if (archetypes.length === 0) {
-    throw new Error(`No archetypes available for ${substyle.id} and ${request.sectionIntent}.`);
-  }
-
-  const choices = archetypes.map((archetype) => {
-    let weight = archetype.weight;
-    weight += overlapCount(archetype.tags, substyle.mustIncludeTags) * 0.25;
-    weight += overlapCount(archetype.tags, sectionRules.preferredArchetypeTags) * 0.22;
-
-    if (substyle.modeBias === 'loop_first') {
-      weight += archetype.loopability * 0.6;
-    } else {
-      weight += archetype.loopability * (request.sectionIntent === 'full_loop' ? 0.4 : 0.12);
-    }
-
-    if (request.sectionIntent === 'chorus' && archetype.tags.includes('hands_up')) {
-      weight += 0.18;
-    }
-
-    if (request.sectionIntent === 'bridge' && archetype.tags.includes('bridge')) {
-      weight += 0.2;
-    }
-
-    if (pack.family.id === 'dance' && archetype.tags.includes('groove_core')) {
-      weight += 0.22;
-    }
-
-    if (pack.family.id === 'trap' && request.sectionIntent === 'full_loop') {
-      weight += archetype.loopability * 0.3;
-    }
-
-    return buildChoice(archetype, Math.max(0.05, weight));
-  });
-
-  return chooseWeighted(rng, choices);
-}
-
-function selectCadenceProfile(
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  sectionRules: SectionRuleBlock,
-  request: GenerationRequest,
-  rng: SeededRng
-): CadenceProfile {
-  const endFunction =
-    archetype.functionPath[archetype.functionPath.length - 1] ??
-    archetype.functionPath[0] ??
-    'tonic';
-  const candidates = substyle.cadenceProfileIds
-    .map((id) => indexes.cadenceProfiles.get(id))
-    .filter((entry): entry is CadenceProfile => entry !== undefined);
-
-  const weightedCandidates = candidates
-    .map((profile) => {
-      let weight = profile.weight;
-
-      if (profile.type === archetype.resolutionBias) {
-        weight += 0.35;
-      }
-
-      if (profile.commonUseCases.includes(request.sectionIntent)) {
-        weight += 0.25;
-      }
-
-      if (sectionRules.preferredCadenceTypes.includes(profile.type)) {
-        weight += 0.28;
-      }
-
-      if (profile.allowedEndFunctions.includes(endFunction)) {
-        weight += 0.22;
-      } else {
-        weight -= 0.16;
-      }
-
-      return buildChoice(profile, Math.max(0.05, weight));
-    })
-    .filter((choice) => choice.weight > 0);
-
-  if (weightedCandidates.length === 0) {
-    throw new Error(`No cadence profiles available for ${substyle.id}.`);
-  }
-
-  return chooseWeighted(rng, weightedCandidates);
-}
-
-function selectHarmonicRhythmProfile(
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  sectionRules: SectionRuleBlock,
-  request: GenerationRequest,
-  rng: SeededRng
-): HarmonicRhythmProfile {
-  const defaultProfile = indexes.harmonicRhythmProfiles.get(archetype.harmonicRhythmProfileId);
-  const candidates = substyle.harmonicRhythmProfileIds
-    .map((id) => indexes.harmonicRhythmProfiles.get(id))
-    .filter((entry): entry is HarmonicRhythmProfile => entry !== undefined);
-
-  const choices = candidates.map((profile) => {
-    let weight = 0.4;
-
-    if (profile.id === defaultProfile?.id) {
-      weight += 0.4;
-    }
-
-    if (profile.commonUseCases.includes(request.sectionIntent)) {
-      weight += 0.2;
-    }
-
-    if (sectionRules.preferredRhythmDensities.includes(profile.density)) {
-      weight += 0.24;
-    }
-
-    if (substyle.modeBias === 'loop_first' && profile.density === 'slow') {
-      weight += 0.12;
-    }
-
-    if (request.sectionIntent === 'pre_chorus' && profile.density === 'active') {
-      weight += 0.14;
-    }
-
-    return buildChoice(profile, Math.max(0.05, weight));
-  });
-
-  return chooseWeighted(rng, choices);
-}
-
-function selectSpicinessTransforms(
-  pack: FamilyPack,
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  request: GenerationRequest,
-  rng: SeededRng
-): SpicinessTransform[] {
-  const contextTags = getContextTags(substyle, archetype);
-  const candidates = substyle.spicinessTransformIds
-    .map((id) => indexes.spicinessTransforms.get(id))
-    .filter((entry): entry is SpicinessTransform => entry !== undefined)
-    .filter((entry) => entry.level <= request.spiceLevel)
-    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
-    .filter((entry) => !entry.forbiddenSectionIntents.includes(request.sectionIntent))
-    .filter((entry) => !hasForbiddenTag(contextTags, entry.forbiddenTags));
-
-  return candidates
-    .filter((entry) => {
-      const threshold = Math.min(0.92, 0.42 + request.spiceLevel * 0.12 + entry.weight * 0.08);
-      return rng.fork(entry.id).next() <= threshold;
-    })
-    .sort((left, right) => left.level - right.level || right.weight - left.weight);
-}
-
-function selectVariationRule(
-  pack: FamilyPack,
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  sectionRules: SectionRuleBlock,
-  request: GenerationRequest,
-  rng: SeededRng
-): VariationRule | null {
-  const contextTags = getContextTags(substyle, archetype);
-  const candidates = substyle.variationRuleIds
-    .map((id) => indexes.variationRules.get(id))
-    .filter((entry): entry is VariationRule => entry !== undefined)
-    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
-    .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
-    .filter((entry) => sectionRules.allowedVariationTypes.includes(entry.type))
-    .filter((entry) => !hasForbiddenTag(contextTags, entry.forbiddenTags))
-    .filter((entry) =>
-      entry.requiredTags.length === 0 || entry.requiredTags.every((tag) => contextTags.includes(tag))
-    );
-
-  const nullWeight = Math.max(0.18, 0.74 - request.spiceLevel * 0.12);
-  const choices: WeightedChoice<VariationRule | null>[] = [buildChoice(null, nullWeight)];
-
-  for (const entry of candidates) {
-    let weight = entry.weight;
-    weight += overlapCount(entry.targets, sectionRules.preferredArchetypeTags) * 0.04;
-
-    if (pack.family.id === 'kpop' && request.sectionIntent !== 'full_loop') {
-      weight += 0.08;
-    }
-
-    if (pack.family.id === 'trap' && entry.type === 'chorus_payoff') {
-      weight -= 0.16;
-    }
-
-    if (pack.family.id === 'dance' && entry.type === 'richer') {
-      weight -= 0.1;
-    }
-
-    choices.push(buildChoice(entry, Math.max(0.05, weight)));
-  }
-
-  return chooseWeighted(rng, choices);
-}
-
-function selectSpecialMove(
-  pack: FamilyPack,
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  sectionRules: SectionRuleBlock,
-  request: GenerationRequest,
-  rng: SeededRng
-): SpecialMove | null {
-  const contextTags = getContextTags(substyle, archetype);
-  const allowedMoveIds = new Set(sectionRules.allowedSpecialMoveIds);
-  const candidates = substyle.specialMoveIds
-    .map((id) => indexes.specialMoves.get(id))
-    .filter((entry): entry is SpecialMove => entry !== undefined)
-    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
-    .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
-    .filter((entry) => allowedMoveIds.size === 0 || allowedMoveIds.has(entry.id))
-    .filter(
-      (entry) =>
-        entry.triggerTags.length === 0 || entry.triggerTags.some((tag) => contextTags.includes(tag))
-    );
-
-  const choices: WeightedChoice<SpecialMove | null>[] = [
-    buildChoice(null, request.sectionIntent === 'full_loop' ? 0.52 : 0.34)
-  ];
-
-  for (const entry of candidates) {
-    let weight = entry.weight;
-
-    if (pack.family.id === 'kpop' && request.sectionIntent !== 'full_loop') {
-      weight += 0.12;
-    }
-
-    if (pack.family.id === 'dance' && entry.operation === 'groove_lock') {
-      weight += 0.1;
-    }
-
-    choices.push(buildChoice(entry, Math.max(0.05, weight)));
-  }
-
-  return chooseWeighted(rng, choices);
-}
-
-function selectMidiPreset(
-  indexes: PackIndexes,
-  substyle: Substyle,
-  archetype: ProgressionArchetype,
-  request: GenerationRequest,
-  rng: SeededRng
-): MidiPreset {
-  const contextTags = getContextTags(substyle, archetype);
-  const candidates = substyle.midiPresetIds
-    .map((id) => indexes.midiPresets.get(id))
-    .filter((entry): entry is MidiPreset => entry !== undefined);
-
-  const choices = candidates.map((entry) => {
-    let weight = entry.weight;
-
-    if (entry.mode === request.midiMode) {
-      weight += 0.35;
-    }
-
-    weight += overlapCount(entry.styleTags, contextTags) * 0.08;
-    return buildChoice(entry, Math.max(0.05, weight));
-  });
-
-  return chooseWeighted(rng, choices);
 }
 
 function addDecoration(slot: MutableSlot, decorationTag: string): void {
@@ -513,15 +189,357 @@ function addDecoration(slot: MutableSlot, decorationTag: string): void {
   }
 }
 
+function createBlueprint(archetype: ProgressionArchetype): MutableBlueprint {
+  return {
+    slots: archetype.romanNumerals.map((romanNumeral, slotIndex) => ({
+      slotIndex,
+      romanNumeral,
+      functionLabel: archetype.functionPath[slotIndex] ?? 'tonic',
+      decorationTags: [],
+      slashBassDegree: null
+    }))
+  };
+}
+
+function archetypeSupportsLoopMode(archetype: ProgressionArchetype, request: GenerationRequest): boolean {
+  return (
+    archetype.bars === 4 &&
+    archetype.romanNumerals.length === targetChordCount(request.chordChangeRate)
+  );
+}
+
+function computeArchetypeWeight(
+  pack: FamilyPack,
+  substyle: Substyle,
+  archetype: ProgressionArchetype,
+  request: GenerationRequest
+): number {
+  let weight = archetype.weight + archetype.loopability * 0.9;
+
+  weight += overlapCount(archetype.tags, substyle.mustIncludeTags) * 0.2;
+
+  if (archetype.allowedSectionIntents.includes('full_loop')) {
+    weight += 0.32;
+  } else {
+    weight -= 0.18;
+  }
+
+  if (request.loopBars > 4) {
+    weight += archetype.loopability * 0.18;
+  }
+
+  if (pack.family.id === 'trap') {
+    if (archetype.tags.includes('loop_core')) {
+      weight += 0.3;
+    }
+
+    if (archetype.resolutionBias === 'open_loop' || archetype.resolutionBias === 'contrastive') {
+      weight += 0.16;
+    }
+  }
+
+  if (pack.family.id === 'dance') {
+    if (archetype.tags.includes('groove_core')) {
+      weight += 0.32;
+    }
+
+    if (archetype.romanNumerals.length === 2) {
+      weight += 0.12;
+    }
+  }
+
+  if (pack.family.id === 'kpop') {
+    if (substyle.id === 'kpop_bright_easy' && archetype.tags.includes('bright')) {
+      weight += 0.22;
+    }
+
+    if (substyle.id === 'kpop_dark_synth' && (archetype.tags.includes('dark') || archetype.tags.includes('cold'))) {
+      weight += 0.24;
+    }
+
+    if (substyle.id === 'kpop_ballad_emotional' && archetype.tags.includes('emotional')) {
+      weight += 0.24;
+    }
+  }
+
+  if (pack.family.id === 'rnb' && archetype.tags.includes('rich_color')) {
+    weight += 0.18;
+  }
+
+  if (pack.family.id === 'pop' && archetype.tags.includes('glossy')) {
+    weight += 0.18;
+  }
+
+  return Math.max(0.05, weight);
+}
+
+function selectArchetype(
+  pack: FamilyPack,
+  indexes: PackIndexes,
+  request: GenerationRequest
+): { substyle: Substyle; archetype: ProgressionArchetype } {
+  const substyle = indexes.substyles.get(request.substyleId);
+
+  if (!substyle || substyle.familyId !== request.familyId) {
+    throw new Error(`Substyle "${request.substyleId}" does not belong to family "${request.familyId}".`);
+  }
+
+  const substyleArchetypes = substyle.archetypeIds
+    .map((id) => indexes.archetypes.get(id))
+    .filter((entry): entry is ProgressionArchetype => entry !== undefined)
+    .filter((entry) => archetypeSupportsLoopMode(entry, request))
+    .filter((entry) => !hasForbiddenTag(entry.tags, substyle.mustAvoidTags));
+
+  const fullLoopCandidates = substyleArchetypes.filter((entry) =>
+    entry.allowedSectionIntents.includes('full_loop')
+  );
+  const candidates = fullLoopCandidates.length > 0 ? fullLoopCandidates : substyleArchetypes;
+
+  if (candidates.length === 0) {
+    throw new Error(
+      `No 4-bar ${request.chordChangeRate === 'two_bars' ? '2-chord' : '4-chord'} loops are available for ${substyle.id}.`
+    );
+  }
+
+  return {
+    substyle,
+    archetype: chooseWeighted(
+      candidates.map((archetype) =>
+        buildChoice(archetype, computeArchetypeWeight(pack, substyle, archetype, request))
+      )
+    )
+  };
+}
+
+function selectRhythmProfile(
+  indexes: PackIndexes,
+  substyle: Substyle,
+  archetype: ProgressionArchetype,
+  request: GenerationRequest
+): { profile: HarmonicRhythmProfile; pattern: number[] } {
+  const wantedPattern = targetDurationPattern(request.chordChangeRate);
+  const candidates = substyle.harmonicRhythmProfileIds
+    .map((id) => indexes.harmonicRhythmProfiles.get(id))
+    .filter((entry): entry is HarmonicRhythmProfile => entry !== undefined)
+    .map((profile) => ({
+      profile,
+      pattern: alignBeatsPattern(archetype.romanNumerals.length, profile.beatsPerChangePattern)
+    }))
+    .filter((entry) => entry.pattern.join(',') === wantedPattern.join(','));
+
+  if (candidates.length === 0) {
+    throw new Error(
+      `No harmonic rhythm profile for ${substyle.id} matches ${request.chordChangeRate}.`
+    );
+  }
+
+  return chooseWeighted(
+    candidates.map((entry) => {
+      let weight = 0.45;
+
+      if (entry.profile.id === archetype.harmonicRhythmProfileId) {
+        weight += 0.45;
+      }
+
+      if (substyle.modeBias === 'loop_first' && entry.profile.density === 'slow') {
+        weight += 0.12;
+      }
+
+      if (request.chordChangeRate === 'one_bar' && entry.profile.density === 'medium') {
+        weight += 0.08;
+      }
+
+      return buildChoice(entry, Math.max(0.05, weight));
+    })
+  );
+}
+
+function selectSpicinessTransforms(
+  pack: FamilyPack,
+  indexes: PackIndexes,
+  substyle: Substyle,
+  archetype: ProgressionArchetype,
+  request: GenerationRequest
+): SpicinessTransform[] {
+  const contextTags = getContextTags(substyle, archetype);
+  const candidates = substyle.spicinessTransformIds
+    .map((id) => indexes.spicinessTransforms.get(id))
+    .filter((entry): entry is SpicinessTransform => entry !== undefined)
+    .filter((entry) => entry.level <= request.spiceLevel)
+    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
+    .filter((entry) => !entry.forbiddenSectionIntents.includes('full_loop'))
+    .filter((entry) => !hasForbiddenTag(contextTags, entry.forbiddenTags));
+
+  const selected: SpicinessTransform[] = [];
+
+  for (let level = 1; level <= request.spiceLevel; level += 1) {
+    const tierCandidates = candidates.filter(
+      (entry) => entry.level === level && !selected.some((selectedEntry) => selectedEntry.id === entry.id)
+    );
+
+    if (tierCandidates.length === 0) {
+      continue;
+    }
+
+    if (level > 1) {
+      const tierChance = Math.min(0.88, 0.44 + request.spiceLevel * 0.12 - level * 0.06);
+
+      if (randomUnit() > tierChance) {
+        continue;
+      }
+    }
+
+    selected.push(
+      chooseWeighted(tierCandidates.map((entry) => buildChoice(entry, Math.max(0.05, entry.weight))))
+    );
+  }
+
+  return selected.sort((left, right) => left.level - right.level || right.weight - left.weight);
+}
+
+function selectVariationRule(
+  pack: FamilyPack,
+  indexes: PackIndexes,
+  substyle: Substyle,
+  archetype: ProgressionArchetype,
+  request: GenerationRequest
+): VariationRule | null {
+  if (request.spiceLevel <= 1) {
+    return null;
+  }
+
+  const contextTags = getContextTags(substyle, archetype);
+  const candidates = substyle.variationRuleIds
+    .map((id) => indexes.variationRules.get(id))
+    .filter((entry): entry is VariationRule => entry !== undefined)
+    .filter((entry) => LOOP_SAFE_VARIATION_TYPES.has(entry.type))
+    .filter((entry) => entry.allowedSectionIntents.includes('full_loop'))
+    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
+    .filter((entry) => !hasForbiddenTag(contextTags, entry.forbiddenTags))
+    .filter((entry) =>
+      entry.requiredTags.length === 0 || entry.requiredTags.every((tag) => contextTags.includes(tag))
+    );
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  const selectionChance = request.spiceLevel >= 4 ? 0.7 : request.spiceLevel >= 3 ? 0.52 : 0.3;
+
+  if (randomUnit() > selectionChance) {
+    return null;
+  }
+
+  return chooseWeighted(
+    candidates.map((entry) => {
+      let weight = entry.weight;
+
+      if (request.spiceLevel >= 3 && (entry.type === 'richer' || entry.type === 'more_open')) {
+        weight += 0.12;
+      }
+
+      if (pack.family.id === 'rnb' && entry.type === 'richer') {
+        weight += 0.18;
+      }
+
+      if (pack.family.id === 'dance' && entry.type === 'brighter') {
+        weight += 0.14;
+      }
+
+      if (pack.family.id === 'trap' && entry.type === 'darker') {
+        weight += 0.14;
+      }
+
+      return buildChoice(entry, Math.max(0.05, weight));
+    })
+  );
+}
+
+function selectSpecialMove(
+  pack: FamilyPack,
+  indexes: PackIndexes,
+  substyle: Substyle,
+  archetype: ProgressionArchetype,
+  request: GenerationRequest
+): SpecialMove | null {
+  if (request.spiceLevel <= 2) {
+    return null;
+  }
+
+  const contextTags = getContextTags(substyle, archetype);
+  const candidates = substyle.specialMoveIds
+    .map((id) => indexes.specialMoves.get(id))
+    .filter((entry): entry is SpecialMove => entry !== undefined)
+    .filter((entry) => LOOP_SAFE_SPECIAL_MOVES.has(entry.operation))
+    .filter((entry) => entry.allowedSectionIntents.includes('full_loop'))
+    .filter((entry) => styleScopeMatches(entry.styleScope, pack.family.id, substyle.id))
+    .filter((entry) =>
+      entry.triggerTags.length === 0 || entry.triggerTags.some((tag) => contextTags.includes(tag))
+    );
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  const selectionChance = request.spiceLevel >= 4 ? 0.44 : 0.24;
+
+  if (randomUnit() > selectionChance) {
+    return null;
+  }
+
+  return chooseWeighted(
+    candidates.map((entry) => {
+      let weight = entry.weight;
+
+      if (pack.family.id === 'dance' && entry.operation === 'groove_lock') {
+        weight += 0.16;
+      }
+
+      if (pack.family.id === 'trap' && (entry.operation === 'groove_lock' || entry.operation === 'last_bar_tilt')) {
+        weight += 0.14;
+      }
+
+      if (pack.family.id === 'rnb' && entry.operation === 'trap_soul_enrich') {
+        weight += 0.16;
+      }
+
+      return buildChoice(entry, Math.max(0.05, weight));
+    })
+  );
+}
+
+function selectMidiPreset(
+  indexes: PackIndexes,
+  substyle: Substyle,
+  archetype: ProgressionArchetype
+): MidiPreset {
+  const contextTags = getContextTags(substyle, archetype);
+  const candidates = substyle.midiPresetIds
+    .map((id) => indexes.midiPresets.get(id))
+    .filter((entry): entry is MidiPreset => entry !== undefined);
+
+  if (candidates.length === 0) {
+    throw new Error(`No MIDI presets are available for ${substyle.id}.`);
+  }
+
+  return chooseWeighted(
+    candidates.map((entry) => {
+      let weight = entry.weight;
+      weight += overlapCount(entry.styleTags, contextTags) * 0.1;
+      return buildChoice(entry, Math.max(0.05, weight));
+    })
+  );
+}
+
 function applySpiciness(
   archetype: ProgressionArchetype,
-  spicinessTransforms: readonly SpicinessTransform[],
+  transforms: readonly SpicinessTransform[],
   request: GenerationRequest,
   blueprint: MutableBlueprint
 ): void {
-  for (const transform of spicinessTransforms) {
+  for (const transform of transforms) {
     for (const slot of blueprint.slots) {
-      const slotOption = archetype.slotOptions.find((option) => option.slotIndex === slot.slotIndex);
+      const slotOption = archetype.slotOptions.find((entry) => entry.slotIndex === slot.slotIndex);
 
       if (!slotOption) {
         continue;
@@ -546,18 +564,15 @@ function applySpiciness(
         addDecoration(slot, decoration);
       }
 
-      if (!slot.slashBassDegree && request.spiceLevel >= 3 && slotOption.allowedSlashBassDegrees.length > 0) {
+      if (
+        request.spiceLevel >= 4 &&
+        !slot.slashBassDegree &&
+        slotOption.allowedSlashBassDegrees.length > 0 &&
+        !slotOption.forbidOnLowSpice
+      ) {
         slot.slashBassDegree = slotOption.allowedSlashBassDegrees[0] ?? null;
       }
     }
-  }
-}
-
-function setRomanNumeral(slot: MutableSlot, romanNumeral: string, functionLabel?: string): void {
-  slot.romanNumeral = romanNumeral;
-
-  if (functionLabel) {
-    slot.functionLabel = functionLabel;
   }
 }
 
@@ -570,13 +585,14 @@ function applyVariationRule(
     return;
   }
 
-  const lastSlot = getSlot(blueprint, blueprint.slots.length - 1);
   const firstSlot = getSlot(blueprint, 0);
+  const lastSlot = getSlot(blueprint, blueprint.slots.length - 1);
 
   switch (variationRule.type) {
     case 'safer':
       for (const slot of blueprint.slots) {
         slot.decorationTags = slot.decorationTags.slice(0, 1);
+
         if (slot.slotIndex !== blueprint.slots.length - 1) {
           slot.slashBassDegree = null;
         }
@@ -591,68 +607,30 @@ function applyVariationRule(
         }
       }
       break;
-    case 'darker': {
-      const contrastIndex =
-        findSlotIndexByFunction(blueprint, ['predominant', 'contrast'], true) ??
-        findSlotIndexByFunction(blueprint, ['tonic_family'], true);
-
-      if (contrastIndex !== null) {
-        const targetSlot = getSlot(blueprint, contrastIndex);
-        if (targetSlot.romanNumeral === 'IV') {
-          setRomanNumeral(targetSlot, 'iv', 'predominant');
-        } else {
-          addDecoration(targetSlot, 'min7');
+    case 'darker':
+      for (const slot of blueprint.slots) {
+        if (slot.functionLabel === 'predominant' && slot.romanNumeral === 'IV') {
+          setRomanNumeral(slot, 'iv', 'predominant');
+          break;
         }
       }
       break;
-    }
     case 'brighter':
-      for (const slot of blueprint.slots) {
-        if (slot.functionLabel === 'tonic') {
-          addDecoration(slot, 'add9');
-        }
-        if (slot.functionLabel === 'predominant') {
-          addDecoration(slot, '6');
-        }
+      addDecoration(firstSlot, 'add9');
+      if (lastSlot.functionLabel === 'predominant') {
+        addDecoration(lastSlot, '6');
       }
       break;
     case 'more_open':
       if (lastSlot.functionLabel === 'tonic') {
-        setRomanNumeral(lastSlot, dominantRoman(request), 'dominant');
-        addDecoration(lastSlot, 'sus4');
-      } else {
-        addDecoration(lastSlot, 'sus2');
+        setRomanNumeral(lastSlot, dominantRoman(request.scaleMode), 'dominant');
       }
+      addDecoration(lastSlot, 'sus4');
       break;
     case 'more_resolved':
-      setRomanNumeral(lastSlot, tonicRoman(request), 'tonic');
+      setRomanNumeral(lastSlot, tonicRoman(request.scaleMode), 'tonic');
       addDecoration(lastSlot, request.scaleMode === 'minor' ? '9' : 'add9');
       break;
-    case 'pre_chorus_lift':
-      addDecoration(lastSlot, 'sus4');
-      if (!lastSlot.slashBassDegree) {
-        lastSlot.slashBassDegree = '7';
-      }
-      if (lastSlot.functionLabel !== 'dominant') {
-        setRomanNumeral(lastSlot, dominantRoman(request), 'dominant');
-      }
-      break;
-    case 'chorus_payoff':
-      setRomanNumeral(lastSlot, tonicRoman(request), 'tonic');
-      addDecoration(lastSlot, request.scaleMode === 'minor' ? '9' : 'maj7');
-      if (firstSlot.functionLabel === 'tonic_family') {
-        firstSlot.functionLabel = 'tonic';
-      }
-      break;
-    case 'bridge_contrast': {
-      const contrastIndex =
-        findSlotIndexByFunction(blueprint, ['contrast', 'predominant'], false) ??
-        Math.min(1, blueprint.slots.length - 1);
-      const target = getSlot(blueprint, contrastIndex);
-      setRomanNumeral(target, contrastRoman(request), 'contrast');
-      addDecoration(target, request.scaleMode === 'minor' ? 'maj7' : 'min7');
-      break;
-    }
   }
 }
 
@@ -666,64 +644,27 @@ function applySpecialMove(
   }
 
   const lastSlot = getSlot(blueprint, blueprint.slots.length - 1);
-  const secondLastSlot = getSlot(blueprint, Math.max(blueprint.slots.length - 2, 0));
 
   switch (specialMove.operation) {
-    case 'delay_tonic_arrival': {
-      const tonicIndex = findLastNonInitialTonicSlot(blueprint);
-      if (tonicIndex !== null) {
-        const slot = getSlot(blueprint, tonicIndex);
-        setRomanNumeral(slot, dominantRoman(request), 'dominant');
-        addDecoration(slot, 'sus4');
+    case 'borrowed_iv_darken':
+      for (const slot of blueprint.slots) {
+        if (slot.functionLabel === 'predominant' && slot.romanNumeral === 'IV') {
+          setRomanNumeral(slot, 'iv', 'predominant');
+          return;
+        }
       }
       break;
-    }
-    case 'borrowed_iv_darken': {
-      const targetIndex =
-        findSlotIndexByFunction(blueprint, ['predominant'], true) ??
-        findSlotIndexByFunction(blueprint, ['contrast'], true);
-      if (targetIndex !== null) {
-        setRomanNumeral(getSlot(blueprint, targetIndex), 'iv', 'predominant');
+    case 'delay_tonic_arrival':
+      if (lastSlot.functionLabel === 'tonic') {
+        setRomanNumeral(lastSlot, dominantRoman(request.scaleMode), 'dominant');
       }
-      break;
-    }
-    case 'bass_climb_lead_in':
-      if (!secondLastSlot.slashBassDegree) {
-        secondLastSlot.slashBassDegree = '6';
-      }
-      if (!lastSlot.slashBassDegree) {
-        lastSlot.slashBassDegree = '7';
-      }
-      break;
-    case 'dominant_pressure':
-      setRomanNumeral(lastSlot, dominantRoman(request), 'dominant');
-      addDecoration(lastSlot, '7');
+      addDecoration(lastSlot, 'sus4');
       break;
     case 'drop_simplify':
     case 'groove_lock':
       for (const slot of blueprint.slots) {
         slot.decorationTags = slot.decorationTags.slice(0, slot.slotIndex === 0 ? 1 : 0);
-        if (specialMove.operation === 'groove_lock' || slot.slotIndex !== blueprint.slots.length - 1) {
-          slot.slashBassDegree = null;
-        }
-      }
-      break;
-    case 'chorus_payoff_widen':
-      setRomanNumeral(lastSlot, tonicRoman(request), 'tonic');
-      addDecoration(lastSlot, request.scaleMode === 'minor' ? '11' : 'maj7');
-      break;
-    case 'bridge_reframe':
-      setRomanNumeral(getSlot(blueprint, 0), contrastRoman(request), 'contrast');
-      addDecoration(getSlot(blueprint, 0), request.scaleMode === 'minor' ? 'maj7' : 'min7');
-      break;
-    case 'trap_soul_enrich':
-      for (const slot of blueprint.slots) {
-        if (slot.functionLabel === 'tonic' || slot.functionLabel === 'tonic_family') {
-          addDecoration(slot, slot.romanNumeral === slot.romanNumeral.toLowerCase() ? '9' : 'add9');
-        }
-      }
-      if (lastSlot.functionLabel === 'dominant') {
-        addDecoration(lastSlot, '11');
+        slot.slashBassDegree = null;
       }
       break;
     case 'last_bar_tilt':
@@ -732,15 +673,21 @@ function applySpecialMove(
         lastSlot.slashBassDegree = '7';
       }
       break;
+    case 'trap_soul_enrich':
+      for (const slot of blueprint.slots) {
+        if (slot.functionLabel === 'tonic' || slot.functionLabel === 'tonic_family') {
+          addDecoration(slot, slot.romanNumeral === slot.romanNumeral.toLowerCase() ? '9' : 'add9');
+        }
+      }
+      break;
   }
 }
 
-function buildChordSlots(
+function buildBaseChordSlots(
   request: GenerationRequest,
-  blueprint: MutableBlueprint
+  blueprint: MutableBlueprint,
+  durationPattern: readonly number[]
 ): ChordSlot[] {
-  const durations = alignBeatsPattern(blueprint.slots.length, blueprint.rhythmProfile.beatsPerChangePattern);
-
   return blueprint.slots.map((slot, index) => ({
     index,
     romanNumeral: slot.romanNumeral,
@@ -752,348 +699,76 @@ function buildChordSlots(
       slot.decorationTags,
       slot.slashBassDegree
     ),
-    durationBeats: durations[index] ?? 4,
+    durationBeats: durationPattern[index] ?? 4,
     decorationTags: slot.decorationTags,
     slashBassDegree: slot.slashBassDegree
   }));
 }
 
-function fillTemplate(content: string, values: Record<string, string>): string {
-  return content.replace(/\{([a-zA-Z0-9_]+)\}/g, (_match, key) => values[key] ?? `{${key}}`);
-}
+function repeatLoopSlots(baseSlots: readonly ChordSlot[], loopBars: LoopBarCount): ChordSlot[] {
+  const repetitions = loopBars / 4;
+  const slots: ChordSlot[] = [];
 
-function formatTokenLabel(value: string): string {
-  return value.replace(/_/g, ' ');
-}
-
-function collectExplanationTemplates(
-  pack: FamilyPack,
-  substyle: Substyle,
-  request: GenerationRequest
-): ExplanationTemplateRecord[] {
-  return pack.explanationTemplates
-    .filter((entry) => substyle.explanationTemplateIds.includes(entry.id))
-    .filter(
-      (entry) =>
-        styleScopeMatches(entry.styleScope, pack.family.id, substyle.id) &&
-        entry.sectionIntentScope.includes(request.sectionIntent)
-    )
-    .map((entry) => ({
-      id: entry.id,
-      type:
-        entry.templateType === 'section_idea' || entry.templateType === 'learn'
-          ? entry.templateType
-          : 'why_it_works',
-      content: entry.content
-    }));
-}
-
-function buildExplanationItems(
-  pack: FamilyPack,
-  selections: GenerationSelections,
-  request: GenerationRequest,
-  chordSlots: readonly ChordSlot[]
-): ExplanationItem[] {
-  const templateValues = {
-    sectionIntent: formatTokenLabel(request.sectionIntent),
-    substyleName: selections.substyle.name,
-    cadenceType: formatTokenLabel(selections.cadenceProfile.type),
-    rhythmName: selections.rhythmProfile.name,
-    specialMoveNames:
-      selections.specialMove?.name ??
-      (selections.variationRule?.name ? `${selections.variationRule.name} emphasis` : 'no extra special move')
-  };
-
-  const explanationItems = collectExplanationTemplates(pack, selections.substyle, request).map(
-    (template, index) => ({
-      id: `${template.id}-${index}`,
-      type: template.type,
-      title: template.type === 'learn'
-        ? 'Learn'
-        : template.type === 'section_idea'
-          ? 'Section Idea'
-          : 'Why It Works',
-      body: fillTemplate(template.content, templateValues),
-      relatedChordIndexes: template.type === 'section_idea' ? [Math.max(chordSlots.length - 1, 0)] : undefined
-    })
-  );
-
-  const addNoteBody = selections.spicinessTransforms.length > 0
-    ? `Color comes from ${selections.spicinessTransforms.map((entry) => entry.name).join(', ')}. Keep the root path intact and let the extensions do the styling.`
-    : 'Keep the voicing clean first. This progression is relying more on shape and cadence than extra color.';
-  const transitionBody = selections.specialMove
-    ? `${selections.specialMove.name} nudges the last phrase without replacing the core loop. That keeps the identity stable while still creating direction.`
-    : `The ${selections.cadenceProfile.name} cadence and ${selections.rhythmProfile.name} rhythm already create enough motion for this ${request.sectionIntent.replace('_', ' ')}.`;
-
-  explanationItems.push({
-    id: `add-notes-${request.seed}`,
-    type: 'add_notes',
-    title: 'Add Notes',
-    body: addNoteBody,
-    relatedChordIndexes: chordSlots
-      .filter((slot) => slot.decorationTags.length > 0)
-      .map((slot) => slot.index)
-  });
-
-  explanationItems.push({
-    id: `transition-${request.seed}`,
-    type: 'transition',
-    title: 'Transition',
-    body: transitionBody,
-    relatedChordIndexes: chordSlots.length > 1 ? [chordSlots.length - 2, chordSlots.length - 1] : [0]
-  });
-
-  return explanationItems;
-}
-
-function buildSuggestionSummary(variationRule: VariationRule, sectionIntent: SectionIntent): string {
-  const targetSummary = formatTokenLabel(variationRule.targets.slice(0, 2).join(' + '));
-  return `Push ${formatTokenLabel(sectionIntent)} toward ${targetSummary} while keeping ${formatTokenLabel(variationRule.preserve[0] ?? 'the core identity')} intact.`;
-}
-
-function createVirtualVariationRule(
-  substyle: Substyle,
-  request: GenerationRequest,
-  type: VariationRule['type']
-): VariationRule {
-  return {
-    id: `virtual-${substyle.id}-${type}`,
-    name: getVariationVersionLabel(type),
-    type,
-    styleScope: [substyle.id],
-    allowedSectionIntents: [request.sectionIntent],
-    preserve: ['core_identity', 'loop_length'],
-    targets: [type, 'section_shape'],
-    requiredTags: [],
-    forbiddenTags: [],
-    weight: 0.01
-  };
-}
-
-function buildGenericSuggestionSummary(
-  type: VariationRule['type'],
-  request: GenerationRequest,
-  companionMove: SpecialMove | null,
-  isSectionPreferred: boolean
-): string {
-  const sectionLabel = formatTokenLabel(request.sectionIntent);
-  const preferredSuffix = isSectionPreferred
-    ? 'This is a natural fit for the current section.'
-    : 'Use it more like a side path than the default move.';
-
-  switch (type) {
-    case 'safer':
-      return `Strip back extra color so the ${sectionLabel} stays readable and topline-friendly. ${preferredSuffix}`;
-    case 'richer':
-      return `Add upper color on tonic-family slots without changing the root path. ${preferredSuffix}`;
-    case 'darker':
-      return `Lean the harmony into a shadowier color pocket while keeping the loop recognizable. ${preferredSuffix}`;
-    case 'brighter':
-      return `Open the tonic side with cleaner lift and more shine. ${preferredSuffix}`;
-    case 'more_open':
-      return `Relax the final arrival so the loop keeps rolling instead of fully landing. ${preferredSuffix}`;
-    case 'more_resolved':
-      return `Aim the final slot harder at tonic so the phrase feels more finished. ${preferredSuffix}`;
-    case 'pre_chorus_lift':
-      return `Use late dominant pull${companionMove ? ` plus ${companionMove.name}` : ''} to make the next section feel earned. ${preferredSuffix}`;
-    case 'chorus_payoff':
-      return `Widen the release so the hook lands bigger without rewriting the progression. ${preferredSuffix}`;
-    case 'bridge_contrast':
-      return `Reframe one anchor chord so the section steps outside the main cycle for a moment. ${preferredSuffix}`;
-    default:
-      return `Shift the progression toward ${formatTokenLabel(type)} while keeping the identity intact.`;
-  }
-}
-
-function findCompanionMove(
-  substyle: Substyle,
-  indexes: PackIndexes,
-  variationRule: VariationRule,
-  request: GenerationRequest
-): SpecialMove | null {
-  const preferredOperationByVariation: Record<VariationRule['type'], string | null> = {
-    safer: 'drop_simplify',
-    richer: 'trap_soul_enrich',
-    darker: 'borrowed_iv_darken',
-    brighter: 'chorus_payoff_widen',
-    more_open: 'last_bar_tilt',
-    more_resolved: 'dominant_pressure',
-    pre_chorus_lift: 'bass_climb_lead_in',
-    chorus_payoff: 'chorus_payoff_widen',
-    bridge_contrast: 'bridge_reframe'
-  };
-  const preferredOperation = preferredOperationByVariation[variationRule.type];
-
-  if (!preferredOperation) {
-    return null;
+  for (let repetition = 0; repetition < repetitions; repetition += 1) {
+    for (const slot of baseSlots) {
+      slots.push({
+        ...slot,
+        index: slots.length
+      });
+    }
   }
 
-  return (
-    substyle.specialMoveIds
-      .map((id) => indexes.specialMoves.get(id))
-      .filter((entry): entry is SpecialMove => entry !== undefined)
-      .find(
-        (entry) =>
-          entry.operation === preferredOperation &&
-          entry.allowedSectionIntents.includes(request.sectionIntent)
-      ) ?? null
-  );
-}
-
-function buildSuggestions(
-  pack: FamilyPack,
-  indexes: PackIndexes,
-  selections: GenerationSelections,
-  request: GenerationRequest,
-  blueprint: MutableBlueprint
-): SuggestionItem[] {
-  const variationRulesByType = new Map<VariationRule['type'], VariationRule>();
-  selections.substyle.variationRuleIds
-    .map((id) => indexes.variationRules.get(id))
-    .filter((entry): entry is VariationRule => entry !== undefined)
-    .filter((entry) => entry.allowedSectionIntents.includes(request.sectionIntent))
-    .sort((left, right) => right.weight - left.weight)
-    .forEach((entry) => {
-      const existingEntry = variationRulesByType.get(entry.type);
-
-      if (!existingEntry || existingEntry.weight < entry.weight) {
-        variationRulesByType.set(entry.type, entry);
-      }
-    });
-
-  return VARIATION_DISPLAY_ORDER.map((type, index) => {
-    const variationRule =
-      variationRulesByType.get(type) ?? createVirtualVariationRule(selections.substyle, request, type);
-    const previewBlueprint = cloneBlueprint(blueprint);
-    const companionMove = findCompanionMove(selections.substyle, indexes, variationRule, request);
-    const isSectionPreferred = selections.sectionRules.allowedVariationTypes.includes(type);
-    const hasAuthoredRule = variationRulesByType.has(type);
-
-    applyVariationRule(variationRule, request, previewBlueprint);
-    applySpecialMove(companionMove, request, previewBlueprint);
-
-    return {
-      id: `suggestion-${type}-${index}`,
-      type,
-      title: getVariationVersionLabel(type),
-      summary: hasAuthoredRule
-        ? buildSuggestionSummary(variationRule, request.sectionIntent)
-        : buildGenericSuggestionSummary(type, request, companionMove, isSectionPreferred),
-      previewRomanNumerals: previewBlueprint.slots.map((slot) => slot.romanNumeral),
-      appliesVariationIds: hasAuthoredRule ? [variationRule.id] : [],
-      appliesSpecialMoveIds: companionMove ? [companionMove.id] : []
-    };
-  });
+  return slots;
 }
 
 function createMetadata(
   pack: FamilyPack,
   selections: GenerationSelections,
   request: GenerationRequest,
-  archetype: ProgressionArchetype
+  chordSlots: readonly ChordSlot[]
 ): GenerationMetadata {
+  const colorSummary = Array.from(
+    new Set(chordSlots.flatMap((slot) => slot.decorationTags))
+  );
+
   return {
-    mode: request.sectionIntent === 'full_loop' ? 'loop' : 'section',
     familyName: pack.family.name,
     substyleName: selections.substyle.name,
-    archetypeName: archetype.name,
-    cadenceName: selections.cadenceProfile.name,
-    cadenceType: selections.cadenceProfile.type,
+    loopName: selections.archetype.name,
     rhythmName: selections.rhythmProfile.name,
     rhythmDensity: selections.rhythmProfile.density,
-    sectionEnergyShape: selections.sectionRules.energyShape,
+    baseLoopBars: 4,
+    renderedBars: request.loopBars,
+    loopTags: [...selections.archetype.tags],
+    colorSummary,
     activeSpicinessTransformIds: selections.spicinessTransforms.map((entry) => entry.id),
     selectedVariationIds: selections.variationRule ? [selections.variationRule.id] : [],
-    selectedSpecialMoveIds: selections.specialMove ? [selections.specialMove.id] : [],
-    selectedVariationTypes: selections.variationRule ? [selections.variationRule.type] : [],
-    preferredArchetypeTags: [...selections.sectionRules.preferredArchetypeTags],
-    archetypeTags: [...archetype.tags]
+    selectedSpecialMoveIds: selections.specialMove ? [selections.specialMove.id] : []
   };
 }
 
-function selectGenerationSelections(
+function selectGeneration(
   pack: FamilyPack,
   indexes: PackIndexes,
   request: GenerationRequest
 ): GenerationSelections {
-  const substyle = indexes.substyles.get(request.substyleId);
-
-  if (!substyle || substyle.familyId !== request.familyId) {
-    throw new Error(`Substyle "${request.substyleId}" does not belong to family "${request.familyId}".`);
-  }
-
-  const sectionBehavior = indexes.sectionBehaviors.get(substyle.sectionBehaviorId);
-
-  if (!sectionBehavior) {
-    throw new Error(`Section behavior "${substyle.sectionBehaviorId}" was not found.`);
-  }
-
-  const sectionRules = getSectionRuleBlock(sectionBehavior, request.sectionIntent);
-  const archetype = selectArchetype(
-    pack,
-    indexes,
-    substyle,
-    sectionRules,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:archetype`)
-  );
-  const cadenceProfile = selectCadenceProfile(
+  const { substyle, archetype } = selectArchetype(pack, indexes, request);
+  const { profile: rhythmProfile, pattern: rhythmPattern } = selectRhythmProfile(
     indexes,
     substyle,
     archetype,
-    sectionRules,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:cadence`)
+    request
   );
-  const rhythmProfile = selectHarmonicRhythmProfile(
-    indexes,
-    substyle,
-    archetype,
-    sectionRules,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:rhythm`)
-  );
-  const spicinessTransforms = selectSpicinessTransforms(
-    pack,
-    indexes,
-    substyle,
-    archetype,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:spice`)
-  );
-  const variationRule = selectVariationRule(
-    pack,
-    indexes,
-    substyle,
-    archetype,
-    sectionRules,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:variation`)
-  );
-  const specialMove = selectSpecialMove(
-    pack,
-    indexes,
-    substyle,
-    archetype,
-    sectionRules,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:move`)
-  );
-  const midiPreset = selectMidiPreset(
-    indexes,
-    substyle,
-    archetype,
-    request,
-    createSeededRng(`${request.seed}:${substyle.id}:midi`)
-  );
+  const spicinessTransforms = selectSpicinessTransforms(pack, indexes, substyle, archetype, request);
+  const variationRule = selectVariationRule(pack, indexes, substyle, archetype, request);
+  const specialMove = selectSpecialMove(pack, indexes, substyle, archetype, request);
+  const midiPreset = selectMidiPreset(indexes, substyle, archetype);
 
   return {
     substyle,
     archetype,
-    cadenceProfile,
     rhythmProfile,
-    sectionBehavior,
-    sectionRules,
+    rhythmPattern,
     spicinessTransforms,
     variationRule,
     specialMove,
@@ -1106,38 +781,31 @@ export function generateProgressionFromPack(
   request: GenerationRequest
 ): GenerationBundle {
   const indexes = createIndexes(pack);
-  const selections = selectGenerationSelections(pack, indexes, request);
-  const blueprint = createBlueprint(
-    selections.archetype,
-    selections.cadenceProfile,
-    selections.rhythmProfile
-  );
+  const selections = selectGeneration(pack, indexes, request);
+  const blueprint = createBlueprint(selections.archetype);
 
   applySpiciness(selections.archetype, selections.spicinessTransforms, request, blueprint);
   applyVariationRule(selections.variationRule, request, blueprint);
   applySpecialMove(selections.specialMove, request, blueprint);
 
-  const chordSlots = buildChordSlots(request, blueprint);
-  const explanations = buildExplanationItems(pack, selections, request, chordSlots);
-  const suggestions = buildSuggestions(pack, indexes, selections, request, blueprint);
-  const metadata = createMetadata(pack, selections, request, selections.archetype);
+  const baseSlots = buildBaseChordSlots(request, blueprint, selections.rhythmPattern);
+  const chordSlots = repeatLoopSlots(baseSlots, request.loopBars);
+  const metadata = createMetadata(pack, selections, request, chordSlots);
 
   const result: GenerationResult = {
-    seed: request.seed,
     packId: pack.packId,
     familyId: pack.family.id,
     substyleId: selections.substyle.id,
-    sectionIntent: request.sectionIntent,
-    archetypeId: selections.archetype.id,
-    cadenceProfileId: selections.cadenceProfile.id,
+    loopArchetypeId: selections.archetype.id,
     harmonicRhythmProfileId: selections.rhythmProfile.id,
+    totalBars: request.loopBars,
+    chordChangeRate: request.chordChangeRate,
     romanNumerals: chordSlots.map((slot) => slot.romanNumeral),
     functionPath: chordSlots.map((slot) => slot.functionLabel),
     chordSlots,
+    appliedSpicinessTransformIds: selections.spicinessTransforms.map((entry) => entry.id),
     appliedVariationIds: selections.variationRule ? [selections.variationRule.id] : [],
     appliedSpecialMoveIds: selections.specialMove ? [selections.specialMove.id] : [],
-    explanations,
-    suggestions,
     midiPresetId: selections.midiPreset.id
   };
 
@@ -1149,9 +817,7 @@ export function generateProgressionFromPack(
   };
 }
 
-export async function generateProgression(
-  request: GenerationRequest
-): Promise<GenerationBundle> {
+export async function generateProgression(request: GenerationRequest): Promise<GenerationBundle> {
   const pack = await loadFamilyPack(request.familyId);
   return generateProgressionFromPack(pack, request);
 }

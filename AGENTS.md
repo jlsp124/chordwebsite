@@ -30,21 +30,22 @@ Core stack:
 ## Musical Architecture
 - Generation is **Roman-numeral / function first**
 - Selected key mapping happens **after** progression selection
-- K-pop must preserve **section-aware behavior**
+- K-pop identity must remain **data-authored**, but the runtime engine is now **loop-only**
 - The v1 shell is **loop-first**
-- `full_loop` is a first-class section intent and must not fall back to random verse/chorus rules
-- Section-aware internals may remain during transition, but the v1 UI should not expose section mode controls
+- Runtime output is only **4, 8, or 16 bar loops**
+- User-selected chord-change rate must be honored from pack-backed loop material
+- 8-bar and 16-bar results repeat a selected 4-bar loop exactly in v1
 
 ## Runtime Shape
 The engine should work in this order:
 1. load manifest
 2. lazy-load selected family pack
-3. filter by family / substyle / section intent
-4. pick archetype from deterministic seeded logic
-5. apply cadence / rhythm / spice / variation / special move
-6. map Roman numerals to selected key
-7. return a structured generation result
-8. derive explanations / suggestions / MIDI from that result
+3. filter by family / substyle / loop compatibility
+4. pick a 4-bar loop archetype from pack data
+5. apply controlled color/spice transforms
+6. repeat exactly to 8 or 16 bars if requested
+7. map Roman numerals to selected key
+8. return a clean loop runtime result for preview and MIDI export
 
 ## Pack Philosophy
 - Runtime packs are **distilled local musical knowledge**

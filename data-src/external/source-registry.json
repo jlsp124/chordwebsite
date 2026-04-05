@@ -1,0 +1,127 @@
+{
+  "registryVersion": "1.0.0",
+  "sources": [
+    {
+      "sourceId": "cocopops",
+      "version": "6b04f4f99477dd97b6e98abd86a2448a481ddf7b",
+      "downloadUrl": "https://codeload.github.com/Computational-Cognitive-Musicology-Lab/CoCoPops/zip/6b04f4f99477dd97b6e98abd86a2448a481ddf7b",
+      "format": "github_zip",
+      "license": "CC-BY-4.0",
+      "licenseClass": "open",
+      "role": "primary_backbone",
+      "enabledByDefault": true,
+      "checksum": "resolved-in-downloads-lock",
+      "notes": "Primary pop backbone. Prefer Billboard and RollingStone harmonic material for loop mining.",
+      "downloadTargets": [
+        {
+          "fileName": "cocopops.zip",
+          "kind": "github_archive",
+          "url": "https://codeload.github.com/Computational-Cognitive-Musicology-Lab/CoCoPops/zip/6b04f4f99477dd97b6e98abd86a2448a481ddf7b",
+          "notes": "Pinned GitHub archive."
+        },
+        {
+          "fileName": "README.md",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/Computational-Cognitive-Musicology-Lab/CoCoPops/main/README.md",
+          "notes": "Human-readable reference."
+        },
+        {
+          "fileName": "CoCoPops_Sample.tsv",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/Computational-Cognitive-Musicology-Lab/CoCoPops/main/CoCoPops_Sample.tsv",
+          "notes": "Small intake example for parser sanity checks."
+        }
+      ]
+    },
+    {
+      "sourceId": "choco",
+      "version": "5fe168fd55be5c84512abcfbc4e6f1b1f8f0092a",
+      "downloadUrl": "https://codeload.github.com/smashub/choco/zip/5fe168fd55be5c84512abcfbc4e6f1b1f8f0092a",
+      "format": "github_zip",
+      "license": "CC-BY-4.0 / CC-BY-NC-SA-4.0 (partition-dependent)",
+      "licenseClass": "mixed",
+      "role": "broad_harmony",
+      "enabledByDefault": true,
+      "checksum": "resolved-in-downloads-lock",
+      "notes": "Broad harmony intake. Converted JAMS export is preferred; runtime promotion always requires source-policy review.",
+      "downloadTargets": [
+        {
+          "fileName": "choco.zip",
+          "kind": "github_archive",
+          "url": "https://codeload.github.com/smashub/choco/zip/5fe168fd55be5c84512abcfbc4e6f1b1f8f0092a",
+          "notes": "Pinned GitHub archive."
+        },
+        {
+          "fileName": "README.md",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/smashub/choco/main/README.md",
+          "notes": "Build and partition reference."
+        },
+        {
+          "fileName": "LICENSE.md",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/smashub/choco/main/LICENSE.md",
+          "notes": "License reference."
+        }
+      ]
+    },
+    {
+      "sourceId": "jht",
+      "version": "26ec6170939054f08ba1b63db44712636d0d1db3",
+      "downloadUrl": "https://raw.githubusercontent.com/DCMLab/JazzHarmonyTreebank/master/treebank.json",
+      "format": "json",
+      "license": "CC-BY-NC-SA-4.0",
+      "licenseClass": "noncommercial",
+      "role": "color_vocabulary",
+      "enabledByDefault": true,
+      "checksum": "resolved-in-downloads-lock",
+      "notes": "Richer harmonic vocabulary and turnaround color source.",
+      "downloadTargets": [
+        {
+          "fileName": "treebank.json",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/DCMLab/JazzHarmonyTreebank/master/treebank.json",
+          "notes": "Primary treebank data."
+        },
+        {
+          "fileName": "LICENSE.md",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/DCMLab/JazzHarmonyTreebank/master/LICENSE.md",
+          "notes": "License reference."
+        },
+        {
+          "fileName": "readme.md",
+          "kind": "direct",
+          "url": "https://raw.githubusercontent.com/DCMLab/JazzHarmonyTreebank/master/readme.md",
+          "notes": "Dataset notes."
+        }
+      ]
+    },
+    {
+      "sourceId": "weimar",
+      "version": "2.1",
+      "downloadUrl": "https://jazzomat.hfm-weimar.de/download/downloads/wjazzd.db",
+      "format": "sqlite",
+      "license": "ODbL-1.0",
+      "licenseClass": "share_alike_data",
+      "role": "optional_vocabulary",
+      "enabledByDefault": false,
+      "checksum": "resolved-in-downloads-lock",
+      "notes": "Optional Weimar Jazz Database intake. Enabled with --with-weimar.",
+      "downloadTargets": [
+        {
+          "fileName": "wjazzd.db",
+          "kind": "direct",
+          "url": "https://jazzomat.hfm-weimar.de/download/downloads/wjazzd.db",
+          "notes": "SQLite database."
+        },
+        {
+          "fileName": "download.html",
+          "kind": "direct",
+          "url": "https://jazzomat.hfm-weimar.de/download/download.html",
+          "notes": "License and download reference."
+        }
+      ]
+    }
+  ]
+}

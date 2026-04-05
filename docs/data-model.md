@@ -1,450 +1,386 @@
 ---
-title: Chord Generator - Data Model
+title: Chord Generator - Loop Data Model
 tags:
   - chord-generator
   - data-model
-  - runtime
+  - pipeline
 status: draft
 ---
 
-# Chord Generator - Data Model
+# Chord Generator - Loop Data Model
 
 > [!summary]
-> This note freezes the runtime data model and the authoring-to-runtime boundary for v1.
->
-> Runtime packs are compiled JSON files shipped in `public/packs/`.
-> Authoring assets live in `data-src/`.
+> v1 now treats authored **4-bar loop archetypes** as the compact runtime unit.
+> Raw corpora stay offline in `data-src/`.
+> The browser only loads compiled family packs from `public/packs/`.
 
 ## What This Note Freezes
-- shipped pack surface
-- authoring surface
-- manifest contract
-- family pack contract
-- runtime request/result contract
-- first-class `full_loop` handling
-- deterministic enums
-- required entity structure
+- offline source registry and staging layers
+- canonical normalized chord-event schema
+- extracted 4-bar loop candidate schema
+- deduped/scored loop cluster schema
+- compiled loop-pack schema
+- aggregate-only provenance rules for shipped packs
 
 ## Runtime / Authoring Boundary
 
-## Shipped Runtime Surface
-Shipped pack files must live in:
-
-```text
-public/packs/
-```
-
-Expected v1 runtime files:
-- `public/packs/manifest.json`
-- `public/packs/kpop.pack.json`
-- `public/packs/trap.pack.json`
-- `public/packs/rnb.pack.json`
-- `public/packs/pop.pack.json`
-- `public/packs/dance.pack.json`
-
-These are the only pack files the browser loads in v1.
-
-## Authoring Surface
-Authoring assets must live in:
+### Offline Source / Staging Surface
+All corpus intake and machine-generated artifacts stay under:
 
 ```text
 data-src/
+  external/
+  staging/
+  curation/
+  generated/
 ```
 
-Expected authoring areas:
-- `data-src/templates/`
-- `data-src/authoring/`
+These files are authoring-only and are never loaded by the browser.
 
-Authoring assets are never fetched by the browser at runtime.
+### Shipped Runtime Surface
+The browser loads only:
 
-## Current Repo Scaffolding
-The canonical authoring path is still `data-src/`, but this repo currently also includes:
-- starter schema mirrors in `src/data/templates/`
-- validator sample fixtures in `src/data/packs/samples/`
-- authored pack source modules in `data-src/authoring/*.mjs`
+```text
+public/packs/
+  manifest.json
+  <family>.pack.json
+```
 
-Those files are implementation scaffolding only. They are not shipped runtime assets.
-
----
-
-# Frozen Enums
-
-## ModeBias
-- `loop_first`
-- `section_first`
-
-## SectionIntent
-- `full_loop`
-- `verse`
-- `pre_chorus`
-- `chorus`
-- `bridge`
-
-## MidiMode
-- `block`
-- `comp`
-- `arp`
-
-## CadenceType
-- `open_loop`
-- `soft_resolve`
-- `strong_resolve`
-- `lift_without_arrival`
-- `contrastive`
-
-## HarmonicRhythmDensity
-- `slow`
-- `medium`
-- `active`
-- `variable`
-
-## VariationType
-- `safer`
-- `richer`
-- `darker`
-- `brighter`
-- `more_open`
-- `more_resolved`
-- `pre_chorus_lift`
-- `chorus_payoff`
-- `bridge_contrast`
-
-## SpecialMoveOp
-- `delay_tonic_arrival`
-- `borrowed_iv_darken`
-- `bass_climb_lead_in`
-- `dominant_pressure`
-- `drop_simplify`
-- `chorus_payoff_widen`
-- `bridge_reframe`
-- `groove_lock`
-- `trap_soul_enrich`
-- `last_bar_tilt`
+Shipped packs must remain compact, abstract, and non-raw.
 
 ---
 
-# Manifest Contract
+# Source Registry
 
-The app must load family metadata first, then lazy-load the selected family pack.
-
-## PackManifest
+## SourceRegistry
 ```ts
-type PackManifest = {
-  manifestVersion: string
-  packs: PackManifestEntry[]
+type SourceRegistry = {
+  registryVersion: string
+  sources: SourceRegistryEntry[]
 }
 ```
 
-## PackManifestEntry
+## SourceRegistryEntry
 ```ts
-type PackManifestEntry = {
-  packId: string
-  familyId: FamilyId
-  familyName: string
-  path: string
+type SourceRegistryEntry = {
+  sourceId: string
   version: string
-  substyleIds: SubstyleId[]
-  tags?: string[]
+  downloadUrl: string
+  format: string
+  license: string
+  licenseClass: "open" | "mixed" | "noncommercial" | "share_alike_data" | "ambiguous"
+  role: "primary_backbone" | "broad_harmony" | "color_vocabulary" | "optional_vocabulary"
+  enabledByDefault: boolean
+  checksum: string
+  notes: string
+  downloadTargets?: SourceDownloadTarget[]
 }
 ```
 
-### Required Rules
-- `path` must be a relative runtime path under `public/packs/`
-- runtime code must resolve `path` with `import.meta.env.BASE_URL`
-- every `substyleId` listed in the manifest must exist in the pack
-- every `familyId` must map to exactly one shipped pack in v1
-- one shipped pack per family in v1
+## SourceDownloadTarget
+```ts
+type SourceDownloadTarget = {
+  fileName: string
+  kind: "direct" | "github_archive"
+  url: string
+  notes?: string
+}
+```
+
+## DownloadLockfile
+```ts
+type DownloadLockfile = {
+  lockVersion: string
+  entries: DownloadLockEntry[]
+}
+```
+
+Each `DownloadLockEntry` records:
+- `sourceId`
+- `version`
+- `fileName`
+- `url`
+- `checksum`
+- `fetchedAt`
+- `localPath`
 
 ---
 
-# Family Pack Contract
+# Normalized Offline Schema
 
-## FamilyPack
+Normalized chord events are the canonical offline interchange.
+
+## NormalizedChordEvent
 ```ts
-type FamilyPack = {
+type NormalizedChordEvent = {
+  sourceId: string
+  partition: string
+  workId: string
+  annotationId: string
+  licenseClass: SourceLicenseClass
+  meter: string
+  barIndex: number
+  beatStart: number
+  beatEnd: number
+  chordOriginal: string
+  chordNormalized: string
+  rootPc: number | null
+  quality: string
+  extensions: string[]
+  bass: string | null
+  globalKey: string | null
+  localKey: string | null
+  mode: "major" | "minor" | "unknown"
+  romanNumeral: string
+  functionLabel: string
+  timeBasis: "measure_beat" | "seconds"
+  confidence: number
+  parseFlags: string[]
+  provenance: Record<string, string | number | boolean | null>
+}
+```
+
+## NormalizedWorkMetadata
+```ts
+type NormalizedWorkMetadata = {
+  sourceId: string
+  partition: string
+  workId: string
+  annotationId: string
+  meter: string
+  sectionHints: string[]
+  tempoClass: string
+  sourceFlags: string[]
+  provenance: Record<string, string | number | boolean | null>
+}
+```
+
+Files:
+- `data-src/staging/normalized/<sourceId>.events.jsonl`
+- `data-src/staging/normalized/<sourceId>.works.jsonl`
+
+---
+
+# Loop Candidate Schema
+
+The primary extracted unit is a **4-bar loop candidate**.
+
+## ExtractedLoopCandidate
+```ts
+type ExtractedLoopCandidate = {
+  id: string
+  mode: "major" | "minor"
+  chordCount: 2 | 4
+  romanSequence: string[]
+  functionPath: string[]
+  durationPatternBeats: number[]
+  closure: "open" | "soft_resolve" | "strong_resolve" | "turnback" | "contrastive"
+  colorProfile: string[]
+  loopability: number
+  averageConfidence: number
+  transformSlots: {
+    slotIndex: number
+    allowedDecorations: string[]
+    allowedSlashBassDegrees: string[]
+  }[]
+  repeat8Ok: boolean
+  repeat16Ok: boolean
+  supportCount: number
+  sourceRefs: LoopSourceReference[]
+  tags: string[]
+  rejectionReasons?: string[]
+}
+```
+
+Files:
+- `data-src/staging/windows/4bar.candidates.jsonl`
+- `data-src/staging/windows/8bar.analysis.jsonl`
+- `data-src/staging/windows/16bar.analysis.jsonl`
+
+---
+
+# Dedupe / Cluster Schema
+
+## DedupeCluster
+```ts
+type DedupeCluster = {
+  clusterId: string
+  canonicalCandidateId: string
+  supportCount: number
+  sourceCount: number
+  sourceDiversity: number
+  clusterMembers: string[]
+  exactDedupeKey: string
+  nearDedupeKey: string
+}
+```
+
+## LoopScoreBreakdown
+```ts
+type LoopScoreBreakdown = {
+  loopFitness: number
+  crossSourceSupport: number
+  annotationTrust: number
+  transformHeadroom: number
+  styleFitPrior: number
+  harmonicColorValue: number
+  penalty: number
+  total: number
+}
+```
+
+## ScoredLoopCluster
+```ts
+type ScoredLoopCluster = {
+  clusterId: string
+  canonicalCandidateId: string
+  supportCount: number
+  sourceCount: number
+  sourceDiversity: number
+  clusterMembers: string[]
+  exactDedupeKey: string
+  nearDedupeKey: string
+  canonicalLoop: ExtractedLoopCandidate
+  score: LoopScoreBreakdown
+  styleSupport: Record<string, number>
+}
+```
+
+Files:
+- `data-src/staging/clusters/deduped-loops.jsonl`
+- `data-src/staging/reports/top-loops-by-style.json`
+- `data-src/staging/reports/rejected-loops.json`
+- `data-src/staging/reports/license-mix.json`
+
+---
+
+# Compiled Loop Pack Schema
+
+The runtime pack keeps family-pack loading, but the loop payload is reduced to loop-first units.
+
+## CompiledLoopPack
+```ts
+type CompiledLoopPack = {
   packVersion: string
   packId: string
-  family: Family
-  substyles: Substyle[]
-  archetypes: ProgressionArchetype[]
-  cadenceProfiles: CadenceProfile[]
-  harmonicRhythmProfiles: HarmonicRhythmProfile[]
-  sectionBehaviors: SectionBehavior[]
-  spicinessTransforms: SpicinessTransform[]
-  variationRules: VariationRule[]
-  specialMoves: SpecialMove[]
-  explanationTemplates: ExplanationTemplate[]
-  midiPresets: MidiPreset[]
+  family: {
+    id: string
+    name: string
+    description: string
+    tags: string[]
+    substyleIds: string[]
+  }
+  substyles: CompiledSubstyle[]
+  loopArchetypes: LoopArchetype[]
+  harmonicRhythmProfiles: unknown[]
+  spicinessTransforms: unknown[]
+  variationRules: unknown[]
+  specialMoves: unknown[]
+  midiPresets: unknown[]
+  provenanceSummary: ProvenanceSummary
 }
 ```
 
----
-
-# Required Runtime Entities
-
-## Family
+## CompiledSubstyle
 ```ts
-type Family = {
-  id: FamilyId
+type CompiledSubstyle = {
+  id: string
+  familyId: string
   name: string
   description: string
   tags: string[]
-  defaultModeBias: ModeBias
-  substyleIds: SubstyleId[]
-}
-```
-
-## Substyle
-```ts
-type Substyle = {
-  id: SubstyleId
-  familyId: FamilyId
-  name: string
-  description: string
-  tags: string[]
-  modeBias: ModeBias
-  defaultSectionIntents: SectionIntent[]
-  archetypeIds: string[]
-  cadenceProfileIds: string[]
+  loopArchetypeIds: string[]
   harmonicRhythmProfileIds: string[]
-  sectionBehaviorId: string
   spicinessTransformIds: string[]
   variationRuleIds: string[]
   specialMoveIds: string[]
-  explanationTemplateIds: string[]
   midiPresetIds: string[]
-  mustIncludeTags: string[]
-  mustAvoidTags: string[]
 }
 ```
 
-## ProgressionArchetype
+## LoopArchetype
 ```ts
-type ProgressionArchetype = {
+type LoopArchetype = {
   id: string
-  substyleId: SubstyleId
+  substyleId: string
   name: string
+  bars: 4
+  chordCount: 2 | 4
   romanNumerals: string[]
   functionPath: string[]
-  bars: number
-  harmonicRhythmProfileId: string
-  allowedSectionIntents: SectionIntent[]
-  resolutionBias: CadenceType
+  durationPatternBeats: number[]
+  closure: LoopClosure
+  colorProfile: string[]
   loopability: number
-  tensionCurve: string[]
+  transformSlots: {
+    slotIndex: number
+    allowedDecorations: string[]
+    allowedSlashBassDegrees: string[]
+    forbidOnLowSpice: boolean
+  }[]
   tags: string[]
   weight: number
-  slotOptions: ArchetypeSlotOption[]
+  repeat8Allowed: boolean
+  repeat16Allowed: boolean
+  provenanceSummary: ProvenanceSummary
 }
 ```
 
-## ArchetypeSlotOption
+## ProvenanceSummary
 ```ts
-type ArchetypeSlotOption = {
-  slotIndex: number
-  allowedDecorations: string[]
-  allowedSlashBassDegrees: string[]
-  forbidOnLowSpice: boolean
+type ProvenanceSummary = {
+  sourceCount: number
+  sourceIds: string[]
+  partitionCount: number
+  evidenceCount: number
+  licenseMix: SourceLicenseClass[]
 }
 ```
 
-## CadenceProfile
-```ts
-type CadenceProfile = {
-  id: string
-  name: string
-  type: CadenceType
-  allowedEndFunctions: string[]
-  strength: number
-  commonUseCases: SectionIntent[]
-  weight: number
-}
-```
-
-## HarmonicRhythmProfile
-```ts
-type HarmonicRhythmProfile = {
-  id: string
-  name: string
-  density: HarmonicRhythmDensity
-  beatsPerChangePattern: number[]
-  commonUseCases: SectionIntent[]
-}
-```
-
-## SectionBehavior
-`full_loop` is first-class and must not be implied from other sections.
-
-```ts
-type SectionBehavior = {
-  id: string
-  substyleId: SubstyleId
-  fullLoopRules: SectionRuleBlock
-  verseRules: SectionRuleBlock
-  preChorusRules: SectionRuleBlock
-  chorusRules: SectionRuleBlock
-  bridgeRules: SectionRuleBlock
-}
-```
-
-## SectionRuleBlock
-```ts
-type SectionRuleBlock = {
-  preferredCadenceTypes: CadenceType[]
-  preferredRhythmDensities: HarmonicRhythmDensity[]
-  preferredArchetypeTags: string[]
-  allowedVariationTypes: VariationType[]
-  allowedSpecialMoveIds: string[]
-  forbiddenTags: string[]
-  energyShape: string
-}
-```
-
-## SpicinessTransform
-```ts
-type SpicinessTransform = {
-  id: string
-  name: string
-  level: number
-  styleScope: (FamilyId | SubstyleId)[]
-  allowedDecorations: string[]
-  allowedFunctions: string[]
-  forbiddenSectionIntents: SectionIntent[]
-  forbiddenTags: string[]
-  weight: number
-}
-```
-
-## VariationRule
-```ts
-type VariationRule = {
-  id: string
-  name: string
-  type: VariationType
-  styleScope: (FamilyId | SubstyleId)[]
-  allowedSectionIntents: SectionIntent[]
-  preserve: string[]
-  targets: string[]
-  requiredTags: string[]
-  forbiddenTags: string[]
-  weight: number
-}
-```
-
-## SpecialMove
-```ts
-type SpecialMove = {
-  id: string
-  name: string
-  category: string
-  styleScope: (FamilyId | SubstyleId)[]
-  allowedSectionIntents: SectionIntent[]
-  triggerTags: string[]
-  operation: SpecialMoveOp
-  weight: number
-}
-```
-
-## ExplanationTemplate
-```ts
-type ExplanationTemplate = {
-  id: string
-  templateType: string
-  styleScope: (FamilyId | SubstyleId)[]
-  sectionIntentScope: SectionIntent[]
-  tone: string
-  content: string
-  requiredPlaceholders: string[]
-}
-```
-
-## MidiPreset
-```ts
-type MidiPreset = {
-  id: string
-  name: string
-  mode: MidiMode
-  styleTags: string[]
-  voicingStyle: string
-  registerRange: [number, number]
-  rhythmPattern: string
-  velocityProfile: string
-  sustainBehavior: string
-  weight: number
-}
-```
+### Shipped Runtime Restrictions
+Compiled runtime packs must not include:
+- song titles
+- artist names
+- raw corpus rows
+- direct source file names
+- audio or MIDI
+- corpus-specific comments
+- track-level provenance beyond aggregate counts
 
 ---
 
-# Runtime Request / Result Contracts
+# Manual Curation Boundary
 
-## GenerationRequest
-```ts
-type GenerationRequest = {
-  seed: string
-  familyId: FamilyId
-  substyleId: SubstyleId
-  key: string
-  scaleMode: string
-  sectionIntent: SectionIntent
-  spiceLevel: number
-  midiMode: MidiMode
-}
-```
+These are never auto-promoted directly from corpus output:
+- K-pop-specific special moves
+- K-pop lift/payoff logic
+- style mapping into shipped substyles
+- blacklist decisions for overfamiliar or weak loops
+- final runtime weights and public-pack promotion
 
-## GenerationResult
-```ts
-type GenerationResult = {
-  seed: string
-  packId: string
-  familyId: FamilyId
-  substyleId: SubstyleId
-  sectionIntent: SectionIntent
-  archetypeId: string
-  cadenceProfileId: string
-  harmonicRhythmProfileId: string
-  romanNumerals: string[]
-  functionPath: string[]
-  chordSlots: ChordSlot[]
-  appliedVariationIds: string[]
-  appliedSpecialMoveIds: string[]
-  explanations: ExplanationItem[]
-  suggestions: SuggestionItem[]
-  midiPresetId: string
-}
-```
-
-`ChordSlot`, `ExplanationItem`, and `SuggestionItem` are defined in `docs/runtime-contracts.md`.
-
-`full_loop` must produce deterministic loop-specific behavior through:
-- `sectionIntent: "full_loop"`
-- `SectionBehavior.fullLoopRules`
-- loop-aware cadence and variation choices
-
-## Current Implementation Sources
-- `data-src/authoring/*.mjs`
-- `scripts/build-packs.mjs`
-- `src/core/types/data-model.ts`
-- `src/data/validators/pack-validator.ts`
-- `public/packs/*.json`
-- `src/data/templates/*.json`
-- `src/data/packs/samples/*.json`
+Scripts may surface candidates and scores.
+Humans decide what becomes public pack identity.
 
 ---
 
-# Family Placement Frozen For V1
+# Generated Review Output
 
-- `future_pop` belongs to **pop**
-- `house_disco` belongs to **dance**
+Machine-proposed review fragments live in:
 
-Any conflicting docs must be updated before implementation continues.
+```text
+data-src/generated/loop-fragments.json
+```
 
----
+Each fragment groups a scored cluster under a candidate substyle with:
+- `romanSequence`
+- `functionPath`
+- `durationPatternBeats`
+- `totalScore`
+- `styleFitScore`
+- `reviewStatus`
+- aggregate `provenanceSummary`
 
-# Explicit V1 Exclusions
-Do not add runtime entities for:
-- melody generation
-- bassline generation
-- song-level corpus records
-- backend service references
-- user account fields
+`reviewStatus` is one of:
+- `ready_for_review`
+- `blocked_by_source_policy`
+- `blocked_by_blacklist`

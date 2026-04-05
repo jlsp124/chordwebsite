@@ -1,0 +1,3 @@
+{"sourceId":"fixture","partition":"fixture_pop","workId":"work_hook_loop","annotationId":"ann_main","meter":"4/4","sectionHints":["loop"],"tempoClass":"mid","sourceFlags":["fixture"],"provenance":{"fixture":true}}
+{"sourceId":"fixture","partition":"fixture_trap","workId":"work_dark_loop","annotationId":"ann_main","meter":"4/4","sectionHints":["loop"],"tempoClass":"slow","sourceFlags":["fixture"],"provenance":{"fixture":true}}
+{"sourceId":"fixture","partition":"fixture_pop","workId":"work_hook_loop_alt","annotationId":"ann_main","meter":"4/4","sectionHints":["loop"],"tempoClass":"mid","sourceFlags":["fixture"],"provenance":{"fixture":true}}

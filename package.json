@@ -6,7 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "download:sources": "node scripts/download-sources.mjs",
+    "normalize:sources": "node scripts/normalize-sources.mjs",
+    "extract:loops": "node scripts/extract-loops.mjs",
+    "cluster:loops": "node scripts/cluster-loops.mjs",
+    "generate:loop-fragments": "node scripts/generate-loop-fragments.mjs",
+    "validate:loop-pipeline": "node scripts/validate-loop-pipeline.mjs",
+    "pipeline:fixtures": "node scripts/normalize-sources.mjs --fixtures && node scripts/extract-loops.mjs && node scripts/cluster-loops.mjs && node scripts/generate-loop-fragments.mjs"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "blockedCandidateIds": [],
+  "blockedExactKeys": [],
+  "notes": [
+    "Use this file to block overfamiliar loops, weak one-offs, or fingerprint-risk candidates before runtime promotion."
+  ]
+}

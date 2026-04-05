@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "substyles": [
+    {
+      "substyleId": "kpop_bright_easy",
+      "preferredModes": ["major"],
+      "preferredSources": ["cocopops", "choco"],
+      "requiredTags": ["bright", "hook_friendly"],
+      "forbiddenTags": ["blues_heavy", "bebop_dense"],
+      "boostTags": ["anthemic", "easy_listening", "clean_release"]
+    },
+    {
+      "substyleId": "kpop_dark_synth",
+      "preferredModes": ["minor"],
+      "preferredSources": ["cocopops", "choco"],
+      "requiredTags": ["dark", "synth_ready"],
+      "forbiddenTags": ["bebop_dense"],
+      "boostTags": ["futuristic", "suspended_pull", "drop_ready"]
+    },
+    {
+      "substyleId": "melodic_trap",
+      "preferredModes": ["minor"],
+      "preferredSources": ["cocopops", "choco"],
+      "requiredTags": ["loop_core"],
+      "forbiddenTags": ["strong_resolve", "jazz_turnaround"],
+      "boostTags": ["dark", "repeatable", "space_for_topline"]
+    },
+    {
+      "substyleId": "trap_soul_rnb_rap",
+      "preferredModes": ["minor", "major"],
+      "preferredSources": ["cocopops", "choco", "jht"],
+      "requiredTags": ["loop_core"],
+      "forbiddenTags": ["bebop_dense"],
+      "boostTags": ["colored", "warm", "smooth_motion"]
+    },
+    {
+      "substyleId": "modern_rnb",
+      "preferredModes": ["major", "minor"],
+      "preferredSources": ["choco", "jht", "weimar"],
+      "requiredTags": ["colored"],
+      "forbiddenTags": ["novelty"],
+      "boostTags": ["rich_extensions", "smooth_motion", "late_night"]
+    },
+    {
+      "substyleId": "future_pop",
+      "preferredModes": ["major", "minor"],
+      "preferredSources": ["cocopops", "choco"],
+      "requiredTags": ["pop_core"],
+      "forbiddenTags": ["bebop_dense"],
+      "boostTags": ["glossy", "lift_ready", "clean_drop"]
+    },
+    {
+      "substyleId": "house_disco",
+      "preferredModes": ["major", "minor"],
+      "preferredSources": ["cocopops", "choco"],
+      "requiredTags": ["groove_locked"],
+      "forbiddenTags": ["unstable_meter"],
+      "boostTags": ["four_on_floor_ready", "repetitive", "filter_lift"]
+    }
+  ]
+}

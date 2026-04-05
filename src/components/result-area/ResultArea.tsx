@@ -1,6 +1,6 @@
-import { getChordChangeRateLabel } from '../../core/utils/loop-shell.ts';
-import type { GenerationMetadata, GenerationResult } from '../../core/types';
 import type { ChordChangeRate, LoopBarCount } from '../../core/options';
+import type { GenerationMetadata, GenerationResult } from '../../core/types';
+import { getChordChangeRateLabel } from '../../core/utils/loop-shell.ts';
 
 interface ResultAreaProps {
   result: GenerationResult | null;
@@ -82,27 +82,50 @@ export function ResultArea({
         {hasProgression ? (
           <div className="progression-panel">
             <div className="progression-summary">
-              <div>
-                <span className="eyebrow">{metadata.familyName}</span>
-                <h3 className="progression-summary__title">{metadata.substyleName}</h3>
+              <div className="progression-summary__main">
+                <div>
+                  <span className="eyebrow">{metadata.familyName}</span>
+                  <h3 className="progression-summary__title">{metadata.substyleName}</h3>
+                </div>
+
+                <p className="progression-summary__copy">
+                  A compact authored loop rendered into the selected key, ready for preview and MIDI
+                  export.
+                </p>
               </div>
 
-              <div className="progression-summary__chips">
-                <span className="chip">{loopBars} bars</span>
-                <span className="chip">{getChordChangeRateLabel(chordChangeRate)}</span>
-                <span className="chip">{metadata.archetypeName}</span>
-                <span className="chip">{metadata.cadenceName}</span>
+              <div className="progression-summary__side">
+                <div className="progression-summary__metric">
+                  <span className="progression-summary__metric-label">Loop</span>
+                  <span className="progression-summary__metric-value">{loopBars} bars</span>
+                </div>
+                <div className="progression-summary__metric">
+                  <span className="progression-summary__metric-label">Chord length</span>
+                  <span className="progression-summary__metric-value">
+                    {getChordChangeRateLabel(chordChangeRate)}
+                  </span>
+                </div>
+                <div className="progression-summary__metric">
+                  <span className="progression-summary__metric-label">Profile</span>
+                  <span className="progression-summary__metric-value">{metadata.loopName}</span>
+                </div>
               </div>
             </div>
 
             <div className="progression-grid" role="list" aria-label="Generated loop">
               {result.chordSlots.map((slot) => (
-                <article className="chord-card" key={`${slot.index}-${slot.romanNumeral}`} role="listitem">
+                <article
+                  className="chord-card"
+                  key={`${slot.index}-${slot.romanNumeral}`}
+                  role="listitem"
+                >
                   <span className="chord-card__index">Step {slot.index + 1}</span>
                   <div className="chord-card__roman">{slot.romanNumeral}</div>
                   <div className="chord-card__name">{slot.chordName}</div>
                   {showFunctionLabels ? (
-                    <div className="chord-card__function">{slot.functionLabel.replace(/_/g, ' ')}</div>
+                    <div className="chord-card__function">
+                      {slot.functionLabel.replace(/_/g, ' ')}
+                    </div>
                   ) : null}
                   <div className="chord-card__meta">
                     <span>{slot.durationBeats} beats</span>
@@ -114,9 +137,22 @@ export function ResultArea({
 
             <div className="progression-footer">
               <div className="hint-box">
-                Preview and export use <strong>{previewPresetName ?? result.midiPresetId}</strong>.
-                The shell is loop-first, but playback and MIDI still come from the authored pack
-                and selected key.
+                <strong>Transport</strong>
+                <span>
+                  Preview and export use <strong>{previewPresetName ?? result.midiPresetId}</strong>.
+                  Playback still comes from the authored pack and selected key.
+                </span>
+              </div>
+              <div className="hint-box">
+                <strong>Color / Rhythm</strong>
+                <span>
+                  {[
+                    metadata.rhythmName,
+                    ...(metadata.colorSummary.length > 0
+                      ? metadata.colorSummary
+                      : ['clean shell'])
+                  ].join(' / ')}
+                </span>
               </div>
             </div>
           </div>
@@ -154,7 +190,9 @@ export function ResultArea({
           </div>
         )}
 
-        {isGenerating ? <div className="status-banner">Loading pack data and shaping a loop...</div> : null}
+        {isGenerating ? (
+          <div className="status-banner">Loading pack data and shaping a loop...</div>
+        ) : null}
         {mediaMessage ? <div className="status-banner">{mediaMessage}</div> : null}
       </div>
     </section>

@@ -1,257 +1,232 @@
 ---
-title: Chord Generator - Data Pack Plan
+title: Chord Generator - Loop Pack Plan
 tags:
   - chord-generator
   - data-packs
-  - runtime
+  - pipeline
 status: draft
 ---
 
-# Chord Generator - Data Pack Plan
+# Chord Generator - Loop Pack Plan
 
 > [!summary]
-> v1 ships compiled family packs from `public/packs/`.
-> Musical authoring happens in `data-src/`.
-> Scripts validate, compile, and report.
-> Scripts do not invent core musical identity.
+> v1 uses a two-layer pipeline:
+> broad offline corpus intake under `data-src/`,
+> then narrow curated runtime packs in `public/packs/`.
 
 ## What This Note Freezes
-- shipped family-pack strategy
-- authoring/runtime split
-- minimum pack depth for v1
-- family placement for ambiguous substyles
-- manifest-first loading strategy
-- first pack expansion priorities
+- offline source priorities
+- automatic download boundaries
+- normalization and loop-extraction stages
+- dedupe/scoring reports
+- manual curation checkpoints
+- aggregate-only runtime pack policy
 
 ---
 
-# Shipped Runtime Surface
+# Source Priorities
 
-Runtime pack files live in:
+## Primary
+- `cocopops`
+  - role: pop backbone
+  - default: enabled
+- `choco`
+  - role: broad harmony intake
+  - default: enabled
+
+## Secondary
+- `jht`
+  - role: richer harmony color and turnaround vocabulary
+  - default: enabled
+
+## Optional
+- `weimar`
+  - role: extra jazz harmony vocabulary and chorus-section data
+  - default: disabled
+  - enabled manually with `--with-weimar`
+
+---
+
+# Automatic Download Rules
+
+Automatic download scripts may fetch:
+- metadata-bearing symbolic corpora
+- repository archives
+- JSON/JAMS/TSV/SQLite source files
+- license files and README files
+
+Automatic download scripts must never fetch:
+- audio files
+- stems
+- MIDI packs for runtime use
+- scraped live webpages as build inputs
+
+Expected script:
+- `scripts/download-sources.mjs`
+
+Expected outputs:
+- `data-src/external/source-registry.json`
+- `data-src/external/<sourceId>/<version>/raw/`
+- `data-src/staging/downloads.lock.json`
+
+---
+
+# Normalization Plan
+
+Expected script:
+- `scripts/normalize-sources.mjs`
+
+Expected outputs:
+- `data-src/staging/normalized/<sourceId>.events.jsonl`
+- `data-src/staging/normalized/<sourceId>.works.jsonl`
+
+Normalization rules:
+- all sources must map into one canonical event schema
+- all chord symbols must be preserved as `chordOriginal`
+- all extracted harmonic logic must be normalized into:
+  - `romanNumeral`
+  - `functionLabel`
+  - `mode`
+  - bar/beat positioning
+- source-specific metadata stays in `provenance`
+- parser uncertainty must surface through `confidence` and `parseFlags`
+
+---
+
+# Loop Extraction Plan
+
+Expected script:
+- `scripts/extract-loops.mjs`
+
+Primary runtime unit:
+- 4-bar loop candidates
+
+Supported v1 change rates:
+- `2 chords / 4 bars` -> `[8,8]`
+- `4 chords / 4 bars` -> `[4,4,4,4]`
+
+Extraction rules:
+1. bar-grid all normalized events
+2. drop ambiguous or unstable spans
+3. slide 4-bar windows by 1 bar
+4. keep only v1-compatible change rates
+5. mark 8-bar and 16-bar repeat suitability offline
+
+Expected outputs:
+- `data-src/staging/windows/4bar.candidates.jsonl`
+- `data-src/staging/windows/8bar.analysis.jsonl`
+- `data-src/staging/windows/16bar.analysis.jsonl`
+
+---
+
+# Dedupe / Scoring Plan
+
+Expected script:
+- `scripts/cluster-loops.mjs`
+
+Exact dedupe key:
+- `mode + romanSequence + functionPath + durationPattern + closure`
+
+Near-dedupe key:
+- same chord-count
+- same function path
+- Roman edit distance `<= 1` or same root-motion skeleton
+
+Score weights:
+- `0.30` loop fitness
+- `0.20` cross-source support
+- `0.15` annotation trust
+- `0.15` transform headroom
+- `0.10` style-fit prior
+- `0.10` harmonic color value
+
+Penalties:
+- exact-song fingerprint risk
+- unstable tonic inference
+- meter irregularity
+- over-dense change pattern
+- unsupported oddity
+
+Expected outputs:
+- `data-src/staging/clusters/deduped-loops.jsonl`
+- `data-src/staging/reports/top-loops-by-style.json`
+- `data-src/staging/reports/rejected-loops.json`
+- `data-src/staging/reports/license-mix.json`
+
+---
+
+# Curation / Generated Layers
+
+Human review files live in:
 
 ```text
-public/packs/
+data-src/curation/
 ```
 
-Expected v1 files:
-- `manifest.json`
-- `kpop.pack.json`
-- `trap.pack.json`
-- `rnb.pack.json`
-- `pop.pack.json`
-- `dance.pack.json`
+Expected curation files:
+- `source-policy.json`
+- `style-mapping.json`
+- `loop-blacklist.json`
 
-The browser loads:
-1. `manifest.json` first
-2. the selected family pack second
-
-No authoring fragments are fetched at runtime.
-
----
-
-# Authoring Surface
-
-Authoring assets live in:
+Machine-proposed outputs live in:
 
 ```text
-data-src/
+data-src/generated/
 ```
 
-Expected authoring layout:
-```text
-data-src/
-  templates/
-  authoring/
-    kpop/
-    trap/
-    rnb/
-    pop/
-    dance/
-```
+Expected generated outputs:
+- `loop-fragments.json`
 
-These files are source material for scripts and human editing only.
+The generated layer may propose:
+- loop fragments
+- candidate tags
+- provenance summaries
+- style-support scores
+- review status gates
 
-Current repo scaffolding also includes:
-- starter schema mirrors in `src/data/templates/`
-- validator sample fixtures in `src/data/packs/samples/`
-- hand-authored pack sources in `data-src/authoring/*.mjs`
-
-Those are implementation scaffolding only. They do not replace `data-src/`.
+The generated layer must not auto-approve:
+- K-pop special moves
+- style identity labels
+- final pack weights
+- runtime pack promotion
 
 ---
 
-# Manifest-First Strategy
+# Runtime Pack Promotion Rules
 
-The app should:
-1. load family metadata from `manifest.json`
-2. show family/substyle choices without loading all packs
-3. lazy-load only the selected family pack
-4. use the selected pack for generation, explanations, suggestions, and MIDI preset selection
-5. resolve manifest pack paths with `import.meta.env.BASE_URL` per `docs/manifest-spec.md`
+Compiled runtime packs continue to load by family:
+- `public/packs/manifest.json`
+- `public/packs/<family>.pack.json`
 
-This keeps GitHub Pages hosting simple and keeps startup lighter than eagerly loading all family data.
+Promotion rules:
+- only approved loop archetypes may enter runtime packs
+- runtime packs must contain aggregate provenance only
+- mixed-license intake may exist offline, but source-policy review decides whether a cluster may become runtime-derived
+- public runtime packs must remain compact and browser-safe
 
----
+Bad promotion signs:
+- loops trace too closely to a single overfamiliar song
+- style labels come from frequency only with no human review
+- K-pop behavior is inferred without manual curation
+- raw corpus identifiers leak into runtime JSON
 
-# V1 Shipped Packs
-
-Use exactly **1 shipped pack per family** in v1.
-
-## kpop.pack.json
-Contains:
-- `kpop_bright_easy`
-- `kpop_dark_synth`
-- `kpop_ballad_emotional`
-
-## trap.pack.json
-Contains:
-- `melodic_trap`
-- `trap_soul_rnb_rap`
-
-## rnb.pack.json
-Contains:
-- `modern_rnb`
-
-## pop.pack.json
-Contains:
-- `future_pop`
-
-## dance.pack.json
-Contains:
-- `house_disco`
-
----
-
-# Frozen Family Placement
-
-This is now explicit and must be consistent everywhere:
-
-- `future_pop` belongs to **pop**
-- `house_disco` belongs to **dance**
-
-These are no longer ambiguous.
-
----
-
-# Hand-Authored vs Script-Generated
-
-## Must Be Hand-Authored
-These define musical identity and should not be auto-invented:
-- family/substyle identity
-- archetypes
-- cadence intent
-- section behavior
-- special moves
-- explanation templates
-- MIDI preset intent
-- K-pop section and special-move semantics
-
-## May Be Script-Generated
-Scripts may generate:
-- `manifest.json`
-- compiled pack JSON from authoring fragments
-- cross-reference integrity reports
-- missing-ID reports
-- coverage reports
-- optional fixtures for tests
-
-## Must Not Be Script-Invented For V1
-Do not auto-generate from corpus or prose:
-- K-pop archetypes
-- K-pop section behavior
-- explanation text semantics
-- special-move semantics
-- style identity
-
----
-
-# Minimum Authoring Depth
-
-## K-pop Substyles
-Each K-pop substyle should reach:
-- 15-20 archetypes
-- full section rules
-- 4-6 special moves
-- 2-4 cadence profiles
-- 2-3 harmonic rhythm profiles
-- 3-6 spice transforms
-- 5-8 variation rules
-- 2-3 MIDI presets
-
-## Other Priority Substyles
-Each non-K-pop v1 substyle should reach:
-- 12-15 archetypes
-- lighter section rules unless strongly section-aware
-- 2-4 cadence profiles
-- 2-3 harmonic rhythm profiles
-- 3-6 spice transforms
-- 5-8 variation rules
-- 2-3 MIDI presets
-
----
-
-# Pack Quality Rules
-
-A substyle pack is not "usable" unless it has:
-- real archetype diversity
-- distinct cadence behavior
-- distinct rhythm behavior
-- non-generic explanation templates
-- non-generic special-move or variation identity
-- tags that separate it from neighboring substyles
-
-Bad pack signs:
-- same archetypes repeated with tiny wording changes
-- generic filler tags
-- no meaningful section distinction
-- every substyle resolving the same way
-- K-pop behaving like flat loop-pop
-- trap behaving like pop with darker wording
-
----
-
-# First Expansion Priority
-
-Expand these first:
-1. `kpop_bright_easy`
-2. `kpop_dark_synth`
-3. `kpop_ballad_emotional`
-4. `melodic_trap`
-5. `trap_soul_rnb_rap`
-6. `modern_rnb`
-7. `house_disco`
-8. `future_pop`
-
-K-pop gets priority because it has the highest section complexity and the highest chance of sounding fake if under-authored.
+Validation requirement:
+- `public/packs/` must fail validation if raw corpus identifiers such as `workId`, `annotationId`, `sourceRefs`, or direct source files leak into runtime JSON
 
 ---
 
 # Required Scripts
 
-Expected script responsibilities:
+Required now:
+- `download-sources`
+- `normalize-sources`
+- `extract-loops`
+- `cluster-loops`
+- `generate-loop-fragments`
 - `validate-packs`
-- `build-packs`
-- `build-pack-manifest`
-- `report-pack-coverage`
 
-The scripts should compile and validate.
-They should not act as hidden music generators.
-
-Current repo implementation includes:
-- `scripts/build-packs.mjs` to compile authored source modules into `public/packs/*.json`
-- `scripts/validate-packs.mjs` to validate the shipped runtime pack surface
-- `scripts/validate-packs.mjs --samples` to keep validating the smaller sample fixtures
-
----
-
-# Pack Readiness Before Engine Work
-
-Before serious engine work starts, at minimum:
-- manifest shape must exist
-- 1 real K-pop pack must validate
-- 1 non-K-pop pack must validate
-- `full_loop` behavior must be explicit
-- special moves must be normalized
-- prose-only rule fields must be reduced to structured enums/arrays
-
-Only then is engine work worth doing.
+Scripts must:
+- run offline after initial download
+- fail clearly when staging data is malformed
+- keep runtime packs and offline corpora separate
+- never become browser runtime dependencies

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "sources": [
+    {
+      "sourceId": "cocopops",
+      "allowForDerivedRuntime": true,
+      "includePartitions": ["Billboard", "RollingStone"],
+      "excludePartitions": [],
+      "notes": "Primary open backbone for shipped loop derivation."
+    },
+    {
+      "sourceId": "choco",
+      "allowForDerivedRuntime": false,
+      "includePartitions": [
+        "Billboard",
+        "Isophonics",
+        "RWC-Pop",
+        "Uspop 2002",
+        "Robbie Williams",
+        "Wikifonia",
+        "iReal Pro",
+        "Band-in-a-Box",
+        "The Real Book",
+        "Weimar Jazz Database",
+        "JAAH"
+      ],
+      "excludePartitions": ["Classical", "Folk", "BPS-FH", "Schubert Winterreise"],
+      "notes": "Broad intake allowed offline. Runtime promotion requires manual review by partition and license."
+    },
+    {
+      "sourceId": "jht",
+      "allowForDerivedRuntime": false,
+      "includePartitions": ["treebank"],
+      "excludePartitions": [],
+      "notes": "Use for vocabulary and color; do not auto-promote to runtime."
+    },
+    {
+      "sourceId": "weimar",
+      "allowForDerivedRuntime": false,
+      "includePartitions": ["wjazzd"],
+      "excludePartitions": [],
+      "notes": "Optional vocabulary source only unless explicitly cleared."
+    }
+  ]
+}
